@@ -6,11 +6,12 @@ generators is documented technical debt — there is exactly one here.
 
 from site_config import GA4_MEASUREMENT_ID, SITE_NAME, SITE_URL
 
-FONT_CSS = (
-    "https://fonts.googleapis.com/css2?"
-    "family=Space+Grotesk:wght@500;600;700&"
-    "family=Inter:wght@400;500;600&"
-    "family=JetBrains+Mono:wght@400;500&display=swap"
+# Fonts are self-hosted (tools/fetch_fonts.py). No third-party font request:
+# nothing outside this origin can slow down, track, or break the page's text.
+# Only the two faces used above the fold are preloaded; the rest swap in.
+FONT_PRELOAD = "\n".join(
+    f'<link rel="preload" href="/fonts/{f}" as="font" type="font/woff2" crossorigin>'
+    for f in ("space-grotesk-700.woff2", "inter-400.woff2")
 )
 
 FAVICON = (
@@ -60,8 +61,7 @@ def render(
 <meta name="twitter:description" content="{description}">
 <link rel="icon" href="{FAVICON}">
 <link rel="alternate" type="application/rss+xml" title="{SITE_NAME}" href="{SITE_URL}/rss.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONT_CSS}">
+{FONT_PRELOAD}
+<link rel="stylesheet" href="/css/fonts.css?v=1">
 <link rel="stylesheet" href="/css/site.css?v=1">{ga}
 {schema}"""

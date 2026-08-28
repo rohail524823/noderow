@@ -39,6 +39,7 @@ NAV = [
 
 FOOTER_COLUMNS = [
     ("Compare", [
+        ("GoHighLevel cost calculator", "/gohighlevel-true-cost-calculator/"),
         ("All-in-one vs stitched stack", "/compare/gohighlevel-vs-stitched-stack/"),
         ("GoHighLevel alternatives", "/compare/gohighlevel-alternatives/"),
         ("n8n vs Make vs Zapier", "/compare/n8n-vs-make-vs-zapier/"),

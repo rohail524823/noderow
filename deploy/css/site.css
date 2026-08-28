@@ -11,7 +11,7 @@
   --edge-strong:#c3cadb;
   --ink:#0e1220;
   --ink-2:#454d63;
-  --ink-3:#7b8399;
+  --ink-3:#616981;   /* 4.96:1 on canvas, 5.46:1 on surface */
   --signal:#5145e5;
   --signal-2:#6f66f0;
   --signal-deep:#332a9e;
@@ -40,7 +40,7 @@
     --edge-strong:#39425a;
     --ink:#eef1f8;
     --ink-2:#b3bbcd;
-    --ink-3:#7d879e;
+    --ink-3:#8d97ae;   /* 6.58:1 on canvas, 5.99:1 on surface */
     --signal:#8b83ff;
     --signal-2:#a49dff;
     --signal-deep:#c6c1ff;
@@ -127,7 +127,7 @@ img,svg{ max-width:100%; }
 .site-nav{ display:flex; flex-wrap:wrap; gap:.25rem; list-style:none; }
 .site-nav a{
   display:block; padding:.45rem .7rem; border-radius:7px;
-  font-size:.9rem; font-weight:500; color:var(--ink-2); text-decoration:none;
+  font-size:.9rem; font-weight:600; color:var(--ink-2); text-decoration:none;
   transition:background .15s ease, color .15s ease;
 }
 .site-nav a:hover{ background:var(--signal-tint); color:var(--signal-deep); }
@@ -409,6 +409,84 @@ table.cmp td.no{ color:var(--ink-3); }
 .faq details[open] summary::before{ content:"− "; }
 .faq details p{ padding-bottom:1rem; font-size:.94rem; color:var(--ink-2); }
 
+/* ---------- answer block (front-loaded, liftable) ---------- */
+.answer-block{
+  background:var(--surface); border:1px solid var(--edge);
+  border-left:3px solid var(--signal);
+  border-radius:var(--radius); padding:1.4rem 1.5rem;
+  box-shadow:var(--shadow); max-width:var(--measure);
+}
+.answer-block p{ font-size:1.02rem; line-height:1.68; color:var(--ink-2); }
+.answer-block strong{ color:var(--ink); }
+
+/* ---------- calculator ---------- */
+.calc{
+  display:grid; gap:1.5rem; margin-block:2rem;
+  grid-template-columns:minmax(16rem, 21rem) minmax(0, 1fr);
+  align-items:start;
+}
+@media (max-width: 860px){
+  .calc{ grid-template-columns:1fr; }
+}
+.calc-inputs{
+  background:var(--surface); border:1px solid var(--edge);
+  border-radius:var(--radius); padding:1.4rem; box-shadow:var(--shadow);
+  position:sticky; top:5rem;
+}
+@media (max-width: 860px){ .calc-inputs{ position:static; } }
+.calc-sub{
+  font-family:var(--font-display); font-size:1rem; font-weight:600;
+  margin-bottom:.25rem;
+}
+.calc-inputs .field:first-of-type{ margin-top:1rem; }
+.field-check{ flex-direction:row; align-items:center; }
+.field-check label{
+  display:flex; align-items:center; gap:.55rem; cursor:pointer;
+  font-weight:600; color:var(--ink-2);
+}
+.field-check input{ width:auto; flex:0 0 auto; }
+.field-disabled{ opacity:.45; }
+.field-disabled input{ cursor:not-allowed; }
+
+.calc-results{
+  background:var(--surface); border:1px solid var(--edge);
+  border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow);
+  min-height:12rem;
+}
+.calc-verdict > * + *{ margin-top:.85rem; }
+.calc-verdict p{ font-size:.96rem; color:var(--ink-2); }
+.calc-headline{
+  font-family:var(--font-display); font-size:1.25rem !important;
+  line-height:1.35; color:var(--ink) !important;
+}
+.calc-headline strong{ color:var(--signal-deep); }
+.calc-flag{
+  background:var(--warn-tint); color:var(--warn) !important;
+  border-radius:8px; padding:.75rem .9rem; font-size:.9rem !important;
+}
+.calc-results .calc-sub{ margin-top:1.75rem; }
+.calc-results table.cmp{ font-size:.88rem; }
+tr.calc-best td{ background:var(--ok-tint); }
+tr.calc-best td strong{ color:var(--ok); }
+
+.calc-breakdown{ list-style:none; margin-top:.9rem; }
+.calc-breakdown li{
+  display:flex; justify-content:space-between; gap:1rem;
+  padding:.5rem 0; border-bottom:1px dashed var(--edge);
+  font-size:.92rem; color:var(--ink-2);
+}
+.calc-breakdown li:last-child{ border-bottom:0; }
+.calc-breakdown strong{ font-family:var(--font-mono); color:var(--ink); }
+.calc-total{ border-top:1px solid var(--edge-strong); margin-top:.35rem; }
+.calc-total span{ font-weight:600; color:var(--ink); }
+
+.calc-noscript{
+  font-size:.9rem; color:var(--warn);
+  background:var(--warn-tint); padding:.85rem 1rem; border-radius:8px;
+}
+/* With JS live, the noscript hint is gone and results replace the placeholder. */
+.calc:not(.calc-live) .calc-results{ display:none; }
+
 /* ---------- footer ---------- */
 .site-footer{
   border-top:1px solid var(--edge); background:var(--surface);
@@ -440,3 +518,28 @@ table.cmp td.no{ color:var(--ink-3); }
   .subscribe-form{ flex-direction:column; }
   .subscribe-form .btn{ width:100%; justify-content:center; }
 }
+
+.net-profit{ color:var(--ok); }
+
+/* Section headings that sit directly in a hub page's flow. */
+.wrap > h2{
+  font-size:1.5rem; font-weight:700; margin-bottom:1.1rem; margin-top:2.5rem;
+}
+.wrap > h2:first-of-type{ margin-top:0; }
+
+/* ---------- feature strip ---------- */
+.feature-strip{
+  display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center;
+  justify-content:space-between;
+  margin-top:2.5rem; padding:1.75rem;
+  background:var(--surface); border:1px solid var(--edge);
+  border-left:3px solid var(--signal);
+  border-radius:var(--radius); box-shadow:var(--shadow);
+}
+.feature-strip > div{ flex:1 1 26rem; }
+.feature-strip h3{ font-size:1.3rem; font-weight:700; margin-top:.5rem; }
+.feature-strip p:last-child{
+  margin-top:.6rem; color:var(--ink-2); font-size:.95rem; max-width:52ch;
+}
+.node h3 a{ text-decoration:none; }
+.node h3 a:hover{ text-decoration:underline; }

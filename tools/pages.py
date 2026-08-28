@@ -120,8 +120,18 @@ failure modes are what nobody writes about.</p>
 
 <p class="cta-row" style="margin-top:2rem">
   <a class="btn btn-ghost" href="/compare/">See how the routes compare</a>
-  <span class="cta-note">The full cost breakdown is being written now.</span>
 </p>
+
+<div class="feature-strip">
+  <div>
+    <p class="eyebrow">Free tool</p>
+    <h3>What does GoHighLevel actually cost you?</h3>
+    <p>The plan price is one of three layers. Put your client count and message
+    volume in and get the real monthly number — plus whether the $497 plan pays
+    for itself at your rebilling markup. Every rate dated and sourced.</p>
+  </div>
+  <a class="btn btn-primary" href="/gohighlevel-true-cost-calculator/">Open the calculator</a>
+</div>
 </div>
 </section>
 
@@ -212,6 +222,19 @@ price.</p>
 
 {inline_disclosure()}
 
+<h2>Live now</h2>
+<div class="node-grid">
+  <article class="node">
+    <div class="node-head"><span class="node-kicker">Calculator</span>
+    {status_pill("ok", "Live")}</div>
+    <h3><a href="/gohighlevel-true-cost-calculator/">GoHighLevel true cost calculator</a></h3>
+    <p>Models the subscription, metered usage and AI layers together, and works out
+    whether Agency Pro at $497 pays for itself at your markup.</p>
+    <p class="node-chain">Plan + usage + AI → real monthly cost</p>
+  </article>
+</div>
+
+<h2>Comparisons in progress</h2>
 <div class="node-grid">
   <article class="node">
     <div class="node-head"><span class="node-kicker">All-in-one vs stack</span>
@@ -268,6 +291,7 @@ GUIDES_BODY = f"""
 each step, and where it breaks once real data hits it.</p>
 </div>
 
+<h2>Guides in progress</h2>
 <div class="node-grid">
   <article class="node">
     <div class="node-head"><span class="node-kicker">Onboarding</span>
@@ -342,6 +366,7 @@ the setup notes.</p>
      and reviews, not a permanent price. Target: 10 sales and 5 testimonials,
      then raise to $79. Do not surface this to readers. -->
 
+<h2>The packs</h2>
 <div class="node-grid">
   <article class="node">
     <div class="node-head"><span class="node-kicker">$39</span>

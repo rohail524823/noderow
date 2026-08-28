@@ -1,0 +1,89 @@
+{
+  "_comment": [
+    "Every number the calculator uses, with its source and the date it was checked.",
+    "The calculator renders these dates on the page — an undated price is a guess.",
+    "IMPORTANT: gohighlevel.com is unreachable from the build environment, so these",
+    "were verified against multiple independent secondary sources rather than the",
+    "vendor's own pricing page. verificationMethod records that honestly. Re-check",
+    "against the vendor directly before treating any figure as authoritative."
+  ],
+  "checkedDate": "2026-08-28",
+  "verificationMethod": "secondary-sources",
+  "currency": "USD",
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "monthly": 97,
+      "annualMonthlyEquivalent": 80,
+      "subAccounts": 3,
+      "subAccountsLabel": "3 sub-accounts",
+      "whiteLabel": false,
+      "rebillAtCost": false,
+      "rebillWithMarkup": false,
+      "apiAccess": false,
+      "saasMode": false,
+      "bestFor": "One business, or an agency with up to three clients testing the platform."
+    },
+    {
+      "id": "unlimited",
+      "name": "Unlimited",
+      "monthly": 297,
+      "annualMonthlyEquivalent": 247,
+      "subAccounts": null,
+      "subAccountsLabel": "Unlimited sub-accounts",
+      "whiteLabel": true,
+      "rebillAtCost": true,
+      "rebillWithMarkup": false,
+      "apiAccess": true,
+      "saasMode": false,
+      "bestFor": "Agencies running more than three clients who want white-label and API access."
+    },
+    {
+      "id": "agency-pro",
+      "name": "Agency Pro (SaaS Pro)",
+      "monthly": 497,
+      "annualMonthlyEquivalent": 414,
+      "subAccounts": null,
+      "subAccountsLabel": "Unlimited sub-accounts",
+      "whiteLabel": true,
+      "rebillAtCost": true,
+      "rebillWithMarkup": true,
+      "apiAccess": true,
+      "saasMode": true,
+      "bestFor": "Agencies reselling the platform as their own software with a margin on usage."
+    }
+  ],
+  "usage": {
+    "smsPerSegment": 0.0079,
+    "smsNote": "Per SMS segment. A message over 160 characters is billed as multiple segments — long messages cost more than the per-message figure suggests.",
+    "emailPer1000": 0.675,
+    "emailNote": "LC Email, built on Mailgun. Reported around $0.675-$1.00 per 1,000 sent depending on volume.",
+    "voicePerMinute": 0.0140,
+    "voiceNote": "Outbound voice per minute, varies by destination country.",
+    "aiConversationPerMessage": 0.02,
+    "aiNote": "Conversation AI is billed per message and Voice AI per minute. Heavy AI use commonly adds $30-$150/month."
+  },
+  "sources": [
+    {
+      "claim": "Plan prices $97 / $297 / $497 monthly; annual equivalents ~$80 / $247 / $414",
+      "url": "https://www.gohighlevel.com/pricing",
+      "note": "Vendor page. Corroborated by multiple independent reviews checked 2026-08-28."
+    },
+    {
+      "claim": "SMS billed at $0.0079 per segment",
+      "url": "https://autogencrm.com/gohighlevel-sms-pricing/",
+      "note": "Secondary source, 2026."
+    },
+    {
+      "claim": "Email metered via LC Email/Mailgun at roughly $0.675-$1.00 per 1,000",
+      "url": "https://www.nextgenchannels.com/gohighlevel-hidden-costs/",
+      "note": "Secondary source, 2026."
+    },
+    {
+      "claim": "Rebilling at cost available on Unlimited; markup requires Agency Pro",
+      "url": "https://ghlcrm.me/gohighlevel-saas-pricing/",
+      "note": "This is the decision that makes the $200/month upgrade pay or not pay."
+    }
+  ]
+}
