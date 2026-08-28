@@ -1,0 +1,7 @@
+# Python bytecode from the build scripts
+__pycache__/
+*.py[cod]
+
+# Local scratch
+*.log
+.DS_Store
