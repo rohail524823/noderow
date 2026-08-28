@@ -419,6 +419,15 @@ bolting n8n or Make onto it anyway.</p>
 {no_commission_callout("zapier")}
 </div>
 
+<div class="prose">
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</a>
+&mdash; every rate behind this calculator, sourced and dated</li>
+<li><a href="/compare/">All platform comparisons</a></li>
+</ul>
+</div>
+
 {author_box()}
 </div>
 </section>

@@ -160,12 +160,14 @@ project. These are being written now.</p>
   <article class="node">
     <div class="node-head">
       <span class="node-kicker">Pricing</span>
-      {status_pill("waiting", "Writing")}
+      {status_pill("ok", "Live")}
     </div>
-    <h3>GoHighLevel pricing, explained without the pitch</h3>
-    <p>What each tier gets you, when the jump is worth it, and the costs that sit
-    outside the subscription — sending fees, phone numbers, migration time.</p>
-    <p class="node-chain">$97 → $297 → $497</p>
+    <h3><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing, explained
+    without the pitch</a></h3>
+    <p>What each tier gets you, when the jump is worth it, and the metered costs
+    that sit outside the subscription — including carrier fees that add ~56% to
+    your SMS bill.</p>
+    <p class="node-chain">$97 → $297 → $497 + what sits on top</p>
   </article>
 
   <article class="node">
@@ -231,6 +233,14 @@ price.</p>
     <p>Models the subscription, metered usage and AI layers together, and works out
     whether Agency Pro at $497 pays for itself at your markup.</p>
     <p class="node-chain">Plan + usage + AI → real monthly cost</p>
+  </article>
+  <article class="node">
+    <div class="node-head"><span class="node-kicker">Pricing</span>
+    {status_pill("ok", "Live")}</div>
+    <h3><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</a></h3>
+    <p>Every plan, every metered rate and every add-on, read from HighLevel's own
+    pages and dated. Including the carrier surcharges nobody else models.</p>
+    <p class="node-chain">$97 → $297 → $497 + what sits on top</p>
   </article>
 </div>
 
