@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>NodeRow — Agency Automation Stacks, Reviewed From the Build Side</title>
+<meta name="description" content="Comparisons and build guides for agency automation stacks — GoHighLevel, n8n, Make and Zapier — written by an engineer who builds and debugs these systems for paying clients.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<link rel="canonical" href="https://noderow.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NodeRow">
+<meta property="og:title" content="NodeRow — Agency Automation Stacks, Reviewed From the Build Side">
+<meta property="og:description" content="Comparisons and build guides for agency automation stacks — GoHighLevel, n8n, Make and Zapier — written by an engineer who builds and debugs these systems for paying clients.">
+<meta property="og:url" content="https://noderow.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NodeRow — Agency Automation Stacks, Reviewed From the Build Side">
+<meta name="twitter:description" content="Comparisons and build guides for agency automation stacks — GoHighLevel, n8n, Make and Zapier — written by an engineer who builds and debugs these systems for paying clients.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111827'/%3E%3Cpath d='M9 22V10l14 12V10' stroke='%236366f1' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="alternate" type="application/rss+xml" title="NodeRow" href="https://noderow.com/rss.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/css/site.css?v=1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://noderow.com/#org",
+      "name": "NodeRow",
+      "url": "https://noderow.com/",
+      "description": "Reviews, comparisons and build guides for agency automation stacks — GoHighLevel, n8n, Make and Zapier.",
+      "founder": {
+        "@id": "https://noderow.com/#rohail"
+      },
+      "publishingPrinciples": "https://noderow.com/about/",
+      "ethicsPolicy": "https://noderow.com/affiliate-disclosure/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://noderow.com/#rohail",
+      "name": "Rohail Nisar Ahmad",
+      "jobTitle": "Automation & Data Integration Engineer",
+      "url": "https://noderow.com/about/",
+      "worksFor": {
+        "@id": "https://noderow.com/#org"
+      },
+      "sameAs": [
+        "https://www.upwork.com/freelancers/rohailnisaracademy",
+        "https://www.linkedin.com/in/rohailnisarahmad"
+      ],
+      "knowsAbout": [
+        "workflow automation",
+        "n8n",
+        "Make.com",
+        "Zapier",
+        "GoHighLevel",
+        "API integration",
+        "webhooks",
+        "data pipelines",
+        "AI agents",
+        "no-code automation"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://noderow.com/#website",
+      "url": "https://noderow.com/",
+      "name": "NodeRow",
+      "publisher": {
+        "@id": "https://noderow.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://noderow.com/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://noderow.com/#webpage",
+      "url": "https://noderow.com/",
+      "name": "NodeRow — Agency Automation Stacks, Reviewed From the Build Side",
+      "description": "Comparisons and build guides for agency automation stacks — GoHighLevel, n8n, Make and Zapier — written by an engineer who builds and debugs these systems for paying clients.",
+      "isPartOf": {
+        "@id": "https://noderow.com/#website"
+      },
+      "about": {
+        "@id": "https://noderow.com/#org"
+      },
+      "lastReviewed": "2026-08-28"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">
+      <svg class="wordmark-glyph" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M9 22V10l14 12V10" fill="none" stroke="currentColor"
+              stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>NodeRow</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="site-nav">
+<li><a href="/compare/">Compare Tools</a></li>
+<li><a href="/guides/">Guides</a></li>
+<li><a href="/packs/">Workflow Packs</a></li>
+<li><a href="/build/">Get It Built</a></li>
+<li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero">
+<div class="wrap">
+<p class="eyebrow">Agency automation, reviewed from the build side</p>
+<h1>Most agencies are paying for eight tools that don't talk to each other.</h1>
+<p class="lede">NodeRow compares all-in-one platforms against stitched-together
+stacks — GoHighLevel, n8n, Make, Zapier — and shows you what each one actually
+costs once it's wired up and running. Written by someone who builds these systems
+for paying clients and gets the call when they break.</p>
+<div class="hero-actions">
+  <a class="btn btn-primary" href="/compare/">Compare the stacks</a>
+  <a class="btn btn-ghost" href="/build/">Have it built for you</a>
+</div>
+<div class="credential">
+  <span><strong>100+</strong> completed contracts</span>
+  <span><strong>100%</strong> job success on Upwork</span>
+  <span>Builds in <strong>n8n, Make, Zapier and GoHighLevel</strong> weekly</span>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">The actual decision</p>
+<h2>One platform, or a stack you assemble yourself?</h2>
+<p>This is the fork every agency hits around the time the spreadsheet stops
+working. Both answers are defensible. They fail in different places, and the
+failure modes are what nobody writes about.</p>
+</div>
+
+<div class="node-grid">
+  <article class="node">
+    <div class="node-head">
+      <span class="node-kicker">Route A</span>
+      <span class="pill pill-ok">Fewest moving parts</span>
+    </div>
+    <h3>One platform that does most of it</h3>
+    <p>CRM, pipelines, email and SMS, booking, funnels and client sub-accounts
+    billed as one product. You trade depth in any single area for not having to
+    integrate anything.</p>
+    <p class="node-chain">Lead → CRM → Nurture → Booking → Reporting</p>
+  </article>
+
+  <article class="node">
+    <div class="node-head">
+      <span class="node-kicker">Route B</span>
+      <span class="pill pill-waiting">Most flexible</span>
+    </div>
+    <h3>Best-in-class tools, wired together</h3>
+    <p>Pick the best CRM, the best email tool, the best scheduler, then connect
+    them with n8n or Make. Better at every individual job. Now you own the
+    integration layer, forever.</p>
+    <p class="node-chain">Forms → n8n → CRM → ESP → Sheets → Slack</p>
+  </article>
+
+  <article class="node">
+    <div class="node-head">
+      <span class="node-kicker">In practice</span>
+      <span class="pill pill-error">The common failure</span>
+    </div>
+    <h3>Half of one, half of the other</h3>
+    <p>Most agencies end up here by accident — a platform for some of it, four
+    subscriptions and a fragile Zap for the rest. It's the most expensive
+    configuration and the hardest to hand to a new hire.</p>
+    <p class="node-chain">Platform + 4 SaaS + 1 Zap nobody documented</p>
+  </article>
+</div>
+
+<p class="cta-row" style="margin-top:2rem">
+  <a class="btn btn-ghost" href="/compare/">See how the routes compare</a>
+  <span class="cta-note">The full cost breakdown is being written now.</span>
+</p>
+</div>
+</section>
+
+<section class="section section-alt">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">Guides in progress</p>
+<h2>Written from client builds, not documentation</h2>
+<p>Every guide here has to contain at least one thing you can't get from a docs
+page — a real cost figure, a real error, a decision that went wrong on a live
+project. These are being written now.</p>
+</div>
+
+<div class="node-grid">
+  <article class="node">
+    <div class="node-head">
+      <span class="node-kicker">Comparison</span>
+      <span class="pill pill-waiting">Writing</span>
+    </div>
+    <h3>GoHighLevel vs a stitched-together stack</h3>
+    <p>What the all-in-one actually replaces, what it doesn't, and the real
+    monthly number once you've added the tools it can't cover.</p>
+    <p class="node-chain">All-in-one ⟷ Assembled stack</p>
+  </article>
+
+  <article class="node">
+    <div class="node-head">
+      <span class="node-kicker">Pricing</span>
+      <span class="pill pill-waiting">Writing</span>
+    </div>
+    <h3>GoHighLevel pricing, explained without the pitch</h3>
+    <p>What each tier gets you, when the jump is worth it, and the costs that sit
+    outside the subscription — sending fees, phone numbers, migration time.</p>
+    <p class="node-chain">$97 → $297 → $497</p>
+  </article>
+
+  <article class="node">
+    <div class="node-head">
+      <span class="node-kicker">Build guide</span>
+      <span class="pill pill-waiting">Writing</span>
+    </div>
+    <h3>Automating client onboarding end to end</h3>
+    <p>Intake form to CRM to Drive folders to Slack to welcome sequence. The
+    actual node shape, and the three places it breaks in production.</p>
+    <p class="node-chain">Form → CRM → Drive → Slack → Sequence</p>
+  </article>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">How this site makes money</p>
+<h2>Said plainly, because you'd work it out anyway.</h2>
+</div>
+<div class="prose">
+<p>NodeRow earns a commission when someone signs up for GoHighLevel through a link
+here. That's the main way this site pays for itself, and it's why GoHighLevel
+comes up often.</p>
+<p>What that does <em>not</em> mean: that it's the answer to everything. It's a
+platform, not a connector. If your problem is moving data between arbitrary APIs,
+it's the wrong shape and this site will tell you so.</p>
+<aside class="callout callout-integrity" role="note">
+<span class="callout-mark" aria-hidden="true">◆</span>
+<div>
+<strong>We earn no commission if you choose Zapier.</strong>
+<span>We're recommending it here anyway, because for this job it's the right call.
+No public cash affiliate program. NodeRow earns nothing from Zapier, ever.</span>
+</div>
+</aside>
+<p>Every recommendation here carries its commission status. Tools that pay nothing
+are named anyway, and labelled. See the
+<a href="/affiliate-disclosure/">full disclosure</a> for the specifics.</p>
+</div>
+</div>
+</section>
+
+<section class="section section-alt" id="subscribe">
+<div class="wrap subscribe-inner">
+<p class="eyebrow">Get new guides</p>
+<h2>One email when something new ships.</h2>
+<p class="lede">No drip sequence, no course to sell. Just the write-up, sent when a
+build is finished and worth documenting.</p>
+<div class="subscribe-body">
+<form class="subscribe-form-el" name="subscribe" method="POST" action="/#subscribed"
+      data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="subscribe">
+  <p class="hp-field"><label>Leave this field blank:
+    <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <div class="subscribe-form">
+    <label class="sr-only" for="email">Email address</label>
+    <input id="email" name="email" type="email" placeholder="you@agency.com"
+           autocomplete="email" required>
+    <button class="btn btn-primary" type="submit">Subscribe</button>
+  </div>
+</form>
+<p class="fine-print">Unsubscribe anytime. No spam — just occasional field notes.</p>
+<p id="subscribed" class="form-success">You're on the list — the next guide lands in
+your inbox when it's ready.</p>
+</div>
+</div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+<div class="footer-col"><h2>Compare</h2><ul><li><span class="pending-link" data-link-to="/compare/gohighlevel-vs-stitched-stack/">All-in-one vs stitched stack</span></li>
+<li><span class="pending-link" data-link-to="/compare/gohighlevel-alternatives/">GoHighLevel alternatives</span></li>
+<li><span class="pending-link" data-link-to="/compare/n8n-vs-make-vs-zapier/">n8n vs Make vs Zapier</span></li>
+<li><span class="pending-link" data-link-to="/compare/zapier-alternatives/">Zapier alternatives</span></li>
+<li><a href="/compare/">Compare hub</a></li></ul></div><div class="footer-col"><h2>Guides</h2><ul><li><span class="pending-link" data-link-to="/automate-client-onboarding/">Automate client onboarding</span></li>
+<li><span class="pending-link" data-link-to="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</span></li>
+<li><span class="pending-link" data-link-to="/automate-lead-capture/">Lead capture to CRM sync</span></li>
+<li><a href="/guides/">Guides hub</a></li></ul></div><div class="footer-col"><h2>Products</h2><ul><li><a href="/packs/">Workflow Packs</a></li>
+<li><a href="/build/">Get It Built</a></li></ul></div><div class="footer-col"><h2>Site</h2><ul><li><a href="/about/">About</a></li>
+<li><a href="/how-we-test/">How We Test</a></li>
+<li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
+<li><a href="/privacy-policy/">Privacy Policy</a></li>
+<li><a href="/contact/">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-base">
+      <p class="footer-brand">NodeRow</p>
+      <p class="footer-social">
+        <a href="https://www.linkedin.com/in/rohailnisarahmad" target="_blank" rel="noopener me">LinkedIn</a>
+        <a href="https://www.upwork.com/freelancers/rohailnisaracademy" target="_blank" rel="noopener me">Upwork</a>
+      </p>
+      <p class="footer-disclosure">Some links on this site are affiliate links. If you sign up through one, NodeRow may earn a commission at no extra cost to you.</p>
+      <p class="footer-copy">&copy; 2026 NodeRow. Written by Rohail Nisar Ahmad.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function () {
+  function send(name, params) {
+    if (typeof window.gtag === 'function') { window.gtag('event', name, params); }
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-aff]');
+    if (a) {
+      send('affiliate_click', {
+        product: a.dataset.aff,
+        placement: a.dataset.placement || 'body',
+        link_url: a.href
+      });
+      return;
+    }
+    var pack = e.target.closest('a[data-pack]');
+    if (pack) {
+      send('pack_click', {
+        product: pack.dataset.pack,
+        placement: pack.dataset.placement || 'body',
+        link_url: pack.href
+      });
+    }
+  });
+  var form = document.querySelector('form[data-enquiry]');
+  if (form) {
+    form.addEventListener('submit', function () {
+      send('build_enquiry', {
+        product: 'build-service',
+        placement: 'build-page',
+        link_url: location.pathname
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

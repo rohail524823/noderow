@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>NodeRow</title>
+    <link>https://noderow.com/</link>
+    <description>Comparisons and build guides for agency automation stacks.</description>
+    <language>en</language>
+    <item>
+      <title>NodeRow — Agency Automation Stacks, Reviewed From the Build Side</title>
+      <link>https://noderow.com/</link>
+      <guid>https://noderow.com/</guid>
+      <description>Comparisons and build guides for agency automation stacks — GoHighLevel, n8n, Make and Zapier — written by an engineer who builds and debugs these systems for paying clients.</description>
+    </item>
+    <item>
+      <title>Automation Platform Comparisons for Agencies | NodeRow</title>
+      <link>https://noderow.com/compare/</link>
+      <guid>https://noderow.com/compare/</guid>
+      <description>Head-to-head comparisons of GoHighLevel, n8n, Make and Zapier, with pricing modelled at real agency volume rather than the sticker price.</description>
+    </item>
+    <item>
+      <title>Automation Build Guides and Use-Case Walkthroughs | NodeRow</title>
+      <link>https://noderow.com/guides/</link>
+      <guid>https://noderow.com/guides/</guid>
+      <description>Step-by-step build guides for client onboarding, lead capture and document automation — the workflow shape, the apps, and where each one breaks in production.</description>
+    </item>
+    <item>
+      <title>Automation Tool Directory | NodeRow</title>
+      <link>https://noderow.com/tools/</link>
+      <guid>https://noderow.com/tools/</guid>
+      <description>Every automation platform covered on NodeRow, with what each is good at, where it falls down, and whether NodeRow earns a commission.</description>
+    </item>
+    <item>
+      <title>Pre-Built Automation Workflow Packs | NodeRow</title>
+      <link>https://noderow.com/packs/</link>
+      <guid>https://noderow.com/packs/</guid>
+      <description>Importable workflow packs for client onboarding, ecommerce ops, document automation and lead capture — the same systems built for paying clients.</description>
+    </item>
+    <item>
+      <title>Automation Built For You — Fixed Price From $50 | NodeRow</title>
+      <link>https://noderow.com/build/</link>
+      <guid>https://noderow.com/build/</guid>
+      <description>Fixed-price automation builds in n8n, Make, Zapier and GoHighLevel. Four tiers from a $50 quick fix to a $500 full multi-workflow system.</description>
+    </item>
+    <item>
+      <title>About NodeRow and Its Publishing Principles</title>
+      <link>https://noderow.com/about/</link>
+      <guid>https://noderow.com/about/</guid>
+      <description>NodeRow is written by Rohail Nisar Ahmad, a freelance automation engineer with 100+ completed contracts. How the site works and how it is funded.</description>
+    </item>
+    <item>
+      <title>How NodeRow Tests Automation Platforms</title>
+      <link>https://noderow.com/how-we-test/</link>
+      <guid>https://noderow.com/how-we-test/</guid>
+      <description>The method behind NodeRow&#x27;s comparisons: hands-on builds, pricing modelled at real volume, dated prices, and named weaknesses.</description>
+    </item>
+    <item>
+      <title>Affiliate Disclosure | NodeRow</title>
+      <link>https://noderow.com/affiliate-disclosure/</link>
+      <guid>https://noderow.com/affiliate-disclosure/</guid>
+      <description>Exactly which links on NodeRow earn a commission, which earn nothing, and how that does and doesn&#x27;t affect what gets recommended.</description>
+    </item>
+  </channel>
+</rss>

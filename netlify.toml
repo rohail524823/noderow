@@ -1,0 +1,33 @@
+# Netlify reads this from the repo root. deploy/ is the publish root and IS the
+# site — there is no build step, the HTML in deploy/ is committed as generated.
+#
+# Regenerate locally with:  python3 tools/build.py
+
+[build]
+  publish = "deploy"
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Catch-all 404. Must be last.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
