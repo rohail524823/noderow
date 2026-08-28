@@ -1,0 +1,19 @@
+# NodeRow
+
+> Comparisons and build guides for agency automation stacks — GoHighLevel,
+> n8n, Make and Zapier. Written by a freelance automation engineer who builds
+> these systems for paying clients.
+
+## Pages
+
+- [NodeRow — Agency Automation Stacks, Reviewed From the Build Side](https://noderow.com/): Comparisons and build guides for agency automation stacks — GoHighLevel, n8n, Make and Zapier — written by an engineer who builds and debugs these systems for paying clients.
+- [Automation Platform Comparisons for Agencies | NodeRow](https://noderow.com/compare/): Head-to-head comparisons of GoHighLevel, n8n, Make and Zapier, with pricing modelled at real agency volume rather than the sticker price.
+- [Automation Build Guides and Use-Case Walkthroughs | NodeRow](https://noderow.com/guides/): Step-by-step build guides for client onboarding, lead capture and document automation — the workflow shape, the apps, and where each one breaks in production.
+- [Automation Tool Directory | NodeRow](https://noderow.com/tools/): Every automation platform covered on NodeRow, with what each is good at, where it falls down, and whether NodeRow earns a commission.
+- [Pre-Built Automation Workflow Packs | NodeRow](https://noderow.com/packs/): Importable workflow packs for client onboarding, ecommerce ops, document automation and lead capture — the same systems built for paying clients.
+- [Automation Built For You — Fixed Price From $50 | NodeRow](https://noderow.com/build/): Fixed-price automation builds in n8n, Make, Zapier and GoHighLevel. Four tiers from a $50 quick fix to a $500 full multi-workflow system.
+- [About NodeRow and Its Publishing Principles](https://noderow.com/about/): NodeRow is written by Rohail Nisar Ahmad, a freelance automation engineer with 100+ completed contracts. How the site works and how it is funded.
+- [How NodeRow Tests Automation Platforms](https://noderow.com/how-we-test/): The method behind NodeRow's comparisons: hands-on builds, pricing modelled at real volume, dated prices, and named weaknesses.
+- [Affiliate Disclosure | NodeRow](https://noderow.com/affiliate-disclosure/): Exactly which links on NodeRow earn a commission, which earn nothing, and how that does and doesn't affect what gets recommended.
+- [Privacy Policy | NodeRow](https://noderow.com/privacy-policy/): What NodeRow collects when you subscribe or send an enquiry, how analytics and affiliate links work, and how to have your data corrected or removed.
+- [Contact NodeRow](https://noderow.com/contact/): Get in touch with NodeRow about corrections, fixed-price automation build enquiries, or a disagreement with something written here. Replies within one working day.
