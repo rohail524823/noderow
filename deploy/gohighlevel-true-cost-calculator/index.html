@@ -136,7 +136,15 @@
           "name": "Does GoHighLevel really cost more than the advertised price?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, for almost everyone. The plan fee is one of three layers. SMS, email, voice and AI are metered separately and drawn from a wallet that auto-recharges. A ten-client agency on the $297 plan commonly pays $370–$450 a month once usage is counted."
+            "text": "Yes, for almost everyone. The plan fee is one layer of several. SMS, email, voice, phone number rental, premium workflow actions and AI are metered separately and drawn from an agency wallet that auto-recharges. There is no official benchmark for the total, and any figure you see quoted as typical is a model rather than a published number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Voice AI minutes include the phone call?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, and this is the most commonly misunderstood cost on the platform. Voice AI is billed by the AI product; the call underneath is billed by LC Phone at $0.0166 a minute outbound. Both meters run at the same time, on every tier, including AI Employee Unlimited. An “unlimited” AI plan does not make the telephony free."
           }
         },
         {
@@ -144,7 +152,15 @@
           "name": "Is Agency Pro at $497 worth it over Unlimited at $297?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Only if you rebill usage with a markup. Rebilling at cost is already available on Unlimited; the extra $200 a month buys the ability to add margin on top. So the upgrade pays for itself when your markup earns more than $200 a month — which needs either high usage or a high multiplier. Below that, it is a $200 monthly loss."
+            "text": "Only if you rebill usage with a markup. Rebilling at cost is already available on Unlimited, so the extra $200 a month buys the ability to add margin on top and nothing else that is economically significant. It pays for itself when that margin exceeds $200 a month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the flat-rate rebilling trap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you charge sub-accounts a fixed rate per unit, HighLevel still bills your agency on actual consumption. Their own documentation says so: your agency is charged based on actual token consumption regardless of the pricing model configured for sub-accounts. Set the flat rate below real cost and you lose money on every unit, silently, at scale."
           }
         },
         {
@@ -152,15 +168,15 @@
           "name": "Why is an SMS billed per segment rather than per message?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A message over 160 GSM characters is split into multiple segments and billed for each one. Adding an emoji switches the encoding and drops the limit to 70 characters, which can quietly triple the cost of a campaign that looked fine in testing."
+            "text": "A message over 160 GSM characters splits into multiple segments and is billed for each. Adding a single emoji switches the encoding and drops the limit to 70 characters, which can quietly triple the cost of a campaign that looked fine in testing."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I avoid the usage costs entirely?",
+          "name": "Is “SaaS Pro” a separate plan from Agency Pro?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, but you can pass them through. On Unlimited and above you can rebill usage to clients at cost, which makes it their line item rather than yours. Agencies that skip this are absorbing a variable cost against a fixed retainer, which is where margins quietly disappear."
+            "text": "No. HighLevel uses SaaS Pro as an alternate marketing label for the same $497 Agency Pro plan on its own upgrade funnel. Any comparison listing them as two products at two prices is factually wrong."
           }
         }
       ]
@@ -203,23 +219,23 @@
 <div class="prose">
 <div class="answer-block">
 <p><strong>GoHighLevel costs more than its advertised price for almost every
-agency.</strong> The plans are $97 (Starter, 3 sub-accounts), $297 (Unlimited)
-and $497 (Agency Pro) per month, but SMS, email, voice and AI are metered on top
-of all three. SMS runs about $0.0079 per segment and email about $0.675 per
-thousand, so a ten-client agency on the $297 plan typically pays $370–$450 a
-month all in. The upgrade from Unlimited to Agency Pro is the decision that
-matters most: rebilling usage <em>at cost</em> is already included at $297, and
-the extra $200 a month only buys the ability to add a <em>markup</em> on top. It
-pays for itself only when that markup earns more than $200 a month. The
-calculator below models all three layers and tells you which plan is actually
-cheapest at your volume.</p>
+agency.</strong> The plans are $97 (Starter, 3 sub-accounts), $297 (Unlimited) and
+$497 (Agency Pro) per month, but SMS, email, voice, phone numbers, premium workflow
+actions and AI are all metered on top of every tier. SMS runs $0.00747 per segment,
+email $0.675 per thousand, and outbound US voice $0.0166 a minute. Two costs catch
+people out. First, Voice AI minutes do not include the phone call underneath &mdash;
+LC Phone bills those separately even on the plan named &ldquo;unlimited&rdquo;, so
+two meters run at once. Second, rebilling usage <em>at cost</em> is already included
+at $297, so Agency Pro&rsquo;s extra $200 a month buys only the ability to add a
+<em>markup</em>, and pays for itself only when that markup earns more than $200. The
+calculator below models every layer at your own volume.</p>
 </div>
 </div>
 
 <aside class="disclosure" role="note"><span class="disclosure-tag">Disclosure</span><span>NodeRow earns a 40% recurring commission if you sign up for GoHighLevel through the links on this page, tracked for 90 days on a last-click basis. That does not change what it costs you, and it does not change what gets recommended — tools that pay us nothing are named here too, and labelled as such.</span></aside>
 
 <div id="calc" class="calc">
-  <script type="application/json" id="calc-rates">{"plans":[{"id":"starter","name":"Starter","monthly":97,"annualMonthlyEquivalent":80,"subAccounts":3,"subAccountsLabel":"3 sub-accounts","whiteLabel":false,"rebillAtCost":false,"rebillWithMarkup":false,"apiAccess":false,"saasMode":false,"bestFor":"One business, or an agency with up to three clients testing the platform."},{"id":"unlimited","name":"Unlimited","monthly":297,"annualMonthlyEquivalent":247,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":false,"apiAccess":true,"saasMode":false,"bestFor":"Agencies running more than three clients who want white-label and API access."},{"id":"agency-pro","name":"Agency Pro (SaaS Pro)","monthly":497,"annualMonthlyEquivalent":414,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":true,"apiAccess":true,"saasMode":true,"bestFor":"Agencies reselling the platform as their own software with a margin on usage."}],"usage":{"smsPerSegment":0.0079,"smsNote":"Per SMS segment. A message over 160 characters is billed as multiple segments \u2014 long messages cost more than the per-message figure suggests.","emailPer1000":0.675,"emailNote":"LC Email, built on Mailgun. Reported around $0.675-$1.00 per 1,000 sent depending on volume.","voicePerMinute":0.014,"voiceNote":"Outbound voice per minute, varies by destination country.","aiConversationPerMessage":0.02,"aiNote":"Conversation AI is billed per message and Voice AI per minute. Heavy AI use commonly adds $30-$150/month."},"links":{"pricing":{"url":"https://www.gohighlevel.com/pricing?fp_ref=bestaicertifications30","id":"bestaicertifications30"},"annual":{"url":"https://gohighlevel.com/annual?fp_ref=bestaicertifications30","id":"bestaicertifications30"},"saas-pro":{"url":"https://www.gohighlevel.com/pro-trial?fp_ref=bestaicertifications65","id":"bestaicertifications65"},"bootcamp":{"url":"https://www.gohighlevel.com/highlevel-bootcamp?fp_ref=bestaicertifications30","id":"bestaicertifications30"}}}</script>
+  <script type="application/json" id="calc-rates">{"plans":[{"id":"starter","name":"Starter","monthly":97,"annualTotal":970,"annualMonthlyEquivalent":80.83,"annualNote":"2 months free","subAccounts":3,"subAccountsLabel":"3 sub-accounts","whiteLabel":false,"rebillAtCost":false,"rebillWithMarkup":false,"apiAccess":false,"saasMode":false,"bestFor":"One business, or an agency with up to three clients testing the platform.","sourceUrl":"https://www.gohighlevel.com/pricing"},{"id":"unlimited","name":"Unlimited","monthly":297,"annualTotal":2970,"annualMonthlyEquivalent":247.5,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":false,"apiAccess":true,"apiNote":"Basic API","saasMode":false,"bestFor":"Agencies past three clients who want white-label and rebilling at cost.","sourceUrl":"https://www.gohighlevel.com/pricing"},{"id":"agency-pro","name":"Agency Pro","aliasNote":"HighLevel also markets this as \"SaaS Pro\" on its own upgrade funnel. It is the SAME $497 plan, not a separate fourth tier. Competitor pages listing them as two products at two prices are factually wrong.","monthly":497,"annualTotal":4970,"annualMonthlyEquivalent":414.17,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":true,"apiAccess":true,"apiNote":"Advanced API","saasMode":true,"bestFor":"Agencies reselling the platform as their own software with a margin on usage.","sourceUrl":"https://www.gohighlevel.com/pricing"}],"usage":{"smsPerSegment":0.00747,"smsNote":"Per SMS segment, US/CA, inbound or outbound. A message over 160 GSM characters splits into multiple segments and is billed for each. Adding an emoji switches the encoding and drops the limit to 70 characters, which can quietly triple a campaign's cost.","smsSource":"https://help.gohighlevel.com/support/solutions/articles/48001223556-phone-system-pricing-billing-guide","mmsOutboundPerSegment":0.022,"voiceOutboundPerMinute":0.0166,"voiceInboundPerMinute":0.01165,"voiceNote":"Outbound US voice per minute. Inbound via web/mobile/deskphone is lower; inbound via US call-forwarding is higher at $0.02/min.","voiceSource":"https://help.gohighlevel.com/support/solutions/articles/48001223556-phone-system-pricing-billing-guide","localNumberPerMonth":1.15,"tollFreeNumberPerMonth":2.15,"emailPer1000":0.675,"emailVerificationPer1000":2.5,"emailNote":"LC Email, rebilled Mailgun. There is NO free tier \u2014 every email counts, including To, CC, BCC, inbound and outbound.","emailSource":"https://help.gohighlevel.com/support/solutions/articles/48001220605-what-is-lc-email-","premiumWorkflowActionPerExecution":0.01,"premiumWorkflowNote":"Premium workflow actions (Decision Maker, Intent Detection, Summarize Text, Translate) bill $0.01 per execution. At volume this is a real line item that no competitor's pricing page models.","premiumWorkflowSource":"https://help.gohighlevel.com/support/solutions/articles/155000001156-highlevel-pricing-guide"},"ai":{"models":[{"id":"pay-per-use","name":"Pay-per-use","monthlyPerLocation":0,"note":"Conversation AI billed on underlying model tokens. Voice AI = voice engine $0.045/min + TTS $0.015-$0.170/min + LLM tokens on top.","conversationPerMessageEstimate":0.006,"estimateBasis":"Modelled from cited token rates (~$1.25/1M input, ~$10.00/1M output) at a typical short support exchange. This is an ESTIMATE, not a published per-message price \u2014 HighLevel bills tokens, not messages.","voiceEnginePerMinute":0.045,"ttsPerMinuteLow":0.015,"ttsPerMinuteHigh":0.17},{"id":"growth","name":"AI Employee Growth","monthlyPerLocation":50,"includedConversationResponses":1000,"includedVoiceMinutes":100,"note":"1,000 Conversation AI responses and 100 Voice AI minutes per location. Unlimited Reviews AI and Content AI. Bounded Funnel/Workflow/Email/Ask AI.","commissionable":false,"commissionNote":"Earns NodeRow no affiliate commission."},{"id":"unlimited","name":"AI Employee Unlimited","monthlyPerLocation":97,"includedConversationResponses":null,"includedVoiceMinutes":null,"note":"Unlimited Conversation AI, Voice AI, Reviews AI and Content AI. 3x Ask AI/AI Studio allowance.","commissionable":true,"commissionNote":"The only AI tier that earns NodeRow a commission."}],"fairUseWarning":"Both subscription AI tiers carry a fair-use clause. \"Unlimited\" is throttleable under the terms of service.","twoMeterWarning":"Voice AI minutes do NOT include the phone call itself. LC Phone per-minute charges apply on top, even on AI Employee Unlimited. Two separate meters. This is the single most commonly misunderstood cost on the platform.","source":"https://help.gohighlevel.com/support/solutions/articles/155000006652"},"rebilling":{"markupRequiresPlan":"agency-pro","atCostRequiresPlan":"unlimited","models":["multiplier","fixed-rate"],"marginTrapWarning":"HighLevel bills your agency on ACTUAL consumption regardless of what you charge the sub-account. Set a flat rate below real usage cost and you absorb the loss on every unit.","marginTrapQuote":"Your agency continues to be charged by HighLevel based on actual token consumption for AI products, regardless of the pricing model configured for sub-accounts.","source":"https://help.gohighlevel.com/support/solutions/articles/155000008422-fixed-rate-rebilling-for-ai-products"},"links":{"pricing":{"url":"https://www.gohighlevel.com/pricing?fp_ref=bestaicertifications30","id":"bestaicertifications30"},"annual":{"url":"https://gohighlevel.com/annual?fp_ref=bestaicertifications30","id":"bestaicertifications30"},"saas-pro":{"url":"https://www.gohighlevel.com/pro-trial?fp_ref=bestaicertifications65","id":"bestaicertifications65"},"bootcamp":{"url":"https://www.gohighlevel.com/highlevel-bootcamp?fp_ref=bestaicertifications30","id":"bestaicertifications30"}}}</script>
 
   <form class="calc-inputs" aria-labelledby="calc-inputs-h">
     <h2 id="calc-inputs-h" class="calc-sub">Your numbers</h2>
@@ -229,22 +245,52 @@ cheapest at your volume.</p>
       <input id="f-clients" type="number" min="1" max="500" step="1" value="10" inputmode="numeric">
     </div>
     <div class="field">
-      <label for="f-sms">SMS segments per client, per month</label>
+      <label for="f-sms">SMS segments per client / month</label>
       <input id="f-sms" type="number" min="0" max="200000" step="50" value="800" inputmode="numeric">
     </div>
     <div class="field">
-      <label for="f-email">Emails per client, per month</label>
+      <label for="f-email">Emails per client / month</label>
       <input id="f-email" type="number" min="0" max="1000000" step="500" value="4000" inputmode="numeric">
     </div>
     <div class="field">
-      <label for="f-ai">AI messages per client, per month</label>
-      <input id="f-ai" type="number" min="0" max="200000" step="50" value="300" inputmode="numeric">
+      <label for="f-voice">Voice minutes per client / month</label>
+      <input id="f-voice" type="number" min="0" max="100000" step="50" value="200" inputmode="numeric">
     </div>
+    <div class="field">
+      <label for="f-numbers">Phone numbers per client</label>
+      <input id="f-numbers" type="number" min="0" max="100" step="1" value="1" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label for="f-premium">Premium workflow actions per client / month</label>
+      <input id="f-premium" type="number" min="0" max="500000" step="100" value="500" inputmode="numeric">
+    </div>
+
+    <h3 class="calc-sub calc-group">AI</h3>
+    <div class="field">
+      <label for="f-ai-model">AI plan</label>
+      <select id="f-ai-model">
+        <option value="pay-per-use">Pay-per-use (token billed)</option>
+        <option value="growth">AI Employee Growth &mdash; $50/location</option>
+        <option value="unlimited">AI Employee Unlimited &mdash; $97/location</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-ai-msgs">Conversation AI messages per client / month</label>
+      <input id="f-ai-msgs" type="number" min="0" max="500000" step="100" value="1200" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label for="f-ai-voice">Voice AI minutes per client / month</label>
+      <input id="f-ai-voice" type="number" min="0" max="100000" step="10" value="120" inputmode="numeric">
+    </div>
+    <p id="ai-sub-note" class="field-note">Phone minutes are billed separately from
+    Voice AI, even on an unlimited AI plan. Both meters run.</p>
+
+    <h3 class="calc-sub calc-group">Billing and rebilling</h3>
     <div class="field">
       <label for="f-billing">Billing</label>
       <select id="f-billing">
         <option value="monthly">Monthly</option>
-        <option value="annual">Annual (discounted)</option>
+        <option value="annual">Annual (two months free)</option>
       </select>
     </div>
     <div class="field field-check">
@@ -254,8 +300,19 @@ cheapest at your volume.</p>
       </label>
     </div>
     <div class="field">
-      <label for="f-markup">Rebilling markup (Agency Pro only)</label>
+      <label for="f-rebill-mode">Rebilling model</label>
+      <select id="f-rebill-mode">
+        <option value="multiplier">Multiplier (cost &times; N)</option>
+        <option value="fixed-rate">Fixed rate per unit</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-markup">Markup multiplier</label>
       <input id="f-markup" type="number" min="1" max="10" step="0.05" value="2" inputmode="decimal">
+    </div>
+    <div class="field" hidden>
+      <label for="f-flat">Flat rate charged per billable unit</label>
+      <input id="f-flat" type="number" min="0" max="5" step="0.001" value="0.02" inputmode="decimal">
     </div>
   </form>
 
@@ -284,33 +341,38 @@ cheapest at your volume.</p>
 
 <div class="prose">
 <h2 id="worked-example">A worked example: 10 clients</h2>
-<p>Ten sub-accounts, each sending 800 SMS segments, 4,000 emails and 300 AI
-messages a month. That is a modest agency — not a heavy sender.</p>
+<p>Ten sub-accounts on the Unlimited plan with AI Employee Unlimited enabled. Each
+sends 800 SMS segments and 4,000 emails, makes 200 voice minutes of ordinary calls,
+and runs 120 minutes of Voice AI a month. Modest &mdash; not a heavy sender.</p>
 <div class="table-scroll">
 <table class="cmp">
 <thead><tr><th scope="col">Line</th><th scope="col">Volume</th><th scope="col">Cost</th></tr></thead>
 <tbody>
-<tr><td data-label="Line">Unlimited plan</td>
-    <td data-label="Volume">flat</td>
+<tr><td data-label="Line">Unlimited plan</td><td data-label="Volume">flat</td>
     <td data-label="Cost">$297.00</td></tr>
-<tr><td data-label="Line">SMS segments</td>
-    <td data-label="Volume">8,000</td>
-    <td data-label="Cost">$63.20</td></tr>
-<tr><td data-label="Line">Emails</td>
-    <td data-label="Volume">40,000</td>
+<tr><td data-label="Line">AI Employee Unlimited</td>
+    <td data-label="Volume">10 locations &times; $97</td>
+    <td data-label="Cost">$970.00</td></tr>
+<tr><td data-label="Line">SMS segments</td><td data-label="Volume">8,000</td>
+    <td data-label="Cost">$59.76</td></tr>
+<tr><td data-label="Line">Emails</td><td data-label="Volume">40,000</td>
     <td data-label="Cost">$27.00</td></tr>
-<tr><td data-label="Line">AI messages</td>
-    <td data-label="Volume">3,000</td>
-    <td data-label="Cost">$60.00</td></tr>
+<tr><td data-label="Line">Voice minutes</td><td data-label="Volume">2,000</td>
+    <td data-label="Cost">$33.20</td></tr>
+<tr><td data-label="Line"><strong>Phone minutes under Voice AI</strong></td>
+    <td data-label="Volume">1,200</td>
+    <td data-label="Cost"><strong>$19.92</strong></td></tr>
 <tr><td data-label="Line"><strong>Real monthly cost</strong></td>
-    <td data-label="Volume">—</td>
-    <td data-label="Cost"><strong>$447.20</strong></td></tr>
+    <td data-label="Volume">&mdash;</td>
+    <td data-label="Cost"><strong>$1,406.88</strong></td></tr>
 </tbody>
 </table>
 </div>
-<p>The plan price is $297. The bill is <strong>$447.20</strong> —
-about 51% more. That gap is the entire reason this
-calculator exists, and it is the line most pricing articles leave out.</p>
+<p>The advertised price is $297. The bill is <strong>$1,406.88</strong>.</p>
+<p>Note the second-to-last line. Those 1,200 phone minutes sit
+<em>underneath</em> Voice AI and are billed by the phone system, not by the AI plan
+&mdash; on every tier, including the one called unlimited. Two meters run at once,
+and that line does not appear on any competing pricing page I could find.</p>
 
 <h2 id="which-plan">Which plan you actually need</h2>
 <p>Most of the advice on this is backwards. The tiers are not "small, medium,
@@ -348,44 +410,39 @@ never do.</p>
 work forward from it rather than from any calculator, including this one.</p>
 
 <h2 id="rates">The rates this uses</h2>
-<p>Every figure below was checked on
-<time datetime="2026-08-28">28 August 2026</time>. Prices move; if one
-of these is stale, <a href="/contact/">tell me</a> and it gets corrected with a
-new date.</p>
+<p>Every figure below carries the date it was checked:
+<time datetime="2026-08-28">28 August 2026</time>. Prices move. If one is
+stale, <a href="/contact/">tell me</a> and it gets corrected with a new date.</p>
 <div class="table-scroll">
 <table class="cmp">
 <thead><tr><th scope="col">Item</th><th scope="col">Rate</th><th scope="col">Notes</th></tr></thead>
-<tbody>
-<tr><td data-label="Item">Starter plan</td><td data-label="Rate">$97/mo</td>
-    <td data-label="Notes">3 sub-accounts. ~$80/mo billed annually.</td></tr>
-<tr><td data-label="Item">Unlimited plan</td><td data-label="Rate">$297/mo</td>
-    <td data-label="Notes">Unlimited sub-accounts, API access, rebilling at cost. ~$247/mo annually.</td></tr>
-<tr><td data-label="Item">Agency Pro</td><td data-label="Rate">$497/mo</td>
-    <td data-label="Notes">Adds SaaS mode and rebilling <em>with markup</em>. ~$414/mo annually.</td></tr>
-<tr><td data-label="Item">SMS</td><td data-label="Rate">$0.0079/segment</td>
-    <td data-label="Notes">Per SMS segment. A message over 160 characters is billed as multiple segments — long messages cost more than the per-message figure suggests.</td></tr>
-<tr><td data-label="Item">Email</td><td data-label="Rate">$0.675/1,000</td>
-    <td data-label="Notes">LC Email, built on Mailgun. Reported around $0.675-$1.00 per 1,000 sent depending on volume.</td></tr>
-<tr><td data-label="Item">Conversation AI</td><td data-label="Rate">$0.02/message</td>
-    <td data-label="Notes">Conversation AI is billed per message and Voice AI per minute. Heavy AI use commonly adds $30-$150/month.</td></tr>
-</tbody>
+<tbody><tr><td data-label="Item">Starter</td><td data-label="Rate">$97/mo</td><td data-label="Notes">3 sub-accounts. $970/yr &mdash; two months free.</td></tr><tr><td data-label="Item">Unlimited</td><td data-label="Rate">$297/mo</td><td data-label="Notes">Unlimited sub-accounts, API, rebilling at cost. $2,970/yr.</td></tr><tr><td data-label="Item">Agency Pro</td><td data-label="Rate">$497/mo</td><td data-label="Notes">Adds SaaS mode and rebilling <em>with markup</em>. $4,970/yr. HighLevel also markets this as &ldquo;SaaS Pro&rdquo; on its own upgrade funnel &mdash; it is the same plan, not a separate fourth tier.</td></tr><tr><td data-label="Item">SMS</td><td data-label="Rate">$0.00747/segment</td><td data-label="Notes">Per SMS segment, US/CA, inbound or outbound. A message over 160 GSM characters splits into multiple segments and is billed for each. Adding an emoji switches the encoding and drops the limit to 70 characters, which can quietly triple a campaign&#x27;s cost.</td></tr><tr><td data-label="Item">Email</td><td data-label="Rate">$0.675/1,000</td><td data-label="Notes">LC Email, rebilled Mailgun. There is NO free tier — every email counts, including To, CC, BCC, inbound and outbound.</td></tr><tr><td data-label="Item">Voice, outbound US</td><td data-label="Rate">$0.0166/min</td><td data-label="Notes">Outbound US voice per minute. Inbound via web/mobile/deskphone is lower; inbound via US call-forwarding is higher at $0.02/min.</td></tr><tr><td data-label="Item">Phone number</td><td data-label="Rate">$1.15/mo</td><td data-label="Notes">Local number rental. Toll-free is $2.15/mo.</td></tr><tr><td data-label="Item">Premium workflow actions</td><td data-label="Rate">$0.01/execution</td><td data-label="Notes">Premium workflow actions (Decision Maker, Intent Detection, Summarize Text, Translate) bill $0.01 per execution. At volume this is a real line item that no competitor&#x27;s pricing page models.</td></tr><tr><td data-label="Item">AI Employee Growth</td><td data-label="Rate">$50/mo per location</td><td data-label="Notes">Includes 1,000 Conversation AI responses and 100 Voice AI minutes.</td></tr><tr><td data-label="Item">AI Employee Unlimited</td><td data-label="Rate">$97/mo per location</td><td data-label="Notes">Unlimited Conversation and Voice AI, subject to a fair-use clause.</td></tr></tbody>
 </table>
 </div>
+
 <aside class="callout" role="note">
-<span class="callout-mark" aria-hidden="true">◆</span>
-<div><strong>How these were verified.</strong>
-<span>GoHighLevel's own pricing page could not be fetched directly from the
-environment this site is built in, so every figure here was cross-checked against
-multiple independent sources rather than read off the vendor page. Treat them as
-well-corroborated, not authoritative — confirm against your own invoice before
-making a five-figure decision.</span></div>
+<span class="callout-mark" aria-hidden="true">&#9670;</span>
+<div><strong>How these were verified, and how far to trust them.</strong>
+<span>These come from HighLevel's own help-centre pricing articles, compiled into a
+research brief on 28 August 2026. They were not read off the vendor's live pages by
+the software that builds this site, because those pages are unreachable from the
+build environment. Treat them as well-sourced rather than as a live feed, and check
+your own invoice before making a five-figure decision.</span></div>
 </aside>
 
+<h3 id="unverified">What this deliberately does not claim</h3>
+<p>The following circulate widely in GoHighLevel content and none could be confirmed
+against a primary source. They are absent from the calculator rather than
+estimated:</p>
+<ul><li>Extended 30/60-day trial length via affiliate links — no first-party source. Do NOT claim a specific extended trial length.</li><li>One-time App Store submission fee for the white-label app.</li><li>Default daily email/SMS sending caps by tier.</li><li>Official storage limits.</li><li>Current carrier SMS surcharge amounts (changed Apr/May 2026).</li><li>Exact A2P 10DLC fee figures — two sources disagree and The Campaign Registry changes them at will.</li><li>Typical agency monthly wallet overage ($150-$1,000+) — modelled estimate, no official benchmark.</li></ul>
+
 <h2 id="faq">Questions</h2>
-<div class="faq"><details><summary>Does GoHighLevel really cost more than the advertised price?</summary><p>Yes, for almost everyone. The plan fee is one of three layers. SMS, email, voice and AI are metered separately and drawn from a wallet that auto-recharges. A ten-client agency on the $297 plan commonly pays $370–$450 a month once usage is counted.</p></details>
-<details><summary>Is Agency Pro at $497 worth it over Unlimited at $297?</summary><p>Only if you rebill usage with a markup. Rebilling at cost is already available on Unlimited; the extra $200 a month buys the ability to add margin on top. So the upgrade pays for itself when your markup earns more than $200 a month — which needs either high usage or a high multiplier. Below that, it is a $200 monthly loss.</p></details>
-<details><summary>Why is an SMS billed per segment rather than per message?</summary><p>A message over 160 GSM characters is split into multiple segments and billed for each one. Adding an emoji switches the encoding and drops the limit to 70 characters, which can quietly triple the cost of a campaign that looked fine in testing.</p></details>
-<details><summary>Can I avoid the usage costs entirely?</summary><p>No, but you can pass them through. On Unlimited and above you can rebill usage to clients at cost, which makes it their line item rather than yours. Agencies that skip this are absorbing a variable cost against a fixed retainer, which is where margins quietly disappear.</p></details></div>
+<div class="faq"><details><summary>Does GoHighLevel really cost more than the advertised price?</summary><p>Yes, for almost everyone. The plan fee is one layer of several. SMS, email, voice, phone number rental, premium workflow actions and AI are metered separately and drawn from an agency wallet that auto-recharges. There is no official benchmark for the total, and any figure you see quoted as typical is a model rather than a published number.</p></details>
+<details><summary>Do Voice AI minutes include the phone call?</summary><p>No, and this is the most commonly misunderstood cost on the platform. Voice AI is billed by the AI product; the call underneath is billed by LC Phone at $0.0166 a minute outbound. Both meters run at the same time, on every tier, including AI Employee Unlimited. An “unlimited” AI plan does not make the telephony free.</p></details>
+<details><summary>Is Agency Pro at $497 worth it over Unlimited at $297?</summary><p>Only if you rebill usage with a markup. Rebilling at cost is already available on Unlimited, so the extra $200 a month buys the ability to add margin on top and nothing else that is economically significant. It pays for itself when that margin exceeds $200 a month.</p></details>
+<details><summary>What is the flat-rate rebilling trap?</summary><p>If you charge sub-accounts a fixed rate per unit, HighLevel still bills your agency on actual consumption. Their own documentation says so: your agency is charged based on actual token consumption regardless of the pricing model configured for sub-accounts. Set the flat rate below real cost and you lose money on every unit, silently, at scale.</p></details>
+<details><summary>Why is an SMS billed per segment rather than per message?</summary><p>A message over 160 GSM characters splits into multiple segments and is billed for each. Adding a single emoji switches the encoding and drops the limit to 70 characters, which can quietly triple the cost of a campaign that looked fine in testing.</p></details>
+<details><summary>Is “SaaS Pro” a separate plan from Agency Pro?</summary><p>No. HighLevel uses SaaS Pro as an alternate marketing label for the same $497 Agency Pro plan on its own upgrade funnel. Any comparison listing them as two products at two prices is factually wrong.</p></details></div>
 
 <h2 id="honest-note">Should you buy it at all?</h2>
 <p>GoHighLevel is worth it when you are running several clients who each need CRM,

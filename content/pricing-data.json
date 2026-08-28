@@ -1,21 +1,27 @@
 {
   "_comment": [
-    "Every number the calculator uses, with its source and the date it was checked.",
-    "The calculator renders these dates on the page — an undated price is a guess.",
-    "IMPORTANT: gohighlevel.com is unreachable from the build environment, so these",
-    "were verified against multiple independent secondary sources rather than the",
-    "vendor's own pricing page. verificationMethod records that honestly. Re-check",
-    "against the vendor directly before treating any figure as authoritative."
+    "Every rate the calculator uses, each with its own source and verification date.",
+    "PROVENANCE: figures come from the operator-supplied Master Build Brief dated",
+    "2026-08-28, which cites HighLevel's own help-centre articles. gohighlevel.com and",
+    "help.gohighlevel.com are both unreachable from this build environment, so nothing",
+    "here was read off the vendor page directly by the build.",
+    "PUBLISH RULE: re-check every figure against the live source on the day of first",
+    "publish and update verifiedOn. Wrong pricing is the fastest way to lose trust in",
+    "this niche, and trust is the entire product."
   ],
-  "checkedDate": "2026-08-28",
-  "verificationMethod": "secondary-sources",
+  "verifiedOn": "2026-08-28",
+  "verificationMethod": "operator-research-brief",
+  "requiresRecheckBeforePublish": true,
   "currency": "USD",
+
   "plans": [
     {
       "id": "starter",
       "name": "Starter",
       "monthly": 97,
-      "annualMonthlyEquivalent": 80,
+      "annualTotal": 970,
+      "annualMonthlyEquivalent": 80.83,
+      "annualNote": "2 months free",
       "subAccounts": 3,
       "subAccountsLabel": "3 sub-accounts",
       "whiteLabel": false,
@@ -23,67 +29,132 @@
       "rebillWithMarkup": false,
       "apiAccess": false,
       "saasMode": false,
-      "bestFor": "One business, or an agency with up to three clients testing the platform."
+      "bestFor": "One business, or an agency with up to three clients testing the platform.",
+      "sourceUrl": "https://www.gohighlevel.com/pricing"
     },
     {
       "id": "unlimited",
       "name": "Unlimited",
       "monthly": 297,
-      "annualMonthlyEquivalent": 247,
+      "annualTotal": 2970,
+      "annualMonthlyEquivalent": 247.5,
       "subAccounts": null,
       "subAccountsLabel": "Unlimited sub-accounts",
       "whiteLabel": true,
       "rebillAtCost": true,
       "rebillWithMarkup": false,
       "apiAccess": true,
+      "apiNote": "Basic API",
       "saasMode": false,
-      "bestFor": "Agencies running more than three clients who want white-label and API access."
+      "bestFor": "Agencies past three clients who want white-label and rebilling at cost.",
+      "sourceUrl": "https://www.gohighlevel.com/pricing"
     },
     {
       "id": "agency-pro",
-      "name": "Agency Pro (SaaS Pro)",
+      "name": "Agency Pro",
+      "aliasNote": "HighLevel also markets this as \"SaaS Pro\" on its own upgrade funnel. It is the SAME $497 plan, not a separate fourth tier. Competitor pages listing them as two products at two prices are factually wrong.",
       "monthly": 497,
-      "annualMonthlyEquivalent": 414,
+      "annualTotal": 4970,
+      "annualMonthlyEquivalent": 414.17,
       "subAccounts": null,
       "subAccountsLabel": "Unlimited sub-accounts",
       "whiteLabel": true,
       "rebillAtCost": true,
       "rebillWithMarkup": true,
       "apiAccess": true,
+      "apiNote": "Advanced API",
       "saasMode": true,
-      "bestFor": "Agencies reselling the platform as their own software with a margin on usage."
+      "bestFor": "Agencies reselling the platform as their own software with a margin on usage.",
+      "sourceUrl": "https://www.gohighlevel.com/pricing"
     }
   ],
+
   "usage": {
-    "smsPerSegment": 0.0079,
-    "smsNote": "Per SMS segment. A message over 160 characters is billed as multiple segments — long messages cost more than the per-message figure suggests.",
+    "smsPerSegment": 0.00747,
+    "smsNote": "Per SMS segment, US/CA, inbound or outbound. A message over 160 GSM characters splits into multiple segments and is billed for each. Adding an emoji switches the encoding and drops the limit to 70 characters, which can quietly triple a campaign's cost.",
+    "smsSource": "https://help.gohighlevel.com/support/solutions/articles/48001223556-phone-system-pricing-billing-guide",
+
+    "mmsOutboundPerSegment": 0.022,
+    "voiceOutboundPerMinute": 0.0166,
+    "voiceInboundPerMinute": 0.01165,
+    "voiceNote": "Outbound US voice per minute. Inbound via web/mobile/deskphone is lower; inbound via US call-forwarding is higher at $0.02/min.",
+    "voiceSource": "https://help.gohighlevel.com/support/solutions/articles/48001223556-phone-system-pricing-billing-guide",
+
+    "localNumberPerMonth": 1.15,
+    "tollFreeNumberPerMonth": 2.15,
+
     "emailPer1000": 0.675,
-    "emailNote": "LC Email, built on Mailgun. Reported around $0.675-$1.00 per 1,000 sent depending on volume.",
-    "voicePerMinute": 0.0140,
-    "voiceNote": "Outbound voice per minute, varies by destination country.",
-    "aiConversationPerMessage": 0.02,
-    "aiNote": "Conversation AI is billed per message and Voice AI per minute. Heavy AI use commonly adds $30-$150/month."
+    "emailVerificationPer1000": 2.5,
+    "emailNote": "LC Email, rebilled Mailgun. There is NO free tier — every email counts, including To, CC, BCC, inbound and outbound.",
+    "emailSource": "https://help.gohighlevel.com/support/solutions/articles/48001220605-what-is-lc-email-",
+
+    "premiumWorkflowActionPerExecution": 0.01,
+    "premiumWorkflowNote": "Premium workflow actions (Decision Maker, Intent Detection, Summarize Text, Translate) bill $0.01 per execution. At volume this is a real line item that no competitor's pricing page models.",
+    "premiumWorkflowSource": "https://help.gohighlevel.com/support/solutions/articles/155000001156-highlevel-pricing-guide"
   },
-  "sources": [
-    {
-      "claim": "Plan prices $97 / $297 / $497 monthly; annual equivalents ~$80 / $247 / $414",
-      "url": "https://www.gohighlevel.com/pricing",
-      "note": "Vendor page. Corroborated by multiple independent reviews checked 2026-08-28."
-    },
-    {
-      "claim": "SMS billed at $0.0079 per segment",
-      "url": "https://autogencrm.com/gohighlevel-sms-pricing/",
-      "note": "Secondary source, 2026."
-    },
-    {
-      "claim": "Email metered via LC Email/Mailgun at roughly $0.675-$1.00 per 1,000",
-      "url": "https://www.nextgenchannels.com/gohighlevel-hidden-costs/",
-      "note": "Secondary source, 2026."
-    },
-    {
-      "claim": "Rebilling at cost available on Unlimited; markup requires Agency Pro",
-      "url": "https://ghlcrm.me/gohighlevel-saas-pricing/",
-      "note": "This is the decision that makes the $200/month upgrade pay or not pay."
-    }
+
+  "ai": {
+    "models": [
+      {
+        "id": "pay-per-use",
+        "name": "Pay-per-use",
+        "monthlyPerLocation": 0,
+        "note": "Conversation AI billed on underlying model tokens. Voice AI = voice engine $0.045/min + TTS $0.015-$0.170/min + LLM tokens on top.",
+        "conversationPerMessageEstimate": 0.006,
+        "estimateBasis": "Modelled from cited token rates (~$1.25/1M input, ~$10.00/1M output) at a typical short support exchange. This is an ESTIMATE, not a published per-message price — HighLevel bills tokens, not messages.",
+        "voiceEnginePerMinute": 0.045,
+        "ttsPerMinuteLow": 0.015,
+        "ttsPerMinuteHigh": 0.17
+      },
+      {
+        "id": "growth",
+        "name": "AI Employee Growth",
+        "monthlyPerLocation": 50,
+        "includedConversationResponses": 1000,
+        "includedVoiceMinutes": 100,
+        "note": "1,000 Conversation AI responses and 100 Voice AI minutes per location. Unlimited Reviews AI and Content AI. Bounded Funnel/Workflow/Email/Ask AI.",
+        "commissionable": false,
+        "commissionNote": "Earns NodeRow no affiliate commission."
+      },
+      {
+        "id": "unlimited",
+        "name": "AI Employee Unlimited",
+        "monthlyPerLocation": 97,
+        "includedConversationResponses": null,
+        "includedVoiceMinutes": null,
+        "note": "Unlimited Conversation AI, Voice AI, Reviews AI and Content AI. 3x Ask AI/AI Studio allowance.",
+        "commissionable": true,
+        "commissionNote": "The only AI tier that earns NodeRow a commission."
+      }
+    ],
+    "fairUseWarning": "Both subscription AI tiers carry a fair-use clause. \"Unlimited\" is throttleable under the terms of service.",
+    "twoMeterWarning": "Voice AI minutes do NOT include the phone call itself. LC Phone per-minute charges apply on top, even on AI Employee Unlimited. Two separate meters. This is the single most commonly misunderstood cost on the platform.",
+    "source": "https://help.gohighlevel.com/support/solutions/articles/155000006652"
+  },
+
+  "rebilling": {
+    "markupRequiresPlan": "agency-pro",
+    "atCostRequiresPlan": "unlimited",
+    "models": ["multiplier", "fixed-rate"],
+    "marginTrapWarning": "HighLevel bills your agency on ACTUAL consumption regardless of what you charge the sub-account. Set a flat rate below real usage cost and you absorb the loss on every unit.",
+    "marginTrapQuote": "Your agency continues to be charged by HighLevel based on actual token consumption for AI products, regardless of the pricing model configured for sub-accounts.",
+    "source": "https://help.gohighlevel.com/support/solutions/articles/155000008422-fixed-rate-rebilling-for-ai-products"
+  },
+
+  "addOns": [
+    {"name": "White-label mobile app", "monthly": 497,
+     "note": "4-12 week App Store approval commonly reported. A separate one-time submission fee is claimed by third parties but UNVERIFIED."},
+    {"name": "HIPAA compliance", "monthly": 297},
+    {"name": "Premium support", "monthly": 500}
+  ],
+
+  "unverified": [
+    "Extended 30/60-day trial length via affiliate links — no first-party source. Do NOT claim a specific extended trial length.",
+    "One-time App Store submission fee for the white-label app.",
+    "Default daily email/SMS sending caps by tier.",
+    "Official storage limits.",
+    "Current carrier SMS surcharge amounts (changed Apr/May 2026).",
+    "Exact A2P 10DLC fee figures — two sources disagree and The Campaign Registry changes them at will.",
+    "Typical agency monthly wallet overage ($150-$1,000+) — modelled estimate, no official benchmark."
   ]
 }

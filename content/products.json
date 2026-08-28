@@ -39,7 +39,7 @@
         }
       ],
       "freeTier": false,
-      "trial": "30-day trial via the Bootcamp offer; 14-day standard",
+      "trial": "14-day standard trial. Extended-trial claims are UNVERIFIED — do not state a length without testing the link.",
       "bestFor": "Agencies and service businesses that want CRM, pipelines, email/SMS, booking, funnels and reporting billed as one product instead of six.",
       "weakness": "It is a platform, not a connector. If your work is moving data between arbitrary APIs, GoHighLevel is the wrong shape and you will end up bolting Make or n8n onto it anyway.",
       "priceSource": "https://www.gohighlevel.com/pricing",
@@ -59,12 +59,16 @@
         "payoutThresholdUsd": 50,
         "payoutSchedule": "Monthly, Net-15 — earned in month N, paid on the 15th of N+1",
         "nonCommissionable": [
+          "Wallet/usage spend (SMS, email, voice, AI tokens) — contract language is scoped to subscription products. Assume nothing is earned on usage.",
           "Prospecting Tool — no reward",
-          "AI Employee Pay-Per-Use — metered usage earns nothing",
           "AI Employee Growth ($50/mo) — earns nothing; only AI Employee Unlimited ($97/mo per location) qualifies",
-          "Self-referrals — prohibited, risks termination and forfeiture"
+          "Self-referrals — explicitly banned as fraudulent activity; risks termination and forfeiture of unpaid commissions"
         ],
-        "verifiedFromDashboard": "2026-08-28"
+        "verifiedFromDashboard": "2026-08-28",
+        "qualifyingPeriodDays": 45,
+        "qualifyingNote": "A sale only counts if the account stays in good standing 45 days. Paused at any point in that window and it does not qualify at all — not partially.",
+        "forfeitAfterDays": 120,
+        "clawback": "Unlimited in the contract text — deductible from future commissions on cancellation, refund or chargeback."
       },
       "affiliateLinks": {
         "default": {
@@ -103,7 +107,7 @@
           "url": "https://www.gohighlevel.com/highlevel-bootcamp?fp_ref=bestaicertifications30",
           "campaign": "HighLevel Affiliate Program",
           "affiliateId": "bestaicertifications30",
-          "use": "30-day trial offer. Strongest first-touch link for cold readers."
+          "use": "HighLevel's own Bootcamp offer page. Link to it as their promotion; do NOT claim a specific extended trial length — that is unverified, and offering incentives without written authorisation breaches the program policies."
         },
         "certification": {
           "url": "https://www.gohighlevel.com/certifications?fp_ref=bestaicertifications33",

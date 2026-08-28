@@ -543,3 +543,13 @@ tr.calc-best td strong{ color:var(--ok); }
 }
 .node h3 a{ text-decoration:none; }
 .node h3 a:hover{ text-decoration:underline; }
+
+.calc-group{ margin-top:1.75rem; padding-top:1.25rem; border-top:1px solid var(--edge); }
+.field-note{ margin-top:.6rem; font-size:.82rem; color:var(--ink-3); line-height:1.5; }
+.calc-danger{
+  background:var(--err-tint); color:var(--err) !important;
+  border-radius:8px; padding:.85rem 1rem; font-size:.92rem !important;
+}
+.calc-note{ font-size:.88rem !important; color:var(--ink-3) !important; }
+.calc-trap span{ color:var(--warn); font-weight:600; }
+.calc-trap strong{ color:var(--warn); }

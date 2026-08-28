@@ -5,6 +5,12 @@
  *
  * All rates come from the data-rates JSON block the build writes into the page,
  * which comes from content/pricing-data.json. No number is hardcoded here.
+ *
+ * Models three things competitors' static tables do not:
+ *   1. Metered usage as a first-class layer, not a footnote
+ *   2. The two-meter AI trap — Voice AI minutes still incur phone minutes
+ *   3. The flat-rate rebilling margin trap — HighLevel bills the agency on
+ *      actuals regardless of what the agency charges the sub-account
  */
 (function () {
   'use strict';
@@ -21,77 +27,124 @@
 
   var PLANS = RATES.plans;
   var U = RATES.usage;
+  var AI = RATES.ai;
 
-  var fields = {
-    clients: root.querySelector('#f-clients'),
-    sms: root.querySelector('#f-sms'),
-    email: root.querySelector('#f-email'),
-    ai: root.querySelector('#f-ai'),
-    billing: root.querySelector('#f-billing'),
-    rebill: root.querySelector('#f-rebill'),
-    markup: root.querySelector('#f-markup')
+  function $(id) { return root.querySelector('#' + id); }
+
+  var f = {
+    clients: $('f-clients'), sms: $('f-sms'), email: $('f-email'),
+    voice: $('f-voice'), numbers: $('f-numbers'), premium: $('f-premium'),
+    aiModel: $('f-ai-model'), aiMsgs: $('f-ai-msgs'), aiVoice: $('f-ai-voice'),
+    billing: $('f-billing'), rebill: $('f-rebill'),
+    rebillMode: $('f-rebill-mode'), markup: $('f-markup'), flatRate: $('f-flat')
   };
 
-  var out = {
-    body: root.querySelector('#calc-out'),
-    verdict: root.querySelector('#calc-verdict')
-  };
+  var out = { body: $('calc-out'), verdict: $('calc-verdict') };
 
   function money(n) {
     if (!isFinite(n)) n = 0;
-    return '$' + n.toLocaleString('en-US', {
-      minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
+    return '$' + n.toLocaleString('en-US',
+      { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
-
   function money0(n) {
     if (!isFinite(n)) n = 0;
     return '$' + Math.round(n).toLocaleString('en-US');
   }
-
+  function int(n) { return Math.round(n).toLocaleString('en-US'); }
+  function rate(n) {
+    if (!isFinite(n)) n = 0;
+    return '$' + n.toLocaleString('en-US',
+      { minimumFractionDigits: 4, maximumFractionDigits: 5 });
+  }
   function num(el, fallback) {
     var v = parseFloat(el && el.value);
     return isFinite(v) && v >= 0 ? v : fallback;
   }
-
-  function planBase(plan, annual) {
-    return annual ? plan.annualMonthlyEquivalent : plan.monthly;
+  function aiModel(id) {
+    for (var i = 0; i < AI.models.length; i++) {
+      if (AI.models[i].id === id) return AI.models[i];
+    }
+    return AI.models[0];
   }
 
   function compute() {
-    var clients = Math.max(1, Math.round(num(fields.clients, 1)));
-    var smsPerClient = num(fields.sms, 0);
-    var emailPerClient = num(fields.email, 0);
-    var aiPerClient = num(fields.ai, 0);
-    var annual = fields.billing.value === 'annual';
-    var rebill = fields.rebill.checked;
-    var markup = Math.max(1, num(fields.markup, 1));
+    var clients = Math.max(1, Math.round(num(f.clients, 1)));
+    var annual = f.billing.value === 'annual';
+    var rebill = f.rebill.checked;
+    var mode = f.rebillMode.value;
+    var markup = Math.max(1, num(f.markup, 1));
+    var flatRate = Math.max(0, num(f.flatRate, 0));
 
-    // Usage is metered across every sub-account, so it scales with client count.
-    var smsTotal = clients * smsPerClient;
-    var emailTotal = clients * emailPerClient;
-    var aiTotal = clients * aiPerClient;
+    // Per-client volumes scale across sub-accounts.
+    var smsSeg = clients * num(f.sms, 0);
+    var emails = clients * num(f.email, 0);
+    var voiceMin = clients * num(f.voice, 0);
+    var numbers = clients * num(f.numbers, 0);
+    var premium = clients * num(f.premium, 0);
+    var aiMsgs = clients * num(f.aiMsgs, 0);
+    var aiVoiceMin = clients * num(f.aiVoice, 0);
 
-    var smsCost = smsTotal * U.smsPerSegment;
-    var emailCost = (emailTotal / 1000) * U.emailPer1000;
-    var aiCost = aiTotal * U.aiConversationPerMessage;
-    var usageCost = smsCost + emailCost + aiCost;
+    var model = aiModel(f.aiModel.value);
+
+    // --- metered layer ---
+    var smsCost = smsSeg * U.smsPerSegment;
+    var emailCost = (emails / 1000) * U.emailPer1000;
+    var numberCost = numbers * U.localNumberPerMonth;
+    var premiumCost = premium * U.premiumWorkflowActionPerExecution;
+
+    // THE TWO-METER TRAP. Voice AI minutes are billed by the AI product, but the
+    // phone call underneath is billed separately by LC Phone — on every tier,
+    // including "unlimited". Both meters run.
+    var aiVoicePhoneCost = aiVoiceMin * U.voiceOutboundPerMinute;
+    var plainVoiceCost = voiceMin * U.voiceOutboundPerMinute;
+    var voiceCost = plainVoiceCost + aiVoicePhoneCost;
+
+    // --- AI layer ---
+    var aiSubscription = 0, aiMetered = 0, aiOverageNote = null;
+    if (model.id === 'pay-per-use') {
+      aiMetered = aiMsgs * model.conversationPerMessageEstimate
+        + aiVoiceMin * (model.voiceEnginePerMinute + model.ttsPerMinuteLow);
+    } else {
+      aiSubscription = clients * model.monthlyPerLocation;
+      if (model.includedConversationResponses !== null) {
+        var overMsgs = Math.max(0, aiMsgs - clients * model.includedConversationResponses);
+        var overVoice = Math.max(0, aiVoiceMin - clients * model.includedVoiceMinutes);
+        if (overMsgs > 0 || overVoice > 0) {
+          var pu = aiModel('pay-per-use');
+          aiMetered = overMsgs * pu.conversationPerMessageEstimate
+            + overVoice * (pu.voiceEnginePerMinute + pu.ttsPerMinuteLow);
+          aiOverageNote = int(overMsgs) + ' AI messages and ' + int(overVoice) +
+            ' Voice AI minutes exceed what ' + model.name + ' includes, so they ' +
+            'fall back to pay-per-use rates.';
+        }
+      }
+    }
+
+    var usageCost = smsCost + emailCost + voiceCost + numberCost + premiumCost + aiMetered;
+    var billableUnits = smsSeg + emails + voiceMin + aiVoiceMin + aiMsgs + premium;
 
     var rows = PLANS.map(function (p) {
-      var base = planBase(p, annual);
+      var base = annual ? p.annualMonthlyEquivalent : p.monthly;
       var eligible = p.subAccounts === null || clients <= p.subAccounts;
 
-      // Rebilling recovers usage cost. At-cost recovers exactly the usage;
-      // markup is only permitted on the tier that unlocks it.
-      var recovered = 0;
+      var recovered = 0, shortfall = 0;
       if (rebill && p.rebillAtCost) {
-        recovered = p.rebillWithMarkup ? usageCost * markup : usageCost;
+        if (!p.rebillWithMarkup) {
+          recovered = usageCost;                      // at cost only
+        } else if (mode === 'fixed-rate') {
+          // THE MARGIN TRAP: you charge a flat rate per unit, HighLevel still
+          // bills you on actuals. Below cost, every unit loses money.
+          recovered = billableUnits * flatRate;
+          if (recovered < usageCost) shortfall = usageCost - recovered;
+        } else {
+          recovered = usageCost * markup;
+        }
       }
 
-      var net = base + usageCost - recovered;
       return {
-        plan: p, base: base, usage: usageCost,
-        recovered: recovered, net: net, eligible: eligible
+        plan: p, base: base, usage: usageCost, aiSub: aiSubscription,
+        recovered: recovered, shortfall: shortfall,
+        net: base + aiSubscription + usageCost - recovered, eligible: eligible
       };
     });
 
@@ -99,185 +152,216 @@
     var best = viable.reduce(function (a, b) { return b.net < a.net ? b : a; }, viable[0]);
 
     render(rows, best, {
-      clients: clients, usageCost: usageCost, annual: annual,
-      rebill: rebill, markup: markup,
-      smsCost: smsCost, emailCost: emailCost, aiCost: aiCost,
-      smsTotal: smsTotal, emailTotal: emailTotal, aiTotal: aiTotal
+      clients: clients, annual: annual, rebill: rebill, mode: mode,
+      markup: markup, flatRate: flatRate, model: model,
+      usageCost: usageCost, aiSubscription: aiSubscription,
+      billableUnits: billableUnits, aiOverageNote: aiOverageNote,
+      smsCost: smsCost, emailCost: emailCost, voiceCost: voiceCost,
+      numberCost: numberCost, premiumCost: premiumCost, aiMetered: aiMetered,
+      smsSeg: smsSeg, emails: emails, voiceMin: voiceMin, numbers: numbers,
+      premium: premium, aiMsgs: aiMsgs, aiVoiceMin: aiVoiceMin,
+      aiVoicePhoneCost: aiVoicePhoneCost
     });
   }
 
-  function render(rows, best, ctx) {
-    var html = '';
+  function render(rows, best, c) {
+    var h = '';
 
-    html += '<h3 class="calc-sub">Your monthly cost, by plan</h3>';
-    html += '<div class="table-scroll"><table class="cmp"><thead><tr>' +
+    h += '<h3 class="calc-sub">Your monthly cost, by plan</h3>';
+    h += '<div class="table-scroll"><table class="cmp"><thead><tr>' +
       '<th scope="col">Plan</th><th scope="col">Subscription</th>' +
-      '<th scope="col">Usage</th><th scope="col">Rebilled back</th>' +
-      '<th scope="col">Net position</th></tr></thead><tbody>';
+      '<th scope="col">AI plan</th><th scope="col">Usage</th>' +
+      '<th scope="col">Rebilled back</th><th scope="col">Net position</th>' +
+      '</tr></thead><tbody>';
 
+    var bestLabel = best.net < 0 ? 'Best for you' : 'Cheapest for you';
     rows.forEach(function (r) {
-      var cls = r === best ? ' class="calc-best"' : '';
-      var bestLabel = best.net < 0 ? 'Best for you' : 'Cheapest for you';
-      var name = r.plan.name +
-        (r === best ? ' <span class="pill pill-ok">' + bestLabel + '</span>' : '');
+      var name = r.plan.name;
       if (!r.eligible) {
-        name = r.plan.name + ' <span class="pill pill-error">Too few sub-accounts</span>';
+        name += ' <span class="pill pill-error">Too few sub-accounts</span>';
+      } else if (r === best) {
+        name += ' <span class="pill pill-ok">' + bestLabel + '</span>';
       }
-      // A negative net is not a negative cost — it is margin. Showing it as
-      // "$-1,183" would be arithmetically true and completely misleading.
-      var netCell;
-      if (!r.eligible) {
-        netCell = '<span class="muted">n/a</span>';
-      } else if (r.net < 0) {
-        netCell = '<span class="net-profit">+' + money(-r.net) + ' profit</span>';
-      } else {
-        netCell = money(r.net);
-      }
-
-      html += '<tr' + cls + '>' +
+      var netCell = !r.eligible ? '<span class="muted">n/a</span>'
+        : r.net < 0 ? '<span class="net-profit">+' + money(-r.net) + ' profit</span>'
+        : money(r.net);
+      h += '<tr' + (r === best ? ' class="calc-best"' : '') + '>' +
         '<td data-label="Plan">' + name + '</td>' +
         '<td data-label="Subscription">' + money0(r.base) + '</td>' +
+        '<td data-label="AI plan">' + (r.aiSub ? money(r.aiSub) : '<span class="muted">—</span>') + '</td>' +
         '<td data-label="Usage">' + money(r.usage) + '</td>' +
         '<td data-label="Rebilled back">' +
           (r.recovered > 0 ? '&minus;' + money(r.recovered) : '<span class="muted">—</span>') +
         '</td>' +
-        '<td data-label="Net position"><strong>' + netCell + '</strong></td>' +
-      '</tr>';
+        '<td data-label="Net position"><strong>' + netCell + '</strong></td></tr>';
     });
-    html += '</tbody></table></div>';
+    h += '</tbody></table></div>';
 
-    // Usage breakdown — the layer vendors and affiliate reviews leave out.
-    html += '<h3 class="calc-sub">Where the usage cost comes from</h3>';
-    html += '<ul class="calc-breakdown">';
-    html += '<li><span>' + Math.round(ctx.smsTotal).toLocaleString('en-US') +
-      ' SMS segments</span><strong>' + money(ctx.smsCost) + '</strong></li>';
-    html += '<li><span>' + Math.round(ctx.emailTotal).toLocaleString('en-US') +
-      ' emails</span><strong>' + money(ctx.emailCost) + '</strong></li>';
-    html += '<li><span>' + Math.round(ctx.aiTotal).toLocaleString('en-US') +
-      ' AI messages</span><strong>' + money(ctx.aiCost) + '</strong></li>';
-    html += '<li class="calc-total"><span>Total usage, on top of the subscription</span>' +
-      '<strong>' + money(ctx.usageCost) + '</strong></li>';
-    html += '</ul>';
+    h += '<h3 class="calc-sub">Where the usage cost comes from</h3><ul class="calc-breakdown">';
+    function row(label, cost, cls) {
+      h += '<li' + (cls ? ' class="' + cls + '"' : '') + '><span>' + label +
+        '</span><strong>' + money(cost) + '</strong></li>';
+    }
+    row(int(c.smsSeg) + ' SMS segments', c.smsCost);
+    row(int(c.emails) + ' emails', c.emailCost);
+    if (c.voiceMin) row(int(c.voiceMin) + ' voice minutes', c.voiceMin * RATES.usage.voiceOutboundPerMinute);
+    if (c.aiVoiceMin) {
+      row(int(c.aiVoiceMin) + ' phone minutes <em>under</em> Voice AI',
+          c.aiVoicePhoneCost, 'calc-trap');
+    }
+    if (c.numbers) row(int(c.numbers) + ' phone numbers rented', c.numberCost);
+    if (c.premium) row(int(c.premium) + ' premium workflow actions', c.premiumCost);
+    if (c.aiMetered) row('AI metered usage', c.aiMetered);
+    h += '<li class="calc-total"><span>Total metered usage</span><strong>' +
+      money(c.usageCost) + '</strong></li></ul>';
 
-    out.body.innerHTML = html;
-    out.verdict.innerHTML = verdict(rows, best, ctx);
-    routeCta(best, ctx);
-  }
-
-  /* Point the CTA at the plan the reader's own numbers just recommended.
-   * Each destination carries a different campaign affiliate id, so the href and
-   * the id attribute have to move together — sending SaaS Pro traffic through
-   * the generic link would track under the wrong campaign and pay nothing. */
-  function routeCta(best, ctx) {
-    var links = RATES.links;
-    var cta = document.querySelector('#calc-cta a[data-aff]');
-    if (!cta || !links) return;
-
-    var key = 'pricing', label = 'See GoHighLevel plans and pricing';
-    if (best.plan.id === 'agency-pro' && links['saas-pro']) {
-      key = 'saas-pro';
-      label = 'Start a SaaS Pro trial';
-    } else if (ctx.annual && links.annual) {
-      key = 'annual';
-      label = 'See annual pricing';
+    if (c.aiVoiceMin > 0) {
+      h += '<p class="calc-flag"><strong>Two meters are running.</strong> ' +
+        AI.twoMeterWarning + ' That is ' + money(c.aiVoicePhoneCost) +
+        ' of phone charges on this page that your AI plan does not cover.</p>';
+    }
+    if (c.aiOverageNote) {
+      h += '<p class="calc-flag">' + c.aiOverageNote + '</p>';
     }
 
-    var target = links[key];
-    if (!target || !target.url) return;
-    cta.href = target.url;
-    cta.textContent = label;
-    cta.setAttribute('data-dest', key);
-    if (target.id) cta.setAttribute('data-aff-id', target.id);
+    out.body.innerHTML = h;
+    out.verdict.innerHTML = verdict(rows, best, c);
+    routeCta(best, c);
   }
 
-  function verdict(rows, best, ctx) {
-    var unlimited = rows.filter(function (r) { return r.plan.id === 'unlimited'; })[0];
-    var pro = rows.filter(function (r) { return r.plan.id === 'agency-pro'; })[0];
-    var starter = rows.filter(function (r) { return r.plan.id === 'starter'; })[0];
-
+  function verdict(rows, best, c) {
+    function byId(id) {
+      return rows.filter(function (r) { return r.plan.id === id; })[0];
+    }
+    var unlimited = byId('unlimited'), pro = byId('agency-pro'), starter = byId('starter');
     var v;
+
     if (best.net < 0) {
       v = '<p class="calc-headline">On these numbers, <strong>' + best.plan.name +
-        '</strong> puts you ' + money(-best.net) + ' a month <em>ahead</em> — the ' +
-        'markup you rebill exceeds the whole subscription.</p>';
+        '</strong> puts you ' + money(-best.net) + ' a month <em>ahead</em> — what ' +
+        'you rebill exceeds what you pay.</p>';
     } else {
       v = '<p class="calc-headline">On these numbers, <strong>' + best.plan.name +
         '</strong> costs you ' + money(best.net) + ' a month.</p>';
     }
 
+    // The margin trap gets top billing whenever it is actually biting.
+    if (c.rebill && c.mode === 'fixed-rate' && pro.shortfall > 0) {
+      v += '<p class="calc-danger"><strong>Your flat rate is below cost.</strong> ' +
+        'On Agency Pro you would charge ' + rate(c.flatRate) + ' per billable unit ' +
+        'while HighLevel bills you on actual consumption, so you absorb ' +
+        money(pro.shortfall) + ' a month. ' + RATES.rebilling.marginTrapWarning +
+        ' Break-even is about ' + rate(c.usageCost / (c.billableUnits || 1)) +
+        ' per unit.</p>';
+    }
+
     var gap = pro.base - unlimited.base;
 
-    // If Starter still fits, the $297-vs-$497 question is not this reader's
-    // question yet. Answering it anyway would be noise dressed as thoroughness.
     if (best.plan.id === 'starter') {
-      v += '<p>At ' + ctx.clients + ' sub-account' + (ctx.clients === 1 ? '' : 's') +
-        ' you fit inside Starter, so you are ' +
-        money0(unlimited.base - starter.base) + ' a month cheaper than the plan ' +
-        'most comparisons push. Starter cannot rebill usage, so the ' +
-        money(ctx.usageCost) + ' of usage is yours to absorb.</p>';
-      v += '<p>Move to Unlimited when you pass three clients, need API access, or ' +
-        'when passing usage through to clients would save you more than ' +
-        money0(unlimited.base - starter.base) + ' a month.</p>';
-      return v + usageFlag(ctx, best);
+      v += '<p>At ' + c.clients + ' sub-account' + (c.clients === 1 ? '' : 's') +
+        ' you fit inside Starter, so you are ' + money0(unlimited.base - starter.base) +
+        ' a month cheaper than the plan most comparisons push. Starter cannot rebill ' +
+        'usage at all, so the ' + money(c.usageCost) + ' of usage is yours to absorb.</p>';
+      return v + usageFlag(c, best);
     }
 
-    // The upgrade question that actually matters: Pro's extra $200 only pays
-    // for itself if the markup you can charge exceeds it.
-    if (ctx.rebill && ctx.markup > 1) {
-      var extraRecovered = pro.recovered - unlimited.recovered;
-      if (extraRecovered > gap) {
-        v += '<p>Agency Pro costs ' + money0(gap) + ' more than Unlimited, but at a ' +
-          ctx.markup.toFixed(2) + '&times; markup it rebills ' + money(extraRecovered) +
-          ' more back to your clients. It clears the upgrade by ' +
-          money(extraRecovered - gap) + ' a month.</p>';
+    if (c.rebill && c.mode === 'multiplier' && c.markup > 1) {
+      var extra = pro.recovered - unlimited.recovered;
+      if (extra > gap) {
+        v += '<p>Agency Pro costs ' + money0(gap) + ' more than Unlimited, and at a ' +
+          c.markup.toFixed(2) + '&times; markup it rebills ' + money(extra) +
+          ' more back to your clients. It clears the upgrade by ' + money(extra - gap) +
+          ' a month.</p>';
       } else {
-        var needed = (gap + ctx.usageCost) / (ctx.usageCost || 1);
-        v += '<p>Agency Pro costs ' + money0(gap) + ' more than Unlimited and only ' +
-          'rebills ' + money(extraRecovered) + ' more back at a ' + ctx.markup.toFixed(2) +
-          '&times; markup. On this usage it does not pay for itself. You would need ' +
+        var needed = (gap + c.usageCost) / (c.usageCost || 1);
+        v += '<p>Agency Pro costs ' + money0(gap) + ' more than Unlimited and rebills ' +
+          'only ' + money(extra) + ' more back at a ' + c.markup.toFixed(2) +
+          '&times; markup. On this usage it does not pay for itself — you would need ' +
           'roughly a ' + (isFinite(needed) ? needed.toFixed(1) : '—') +
-          '&times; markup, or more usage, before the upgrade breaks even.</p>';
+          '&times; markup, or more usage, to break even.</p>';
       }
-    } else if (ctx.rebill) {
-      v += '<p>You are rebilling at cost, which Unlimited already allows. ' +
-        'Agency Pro\'s extra ' + money0(gap) + ' a month buys the ability to add a ' +
-        'markup on top — turn on a markup above to see whether that pays here.</p>';
+    } else if (c.rebill && c.mode === 'fixed-rate') {
+      v += '<p>Fixed-rate rebilling requires Agency Pro. At ' + rate(c.flatRate) +
+        ' per unit across ' + int(c.billableUnits) + ' billable units you recover ' +
+        money(pro.recovered) + ' against ' + money(c.usageCost) + ' of real cost.</p>';
+    } else if (c.rebill) {
+      v += '<p>You are rebilling at cost, which Unlimited already allows. Agency Pro\'s ' +
+        'extra ' + money0(gap) + ' a month buys the ability to add margin on top.</p>';
     } else {
-      v += '<p>You are not rebilling usage, so ' + money(ctx.usageCost) +
-        ' a month is coming out of your own margin. Unlimited and Agency Pro both ' +
-        'let you pass that through to clients; only Agency Pro lets you mark it up.</p>';
+      v += '<p>You are not rebilling, so ' + money(c.usageCost) + ' a month comes out ' +
+        'of your own margin. Unlimited lets you pass it through at cost; only Agency ' +
+        'Pro lets you mark it up.</p>';
     }
 
-    return v + usageFlag(ctx, best);
+    if (c.aiSubscription > 0) {
+      v += '<p class="calc-note">' + c.model.name + ' is counted as your agency cost ' +
+        'at ' + money(c.aiSubscription) + ' a month (' + c.clients + ' locations). ' +
+        'Whether you can rebill that per-location fee is a separate question from ' +
+        'usage rebilling, so this model does not assume you recover it.</p>';
+    }
+    if (c.model.id !== 'pay-per-use' && c.model.commissionable === false) {
+      v += '<p class="calc-note">' + c.model.name + ' earns NodeRow no commission. ' +
+        'We are recommending it here because it fits your volume.</p>';
+    }
+
+    return v + usageFlag(c, best);
   }
 
-  function usageFlag(ctx, best) {
-    var pct = ctx.usageCost / (best.base || 1) * 100;
+  function usageFlag(c, best) {
+    var denom = best.base + c.aiSubscription;
+    var pct = c.usageCost / (denom || 1) * 100;
     if (pct < 25) return '';
     var scale = pct >= 100
-      ? 'Usage now costs more than the plan itself'
-      : 'Usage is ' + Math.round(pct) + '% of your subscription cost';
-    return '<p class="calc-flag">' + scale + ' (' + money(ctx.usageCost) +
-      ' a month). Any comparison quoting only the plan price is understating ' +
-      'what you actually pay by a wide margin.</p>';
+      ? 'Metered usage now costs more than your subscription'
+      : 'Metered usage is ' + Math.round(pct) + '% of your subscription cost';
+    return '<p class="calc-flag">' + scale + ' (' + money(c.usageCost) +
+      ' a month). Any comparison quoting only the plan price is understating what ' +
+      'you actually pay by a wide margin.</p>';
   }
 
-  Object.keys(fields).forEach(function (k) {
-    var el = fields[k];
-    if (!el) return;
-    el.addEventListener('input', compute);
-    el.addEventListener('change', compute);
+  function routeCta(best, c) {
+    var links = RATES.links;
+    var cta = document.querySelector('#calc-cta a[data-aff]');
+    if (!cta || !links) return;
+    var key = 'pricing', label = 'See GoHighLevel plans and pricing';
+    if (best.plan.id === 'agency-pro' && links['saas-pro']) {
+      key = 'saas-pro'; label = 'Start a SaaS Pro trial';
+    } else if (c.annual && links.annual) {
+      key = 'annual'; label = 'See annual pricing';
+    }
+    var t = links[key];
+    if (!t || !t.url) return;
+    cta.href = t.url;
+    cta.textContent = label;
+    cta.setAttribute('data-dest', key);
+    if (t.id) cta.setAttribute('data-aff-id', t.id);
+  }
+
+  function syncModes() {
+    var on = f.rebill.checked;
+    var fixed = f.rebillMode.value === 'fixed-rate';
+    [f.rebillMode, f.markup, f.flatRate].forEach(function (el) {
+      el.disabled = !on;
+      el.closest('.field').classList.toggle('field-disabled', !on);
+    });
+    f.markup.closest('.field').hidden = fixed;
+    f.flatRate.closest('.field').hidden = !fixed;
+
+    var sub = f.aiModel.value !== 'pay-per-use';
+    f.aiVoice.closest('.field').hidden = false;
+    root.querySelector('#ai-sub-note').hidden = !sub;
+  }
+
+  Object.keys(f).forEach(function (k) {
+    if (!f[k]) return;
+    f[k].addEventListener('input', compute);
+    f[k].addEventListener('change', compute);
+  });
+  [f.rebill, f.rebillMode, f.aiModel].forEach(function (el) {
+    el.addEventListener('change', syncModes);
   });
 
-  // Markup control is meaningless unless rebilling is on.
-  function syncMarkup() {
-    var on = fields.rebill.checked;
-    fields.markup.disabled = !on;
-    fields.markup.closest('.field').classList.toggle('field-disabled', !on);
-  }
-  fields.rebill.addEventListener('change', syncMarkup);
-
   root.classList.add('calc-live');
-  syncMarkup();
+  syncModes();
   compute();
 })();
