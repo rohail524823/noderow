@@ -1,268 +1,236 @@
 # NodeRow — business strategy
 
-Working document. Written 2026-08-28 from live research, not assumption. Every
-factual claim here has a source; where a number could not be verified against the
-vendor directly, that is stated rather than hidden.
+**Revised 2026-08-28 after a strategic correction. The previous version aimed the
+site at the wrong keywords. This version explains why, and what replaces it.**
+
+Single goal: **recurring income from the GoHighLevel affiliate program.**
+n8n rejected the application. Zapier has no program. GoHighLevel is the business.
 
 ---
 
-## 1. The one-sentence thesis
+## 0. The correction
 
-**Every site ranking for GoHighLevel commercial keywords is itself a GoHighLevel
-affiliate pretending to be neutral. NodeRow wins by being the one that admits it,
-and by shipping tools none of them have bothered to build.**
+The first version of this strategy targeted *solution-aware* keywords —
+`gohighlevel pricing`, `gohighlevel alternatives`, `gohighlevel vs X`. It argued
+this was right because those queries carry the highest commercial intent.
 
-## 2. What the research actually found
+That reasoning was sound but incomplete, and it contradicted evidence in its own
+research section. That section recorded that these SERPs are held by G2, Capterra,
+Trustpilot **and** roughly twenty entrenched affiliate domains with years of
+topical authority. It then recommended attacking exactly those SERPs with a
+domain that has no authority, no backlinks and no history.
 
-### The competitive landscape is uniformly compromised
+Being more honest and better sourced than the incumbents does not overcome that
+gap. Google does not rank the most rigorous page; it ranks the page it trusts.
+Trust takes time and links we do not have.
 
-Search results for the money keywords — "GoHighLevel pricing", "GoHighLevel
-alternatives", "GoHighLevel vs" — are dominated by:
+**The error:** optimised for *defensibility against competitors* and under-weighted
+*winnability for a zero-authority domain*.
 
-`netpartners.marketing` · `oneexpand.com` · `passivesecrets.com` · `ghlprime.com`
-· `ghlcrm.me` · `ghlcentral.com` · `autogencrm.com` · `saleoid.com` ·
-`hlgrowthpartner.com` · `digitalmarketingsnapshotforghl.com`
+---
 
-Every one of these is an affiliate. Many are titled "honest comparison" or
-"unbiased review". None disclose above the fold. Several exist solely to rank for
-GHL terms.
+## 1. The corrected model: a funnel, not a publication
 
-**Strategic consequence.** Competing on "more thorough affiliate review" is
-competing in a red ocean on their terms. The two things they structurally cannot
-copy are (a) visible, mechanical honesty and (b) working tools.
+The site was framed as an automation publication. It should be a **lead-generation
+funnel for one affiliate offer**, with content as the acquisition mechanism.
 
-### The three-layer cost model is the content gap
+Three layers, and the traffic enters at the top, not the bottom.
 
-GoHighLevel's real cost is three stacked layers, and almost every competing page
-covers only the first:
-
-| Layer | What it is | Typical size |
-|---|---|---|
-| 1. Subscription | $97 / $297 / $497 per month | Fixed |
-| 2. Metered usage | SMS, email, voice — drawn from an auto-recharging wallet | Often 30–100%+ of layer 1 |
-| 3. AI | Conversation AI per message, Voice AI per minute | $30–150/mo when leaned on |
-
-A ten-client agency on the $297 plan commonly pays **$370–450/month** all in.
-
-Verified rates (2026-08-28): SMS ≈ **$0.0079/segment**; email ≈ **$0.675–1.00 per
-1,000**; plans **$97 / $297 / $497** monthly, roughly **$80 / $247 / $414**
-annualised. Base rates did not rise for 2026.
-
-### The single highest-value insight nobody has monetised
-
-**Rebilling usage at cost is already included on the $297 Unlimited plan.
-Rebilling with a *markup* requires the $497 Agency Pro plan.**
-
-So the $200/month upgrade buys exactly one economically meaningful thing: margin
-on usage. It pays for itself only when that margin exceeds $200/month.
-
-That is arithmetic, and it is the question every agency at the decision point is
-actually asking. **No competitor answers it with maths.** They all describe the
-feature list instead.
-
-This is why the calculator is the flagship asset, not a nice-to-have.
-
-## 3. Positioning
-
-**For** agency owners and service businesses choosing or outgrowing their stack,
-**NodeRow is** the automation publication that shows the real number,
-**unlike** the affiliate review farms, **because** it is written by someone who
-builds and debugs these systems for paying clients and discloses exactly what it
-earns on every recommendation.
-
-**Reader:** an operator with a decision, not yet a problem. They are comparing,
-pricing, or migrating.
-
-**Author:** Rohail Nisar Ahmad — 100+ completed contracts, 100% job success on
-Upwork, builds in n8n, Make, Zapier and GoHighLevel weekly.
-
-**Not covered here:** monitoring, alerting, incident response. Different job,
-different property.
-
-## 4. Revenue model
-
-| Rung | Offer | Price | Economics |
+| Layer | Reader state | Content type | Competition |
 |---|---|---|---|
-| 1 | Article | Free | Earns nothing directly |
-| 2 | **GoHighLevel affiliate** | Their spend | **40% recurring, does not expire** |
-| 2b | Make / n8n Cloud affiliate | Their spend | 35% / 30%, expires at 12 months |
-| 3 | Workflow packs | $39–99 | One-time, near-zero marginal cost |
-| 4 | Build service | $50–500 | Project revenue, funds the site now |
+| **1. Acquisition** | Has a *problem*, doesn't know the tool | "How to stop no-shows at a dental clinic" | **Low — winnable now** |
+| **2. Bridge** | Knows the *mechanism*, not the product | "Missed-call text-back: how it works, what it costs" | Low–medium |
+| **3. Conversion** | Evaluating *GoHighLevel* by name | Calculator, pricing, comparisons | High — already built |
 
-### Why GoHighLevel is the primary
+Everything built so far lives in layer 3. That work is not wasted — it is the
+**closer**, and it is unusually good at closing. It was simply mis-positioned as
+the front door.
 
-| To reach $500/month | Active referrals needed |
-|---|---|
-| Make @ ~$10/mo | ~50, expiring at 12 months |
-| n8n @ ~$6/mo | ~80, expiring at 12 months |
-| **GoHighLevel @ $118.80/mo ($297 plan)** | **~5, and they don't expire** |
+The fix is to build layers 1 and 2 above it, and route everything downward.
 
-Roughly an order of magnitude less traffic for the same revenue. There is also a
-**5% second-tier commission** on affiliates recruited, which is a later lever, not
-a launch one.
+## 2. Why problem-first wins here
 
-### The honest constraint
+Four reasons, in order of weight:
 
-GoHighLevel's buyer is a **marketing agency**, not the developer searching "n8n vs
-Make". Pushing GHL into developer content would be transparent and would cost the
-credibility the whole site runs on. GHL leads on agency-shaped pages —
-all-in-one vs stack, agency workflows, CRM-adjacent use cases. Developer content
-routes to Make and n8n, and to Zapier where Zapier genuinely wins, earning nothing.
+1. **Winnable.** `crm for contractors` branches into electrical, general, roofing,
+   government. `appointment reminder software for small business` has a deep tail.
+   These are long-tail, often local or vertical, and not defended by Gartner-owned
+   review sites.
+2. **You control the frame.** A reader searching `gohighlevel vs hubspot` is running
+   a bake-off you might lose. A reader searching `how do I stop losing leads to
+   missed calls` has no incumbent answer — you introduce the tool as the solution.
+3. **Bigger market.** Far more people have the problem than are shopping for the
+   solution by name.
+4. **It matches the author.** Rohail builds these systems. "Here is how the workflow
+   is actually wired" is content he can write with real authority, and it is exactly
+   what AI-generated competitors cannot fake.
 
-**No display ads, ever.** Affiliate and product revenue are worth an order of
-magnitude more per visitor, and ads would compete with both while signalling
-low-quality content.
+### The honest counter-argument
 
-## 5. The moat: three things competitors can't copy cheaply
+Problem-aware traffic converts **worse per visitor** than solution-aware traffic.
+Someone reading "how to reduce no-shows" may just want a free tip.
 
-1. **Working calculators.** Interactive, dated, sourced. Expensive to build,
-   trivially linkable, and the natural conversion point — a reader who has just
-   modelled their own cost is at maximum intent. The true-cost calculator is
-   live; a Zapier-vs-Make-vs-n8n volume calculator is the obvious second.
+That is a real cost, and it is acceptable here for one specific reason: the
+GoHighLevel commission is 40% *recurring with no stated term*. A single referral on
+the $297 plan is $118.80 **per month, indefinitely**. That economics tolerates a much
+worse conversion rate in exchange for traffic that is an order of magnitude easier
+to acquire. It would not tolerate it on a one-time $50 commission.
 
-2. **Mechanical honesty.** The no-commission callout is *generated from data*, not
-   written by hand. Commission status appears on every tool card. Disclosure sits
-   above the first affiliate link, enforced by the build gate — a page carrying an
-   affiliate link literally cannot ship without it. Competitors would have to
-   rebuild their publishing pipeline to match this, and it would cost them
-   conversions to do so.
+## 3. Evidence for the pivot
 
-3. **Practitioner specifics.** Every article must contain at least one thing that
-   cannot be written from documentation: a real cost figure, a real error message,
-   a real node configuration, a decision that went wrong on a client project. A
-   draft without one is a commodity article and does not publish.
+From live Google autocomplete, 2026-08-28. These are real query strings, not
+estimates. No volumes — no keyword tool was used, and inventing numbers would
+violate the site's own standard.
 
-## 6. Content plan
+**`missed call text back`** returns: software · **calculator** · automation ·
+service · **roi calculator** · **ghl** · software free
 
-### Priority order, by revenue-per-effort
+That single term proves the whole thesis. It is a GoHighLevel *feature* with
+independent demand, people are searching for an **ROI calculator** for it, and some
+are already appending **ghl**. It is layer 1 and layer 2 in one phrase.
 
-**Tier 1 — build first (highest intent, GHL-monetisable)**
-1. ✅ GoHighLevel True Cost Calculator — *live*
-2. GoHighLevel vs a stitched-together stack — the core decision page
-3. GoHighLevel pricing explained — captures the highest-volume GHL query
-4. GoHighLevel alternatives — highest-converting archetype in SaaS affiliate
-5. Is GoHighLevel worth it? — the "honest" framing that earns clicks
+Other confirmed clusters:
 
-**Tier 2 — high intent, mixed monetisation**
-6. Migration pages (Zapier→Make, Zapier→n8n, Make→n8n) — highest intent on the site
-7. n8n vs Make vs Zapier — biggest raw traffic in the niche
-8. Zapier alternatives — Zapier pays nothing, so this must route honestly
+- `how to reduce no shows` → cancellations, prevent, stop, outpatient clinics,
+  patient no shows, no show rates
+- `how to follow up with leads` → real estate, sales, facebook leads, open house,
+  **use ai to follow up with leads**
+- `how to get more google reviews` → for my business, from customers, free, fast,
+  restaurant
+- `crm for contractors` → electrical, general, **roofing**, government, free
+- `appointment reminder software for small business` → app for business, for
+  clients, free, best
+- `speed to lead` → statistics, meaning, real estate, **automation**, ai
 
-**Tier 3 — supporting**
-9. Use-case build guides (onboarding, lead capture, document filing) → packs
-10. Tool profiles, one per platform in `products.json`
+## 4. The sharpening decision — recommended
 
-**Never publish:** definitional "what is X" pages. They rank at position 34–58
-with effectively zero clicks. Also never: certification roundups, course reviews,
-monitoring/incident-response guides — those belong to other properties.
+Breadth is what a site with authority can afford. A new domain should go **narrow
+and own something**.
 
-### Cadence
+**Recommendation: pick two verticals and dominate them before widening.**
 
-**One page per day, maximum.** Publishing faster builds a backlog of pages Google
-discovers and declines to crawl, which is worse than publishing slower.
+Best candidates on the evidence:
 
-### Article structure (fixed)
+1. **Home services** — roofing, HVAC, electrical, plumbing, general contracting.
+   `crm for contractors` alone has four trade-specific tails. High ticket, phone-
+   driven, and missed calls cost them real money — which makes the ROI argument
+   concrete rather than abstract.
+2. **Clinics and practices** — dental, med spa, chiropractic. `reduce no shows` has
+   a clinical tail (`outpatient clinics`, `patient no shows`) and no-shows are a
+   quantifiable revenue leak.
 
-answer block → TOC → comparison table (high) → body → recommendation cards →
-FAQ → citations → CTA band → author box → related links
+Both are GoHighLevel's actual customer base, both are phone-and-appointment
+businesses where the platform genuinely fits, and neither is defended by review
+aggregators.
 
-The answer block is first, ≥90 words, names its subjects rather than using
-pronouns, carries concrete numbers, and is self-contained enough to be lifted
-whole by an AI search engine. Every claim in it must also appear in the body.
+Widen only after one vertical is producing traffic.
 
-## 7. Technical position (as of 2026-08-28)
+## 5. What changes, concretely
 
-| Check | Result |
-|---|---|
-| axe-core violations, 13 pages × light + dark | **0** |
-| Cumulative Layout Shift | **0.0000** |
-| DOMContentLoaded | **53 ms** |
-| Third-party requests | **0** (fonts self-hosted) |
-| Page weight, heaviest page | 255 KB (199 KB of it cached fonts) |
-| Schema | One `#org` + Person, referenced by `@id`; FAQPage, Article, Service |
-| `aggregateRating` | Rejected by the build gate — spam-policy violation |
+### Keep
+- The true-cost calculator and pricing page. They are the conversion layer and they
+  are better than anything competing.
+- The honesty architecture — inline disclosure, generated no-commission callouts,
+  the build gate. Trust matters *more* with problem-aware readers, not less.
+- The verified pricing data. It now powers ROI calculators for problem content.
+- **Get It Built.** More valuable than the earlier strategy credited: it produces
+  revenue while SEO matures, and it is the proof that makes the content credible.
+  Keep it as one button, not a services arm.
 
-The build gate blocks publication on: missing/duplicate `h1`, missing canonical or
-description, description outside 120–175 chars, unresolvable asset paths,
-unresolvable internal links, missing trailing slashes, affiliate links without
-`rel="sponsored nofollow"`, and any page carrying an affiliate link without an
-inline disclosure.
+### Change
+- **Homepage message.** Currently "most agencies are paying for eight tools that
+  don't talk to each other" — comparison-framed, agency-jargon. It should speak to
+  the vertical operator's problem.
+- **Publishing priority.** Layer 1 and 2 content before more layer 3 comparisons.
+- **Internal linking.** Every problem page routes to a bridge page, every bridge
+  page routes to the calculator, the calculator routes to the affiliate link.
 
-## 8. Affiliate program — verified from the dashboard, 2026-08-28
+### Add
+- **ROI calculators for problems, not products.** "What missed calls cost you" is
+  the highest-value next build. It is autocomplete-confirmed demand, it is a
+  linkable asset, and it converts because the reader has just quantified their own
+  pain.
+- **Email capture on every problem page.** The list is the only asset that survives
+  an algorithm update or an affiliate termination.
 
-### Links are routed per destination, because the id changes per campaign
+## 6. Revised content plan
 
-This is the single easiest way to lose money silently, and it is now handled in
-code. GoHighLevel issues a **different affiliate id per campaign**:
+**Phase 1 — prove the model (next ~10 pages)**
+1. What missed calls cost your business — **calculator**
+2. Missed-call text-back: how it works and what it costs
+3. How to stop no-shows at a dental practice
+4. How to follow up with leads in under 5 minutes (speed to lead)
+5. How to get more Google reviews automatically
+6. CRM for roofing contractors: what actually matters
+7. CRM for dentists: what actually matters
+8. Appointment reminder software for small business
+9. Database reactivation: reselling to customers you already have
+10. How to automate lead follow-up without hiring anyone
 
-| Destination | Campaign | Affiliate id |
-|---|---|---|
-| `default`, `pricing`, `annual`, `ai`, `bootcamp` | HighLevel Affiliate Program | `…30` |
-| `saas-pro` | Supercharged SaaS Program | **`…65`** |
-| `certification` | HighLevel Certification Program | **`…33`** |
+Every one routes to the calculator, then to the affiliate link.
 
-Sending SaaS Pro traffic through the main campaign's link would track under the
-wrong campaign and pay nothing, with no visible symptom. `components.resolve_link()`
-routes by intent; the calculator swaps its CTA to `saas-pro` (id `…65`) the moment
-a reader's own numbers recommend Agency Pro.
+**Phase 2 — widen the vertical**, once Search Console shows which of 6/7 performs.
 
-Note there are two distinct pro-trial paths: `/protrial` (id `…30`) on the main
-campaign and `/pro-trial` (id `…65`) on the SaaS campaign. They are not
-interchangeable.
+**Phase 3 — the layer-3 pages already built** continue to catch branded search as
+domain authority accrues. They are the long game, not the opening move.
 
-### Terms
+## 7. Honest expectations
 
-| Term | Value |
-|---|---|
-| Commission | 40% recurring + 5% second tier |
-| Duration | No fixed term stated in the dashboard. Not capped at 12 months like Make and n8n — but "lifetime" is not the dashboard's word, so the site does not use it |
-| Cookie | **90 days, last-click** |
-| Payout | Monthly, Net-15, $50 threshold |
-| Cancellation | Attribution survives 30 days past cancellation |
+This matters more than the tactics, so it is stated plainly.
 
-### Non-commissionable — matters for content planning
+**"Passive income" is the wrong mental model for year one.** This is a business you
+build actively for 6–18 months that becomes semi-passive afterwards. Anyone
+promising otherwise is selling something.
 
-- Prospecting Tool — no reward at all
-- **AI Employee Pay-Per-Use** and **AI Employee Growth ($50/mo)** — earn nothing.
-  Only AI Employee Unlimited ($97/mo per location) qualifies
-- **Metered usage earns nothing.** The calculator models SMS/email/AI spend in
-  detail and none of it pays us. Worth saying out loud on the site — it is the
-  cheapest credibility available and it happens to be true
+The mechanics that slow it down, all verified from the program terms:
 
-### Operational risk to Rohail personally
+- A referral only qualifies after the account stays in good standing **45 days**
+- Payouts are monthly, **Net-15**, above a **$50** threshold
+- Commissions are **clawback-able** on refund or chargeback
+- A new domain typically needs months before Google trusts it enough to rank
 
-**Self-referrals are prohibited** and risk termination plus forfeiture of accrued
-commissions. Two live hazards given the build service:
+**To reach roughly $500/month** you need about **five active referrals** on the $297
+plan at $118.80 each. Allowing for churn and the qualification gate, that means
+signing up meaningfully more than five to *hold* five.
 
-1. Do not sign up your own agency through your own link.
-2. When setting up a client, the **client** must click the link and complete
-   signup with their own information, device and payment method. Signing up on
-   their behalf in a way that misrepresents the purchaser is a policy breach.
+What that requires in traffic depends on conversion rates this site has not yet
+measured — GoHighLevel's trial-to-paid rate is not published and is not something to
+guess at. **The first 90 days of Search Console and affiliate-dashboard data replace
+this paragraph with real numbers.** Until then, treat any traffic target as a
+hypothesis.
 
-The full Affiliate Policy is referenced in the dashboard FAQ but not exposed as a
-clickable URL, so paid-search, brand-bidding and coupon-site restrictions remain
-unverified. Ask the Affiliate Manager for the document before running paid traffic.
+### The single-program risk
 
-## 9. Open items — things only Rohail can do
+Everything depends on one program that can terminate for cause immediately, without
+adjudication, forfeiting unpaid commissions. Two mitigations that cost nothing:
 
-1. **Confirm the author display name** before it is baked into schema everywhere.
-   Currently `Rohail Nisar Ahmad`; the GHL account says `Rohail Nisar`.
-2. **Spot-check the pricing figures against a real invoice.** `gohighlevel.com` is
-   unreachable from the build environment, so all rates were verified against
-   independent secondary sources. Well-corroborated, not authoritative.
-3. **Get the full Affiliate Policy** from the Affiliate Manager — the promotional
-   restrictions are not surfaced in the dashboard.
-4. **Confirm whether WLMA and HIPAA promotions are currently live** in the
-   Affiliate Community before writing anything that promotes them.
-5. Complete the Affiliate Welcome Survey and book the Affiliate Manager call
-   (`speakwith.us/expandteam`) — free distribution leverage sitting unused.
+- **systeme.io pays 60% lifetime recurring** and is the honest answer for readers
+  GoHighLevel does not fit. Recommending it captures traffic that would otherwise
+  bounce, and it is already in `content/competitors.json`.
+- **The email list.** Build it from page one.
 
-## Sources
+Neither dilutes the GoHighLevel focus. Both stop a single policy decision ending the
+business.
 
-- [GoHighLevel Pricing 2026: $97, $297 or $497 Plan Compared](https://netpartners.marketing/gohighlevel-pricing-plans-explained-features-value-cost-comparison-2026/)
-- [GoHighLevel Hidden Costs 2026: The Complete True Pricing Breakdown](https://www.nextgenchannels.com/gohighlevel-hidden-costs/)
-- [GoHighLevel SMS Pricing: Cost Per Message (2026)](https://autogencrm.com/gohighlevel-sms-pricing/)
-- [GoHighLevel Agency Pro: SaaS Pricing Plan Explained 2026](https://ghlcrm.me/gohighlevel-saas-pricing/)
-- [GoHighLevel Affiliate Program: Commission & Cookie Details](https://www.affililist.com/affiliate/gohighlevel)
-- [GoHighLevel SaaS Mode: How Agencies Turn Retainers Into Recurring Software Revenue](https://digitalmarketingsnapshotforghl.com/blog/gohighlevel-saas-mode-recurring-revenue-for-agencies/)
-- [12 Best GoHighLevel Alternatives in 2026](https://inflowave.io/resources/gohighlevel-alternatives-2026)
+## 8. What is still true from the first version
+
+The competitive read was correct: every site ranking for GoHighLevel commercial
+terms is itself a GoHighLevel affiliate presenting as neutral. The honesty
+positioning is genuinely differentiating and should be kept.
+
+The mistake was aiming that positioning at SERPs a new domain cannot win. Applied to
+problem-space content, the same honesty is a stronger advantage — those readers are
+less cynical and more persuadable, and no one else is bothering.
+
+## 9. Open items for Rohail
+
+1. **Confirm the vertical choice** — home services, clinics, or both. Everything
+   downstream depends on it.
+2. **Verify Netlify serves from `deploy/`**. Nothing else matters if the deploy is
+   broken.
+3. Book the Affiliate Manager call when convenient. Not urgent at zero referrals;
+   it unlocks the full policy document and becomes a payout gate at referral three.
+4. Spot-check one price against a real invoice.
+5. **Part 7.3 of the build brief is still the strongest available moat** and only you
+   can do it: real billing screenshots, a real A2P rejection, real client before-and-
+   after numbers. Cheap to fake in prose, impossible to fake with timestamps.
