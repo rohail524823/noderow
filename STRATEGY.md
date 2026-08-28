@@ -107,6 +107,8 @@ Other confirmed clusters:
 Breadth is what a site with authority can afford. A new domain should go **narrow
 and own something**.
 
+**DECIDED 2026-08-28: home services first.** Clinics stay on the list, second.
+
 **Recommendation: pick two verticals and dominate them before widening.**
 
 Best candidates on the evidence:
@@ -156,9 +158,10 @@ Widen only after one vertical is producing traffic.
 ## 6. Revised content plan
 
 **Phase 1 — prove the model (next ~10 pages)**
-1. What missed calls cost your business — **calculator**
-2. Missed-call text-back: how it works and what it costs
-3. How to stop no-shows at a dental practice
+1. ✅ What missed calls cost your business — **calculator, live** (trade presets)
+2. ✅ Missed-call text-back: how it works and what it costs — **live**
+3. ✅ CRM for contractors — **live** (was: dental no-shows; reordered for the
+   home-services decision)
 4. How to follow up with leads in under 5 minutes (speed to lead)
 5. How to get more Google reviews automatically
 6. CRM for roofing contractors: what actually matters
@@ -224,8 +227,8 @@ less cynical and more persuadable, and no one else is bothering.
 
 ## 9. Open items for Rohail
 
-1. **Confirm the vertical choice** — home services, clinics, or both. Everything
-   downstream depends on it.
+1. ✅ Vertical confirmed: **home services** (roofing, HVAC, plumbing, electrical,
+   remodeling). Clinics are the second vertical, not yet started.
 2. **Verify Netlify serves from `deploy/`**. Nothing else matters if the deploy is
    broken.
 3. Book the Affiliate Manager call when convenient. Not urgent at zero referrals;

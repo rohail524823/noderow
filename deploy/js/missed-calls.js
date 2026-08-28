@@ -98,6 +98,16 @@
         '(' + c.recoveredCustomers.toFixed(1) + ' customers).</p>';
     }
 
+    var impliedAnnualRevenue = (c.lostRevenue / (c.missedPct / 100 || 1)) * 12;
+    if (c.lostRevenue * 12 > 250000) {
+      v += '<p class="calc-danger"><strong>Sanity-check this.</strong> These inputs ' +
+        'imply you are losing ' + money(c.lostRevenue * 12) + ' a year to missed ' +
+        'calls alone, from a business turning over roughly ' +
+        money(impliedAnnualRevenue) + '. If that does not match your books, the ' +
+        'close rate is the input to lower &mdash; most inbound calls are price ' +
+        'shoppers, suppliers and wrong numbers, not jobs you would have won.</p>';
+    }
+
     out.verdict.innerHTML = v;
 
     // Does the tool pay for itself? Compare against the real entry cost.
@@ -146,6 +156,28 @@
       'models SMS, email, voice and AI at your volume.</p>';
 
     out.body.innerHTML = h;
+  }
+
+  // Home-services presets. These are STARTING POINTS shaped by trade, not survey
+  // data — a roofing job is worth more than a drain unblock, and the calculator is
+  // useless if it opens on numbers no contractor recognises.
+  var PRESETS = {
+    roofing:    { calls: 40,  missed: 25, value: 9000,  close: 10 },
+    hvac:       { calls: 60,  missed: 25, value: 1400,  close: 20 },
+    plumbing:   { calls: 100, missed: 25, value: 450,   close: 30 },
+    electrical: { calls: 60,  missed: 25, value: 700,   close: 25 },
+    remodeling: { calls: 25,  missed: 20, value: 18000, close: 6  },
+    other:      { calls: 100, missed: 20, value: 500,   close: 25 }
+  };
+  var presetSel = root.querySelector('#m-preset');
+  if (presetSel) {
+    presetSel.addEventListener('change', function () {
+      var v = PRESETS[presetSel.value];
+      if (!v) return;
+      f.calls.value = v.calls; f.missed.value = v.missed;
+      f.value.value = v.value; f.close.value = v.close;
+      compute();
+    });
   }
 
   Object.keys(f).forEach(function (k) {

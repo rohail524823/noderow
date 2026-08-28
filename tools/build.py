@@ -18,7 +18,9 @@ import components  # noqa: E402
 import entity  # noqa: E402
 import head as head_mod  # noqa: E402
 import calculator_page  # noqa: E402
+import contractors_page  # noqa: E402
 import missed_calls_page  # noqa: E402
+import textback_page  # noqa: E402
 import pricing_page  # noqa: E402
 import pages as pages_mod  # noqa: E402
 from site_config import SITE_NAME, SITE_URL  # noqa: E402
@@ -211,6 +213,8 @@ def main():
     pages.append(calculator_page.build())
     pages.append(pricing_page.build())
     pages.append(missed_calls_page.build())
+    pages.append(textback_page.build())
+    pages.append(contractors_page.build())
     known = {p["path"] for p in pages}
     known.add("/")
     # Footer/nav entries for pages that do not exist yet render as parked links.

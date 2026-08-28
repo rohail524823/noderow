@@ -9,7 +9,6 @@
   ],
   "capturedOn": "2026-08-28",
   "currency": "USD",
-
   "competitors": [
     {
       "slug": "systeme-io",
@@ -25,14 +24,30 @@
       },
       "pricingModel": "Per contact, tiered. Unlimited email sends on every plan, 0% transaction fees.",
       "tiers": [
-        {"name": "Free", "monthly": 0, "contacts": 2000,
-         "includes": "3 sales funnels, 1 course, all features"},
-        {"name": "Startup", "monthly": 17, "contacts": 5000,
-         "includes": "Unlimited funnels, 5 courses"},
-        {"name": "Webinar", "monthly": 47, "contacts": 10000,
-         "includes": "Unlimited everything plus automated webinars"},
-        {"name": "Unlimited", "monthly": 97, "contacts": null,
-         "includes": "Unlimited contacts, sub-accounts, free migration service"}
+        {
+          "name": "Free",
+          "monthly": 0,
+          "contacts": 2000,
+          "includes": "3 sales funnels, 1 course, all features"
+        },
+        {
+          "name": "Startup",
+          "monthly": 17,
+          "contacts": 5000,
+          "includes": "Unlimited funnels, 5 courses"
+        },
+        {
+          "name": "Webinar",
+          "monthly": 47,
+          "contacts": 10000,
+          "includes": "Unlimited everything plus automated webinars"
+        },
+        {
+          "name": "Unlimited",
+          "monthly": 97,
+          "contacts": null,
+          "includes": "Unlimited contacts, sub-accounts, free migration service"
+        }
       ],
       "vsGoHighLevel": "Dramatically cheaper and genuinely has a free tier. Has sub-accounts at $97. Not an agency platform though — no white-label client sub-account model at GHL's depth, no native phone system, no SMS.",
       "bestFor": "Solo operators and small course businesses who want funnels, email and courses in one place at a tenth of the price.",
@@ -54,12 +69,37 @@
         "note": "Usage over the plan allotment. Keap's SMS is roughly 2x GoHighLevel's $0.00747 per segment before carrier fees."
       },
       "messagingTiers": [
-        {"tier": 1, "monthlyAddOn": 0, "messages": 500, "label": "Included"},
-        {"tier": 2, "monthlyAddOn": 24, "messages": 1000},
-        {"tier": 3, "monthlyAddOn": 39, "messages": 2500},
-        {"tier": 4, "monthlyAddOn": 79, "messages": 5000},
-        {"tier": 5, "monthlyAddOn": 139, "messages": 10000},
-        {"tier": 6, "monthlyAddOn": 279, "messages": 25000}
+        {
+          "tier": 1,
+          "monthlyAddOn": 0,
+          "messages": 500,
+          "label": "Included"
+        },
+        {
+          "tier": 2,
+          "monthlyAddOn": 24,
+          "messages": 1000
+        },
+        {
+          "tier": 3,
+          "monthlyAddOn": 39,
+          "messages": 2500
+        },
+        {
+          "tier": 4,
+          "monthlyAddOn": 79,
+          "messages": 5000
+        },
+        {
+          "tier": 5,
+          "monthlyAddOn": 139,
+          "messages": 10000
+        },
+        {
+          "tier": 6,
+          "monthlyAddOn": 279,
+          "messages": 25000
+        }
       ],
       "vsGoHighLevel": "Starts at $299 against GoHighLevel's $97, and that is for ONE business. No agency sub-account model, no white-label, no rebilling. Per-contact pricing scales against you.",
       "bestFor": "A single established service business that wants CRM and automation with a gentler learning curve.",
@@ -74,13 +114,34 @@
       "sourceUrl": "https://kajabi.com/pricing",
       "pricingModel": "Flat tiers by contacts, websites and admin seats. No revenue sharing.",
       "tiers": [
-        {"name": "Basic", "monthlyAnnualBilled": 143, "monthly": 179,
-         "annualSaving": 432, "websites": 1, "communities": 1, "adminUsers": 2},
-        {"name": "Growth", "monthlyAnnualBilled": 199, "monthly": 249,
-         "annualSaving": 600, "websites": 1, "communities": 1, "adminUsers": 11},
-        {"name": "Pro", "monthlyAnnualBilled": 399, "monthly": 499,
-         "annualSaving": 1200, "contacts": 100000, "websites": 3,
-         "communities": 3, "adminUsers": 26}
+        {
+          "name": "Basic",
+          "monthlyAnnualBilled": 143,
+          "monthly": 179,
+          "annualSaving": 432,
+          "websites": 1,
+          "communities": 1,
+          "adminUsers": 2
+        },
+        {
+          "name": "Growth",
+          "monthlyAnnualBilled": 199,
+          "monthly": 249,
+          "annualSaving": 600,
+          "websites": 1,
+          "communities": 1,
+          "adminUsers": 11
+        },
+        {
+          "name": "Pro",
+          "monthlyAnnualBilled": 399,
+          "monthly": 499,
+          "annualSaving": 1200,
+          "contacts": 100000,
+          "websites": 3,
+          "communities": 3,
+          "adminUsers": 26
+        }
       ],
       "vsGoHighLevel": "Different job. Kajabi is a course/membership business platform; GoHighLevel is agency infrastructure. Kajabi's courses and communities are more mature; it has no phone system, no sub-account reselling, no white-label agency model.",
       "bestFor": "Creators selling courses and memberships who want polish over breadth.",
@@ -95,13 +156,27 @@
       "sourceUrl": "https://www.vendasta.com/pricing/",
       "pricingModel": "Unusual: $0 subscription with a monthly WHOLESALE SPEND MINIMUM. Each $1 spent on select products offsets $1 of the platform fee.",
       "tiers": [
-        {"name": "Starter", "subscription": 0, "monthlyWholesaleMinimum": 99,
-         "contract": "Billed monthly, no contract",
-         "note": "At signing, the $99 platform fee covers month one."},
-        {"name": "Professional", "subscription": 0, "monthlyWholesaleMinimum": 499,
-         "contract": "1 year contract", "teamMembers": 5},
-        {"name": "Premium", "subscription": 0, "monthlyWholesaleMinimum": 999,
-         "contract": "1 year contract", "note": "Adds white-label client portal."}
+        {
+          "name": "Starter",
+          "subscription": 0,
+          "monthlyWholesaleMinimum": 99,
+          "contract": "Billed monthly, no contract",
+          "note": "At signing, the $99 platform fee covers month one."
+        },
+        {
+          "name": "Professional",
+          "subscription": 0,
+          "monthlyWholesaleMinimum": 499,
+          "contract": "1 year contract",
+          "teamMembers": 5
+        },
+        {
+          "name": "Premium",
+          "subscription": 0,
+          "monthlyWholesaleMinimum": 999,
+          "contract": "1 year contract",
+          "note": "Adds white-label client portal."
+        }
       ],
       "vsGoHighLevel": "The closest structural competitor for agencies reselling software. But the commercial model is opposite: GoHighLevel charges a flat fee and lets you resell its own tooling; Vendasta charges nothing up front and requires a wholesale spend commitment, with a 1-year contract above Starter.",
       "bestFor": "Agencies reselling a marketplace of third-party products rather than one platform.",
@@ -156,14 +231,44 @@
       "captureMethod": "pending",
       "captureNote": "Returned HTTP 403 to the build environment. Not captured.",
       "vsGoHighLevel": null
+    },
+    {
+      "slug": "housecall-pro",
+      "name": "Housecall Pro",
+      "category": "Field service management (home services)",
+      "url": "https://www.housecallpro.com",
+      "captureMethod": "primary-source",
+      "sourceUrl": "https://www.housecallpro.com/pricing/",
+      "capturedOn": "2026-08-28",
+      "pricingModel": "Per user tiers, billed annually or monthly",
+      "tiers": [
+        {
+          "name": "Basic",
+          "monthlyAnnualBilled": 59,
+          "monthly": 79,
+          "users": 1
+        },
+        {
+          "name": "Essentials",
+          "monthlyAnnualBilled": 149,
+          "monthly": 189,
+          "users": 5,
+          "additionalUserMonthly": 100,
+          "includes": "Routes — group and sequence jobs to cut drive time"
+        }
+      ],
+      "trial": "14-day free trial",
+      "vsGoHighLevel": "NOT a substitute — they do different jobs. Housecall Pro runs the work: scheduling, dispatch, routing, invoicing, job costing. GoHighLevel runs the lead: capture, follow-up, nurture, reviews, booking. Many contractors end up paying for both, which is the honest answer nobody selling either one gives.",
+      "bestFor": "Home service businesses that need to schedule, dispatch and invoice jobs in the field.",
+      "weakness": "Marketing automation and lead nurture are thin next to a dedicated CRM. Per-user pricing bites as crews grow — $100/mo per extra user above five."
     }
   ],
-
   "priceComparisonNotes": [
     "GoHighLevel Starter at $97 undercuts Keap's $299 entry by a wide margin, and Keap's entry is for one business with no agency model.",
     "systeme.io at $97 for its top tier is the genuine budget alternative, but it has no telephony and no agency sub-account architecture.",
     "Keap charges $0.015 per SMS against GoHighLevel's $0.00747 base — roughly double, though GoHighLevel's carrier surcharges narrow that gap to around 40%.",
     "Kajabi Pro at $499/mo costs more than GoHighLevel Agency Pro at $497 and does a much narrower job.",
-    "Vendasta is the only captured competitor with an agency reselling model comparable to GoHighLevel's, and it charges through a wholesale spend minimum rather than a subscription."
+    "Vendasta is the only captured competitor with an agency reselling model comparable to GoHighLevel's, and it charges through a wholesale spend minimum rather than a subscription.",
+    "Housecall Pro ($59-149/mo) and GoHighLevel ($97/mo) are complements, not alternatives. HCP manages jobs; GHL manages leads. A contractor running both is paying roughly $156-246/mo before usage — worth stating plainly rather than pretending either replaces the other."
   ]
 }

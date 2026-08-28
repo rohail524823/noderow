@@ -120,6 +120,22 @@ whether you would be better off answering the phone.</p>
     <h2 id="mc-inputs-h" class="calc-sub">Your numbers</h2>
 
     <div class="field">
+      <label for="m-preset">Start from your trade</label>
+      <select id="m-preset">
+        <option value="">Choose a trade&hellip;</option>
+        <option value="roofing">Roofing</option>
+        <option value="hvac">HVAC</option>
+        <option value="plumbing">Plumbing</option>
+        <option value="electrical">Electrical</option>
+        <option value="remodeling">Remodeling</option>
+        <option value="other">Something else</option>
+      </select>
+    </div>
+    <p class="field-note">Presets are starting points shaped by trade, not survey
+    data. A roofing job is worth more than a drain unblock. Change every number to
+    match your business.</p>
+
+    <div class="field">
       <label for="m-calls">Inbound calls per week</label>
       <input id="m-calls" type="number" min="0" max="10000" step="5" value="100" inputmode="numeric">
     </div>

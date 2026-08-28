@@ -49,6 +49,8 @@ FOOTER_COLUMNS = [
     ]),
     ("Guides", [
         ("Missed call revenue calculator", "/missed-call-revenue-calculator/"),
+        ("Missed call text back", "/missed-call-text-back/"),
+        ("CRM for contractors", "/crm-for-contractors/"),
         ("Automate client onboarding", "/automate-client-onboarding/"),
         ("GoHighLevel pricing explained", "/gohighlevel-pricing-explained/"),
         ("Lead capture to CRM sync", "/automate-lead-capture/"),
