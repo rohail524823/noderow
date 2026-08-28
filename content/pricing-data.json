@@ -1,0 +1,276 @@
+{
+  "_comment": [
+    "Every rate here was read from HighLevel's own pages on 2026-08-28 by the build",
+    "environment, not from a secondary source. Each block records its sourceUrl.",
+    "PUBLISH RULE: re-check before first publish and update verifiedOn."
+  ],
+  "verifiedOn": "2026-08-28",
+  "verificationMethod": "primary-source",
+  "currency": "USD",
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "monthly": 97,
+      "annualTotal": 970,
+      "annualMonthlyEquivalent": 80.83,
+      "subAccounts": 3,
+      "subAccountsLabel": "3 sub-accounts",
+      "whiteLabel": false,
+      "rebillAtCost": false,
+      "rebillWithMarkup": false,
+      "apiAccess": false,
+      "saasMode": false,
+      "trialDays": 14,
+      "bestFor": "A single business or solo marketer. Three sub-accounts, unlimited contacts and users.",
+      "sourceUrl": "https://www.gohighlevel.com/pricing"
+    },
+    {
+      "id": "unlimited",
+      "name": "Unlimited",
+      "monthly": 297,
+      "annualTotal": 2970,
+      "annualMonthlyEquivalent": 247.5,
+      "subAccounts": null,
+      "subAccountsLabel": "Unlimited sub-accounts",
+      "whiteLabel": true,
+      "rebillAtCost": true,
+      "rebillWithMarkup": false,
+      "apiAccess": true,
+      "apiNote": "Basic API access",
+      "saasMode": false,
+      "trialDays": 14,
+      "vendorWording": "Rebill Phone & Email (no markup)",
+      "bestFor": "Growing agencies past three clients. Rebilling is available but at cost only.",
+      "sourceUrl": "https://www.gohighlevel.com/pricing"
+    },
+    {
+      "id": "agency-pro",
+      "name": "Agency Pro",
+      "monthly": 497,
+      "annualTotal": 4970,
+      "annualMonthlyEquivalent": 414.17,
+      "subAccounts": null,
+      "subAccountsLabel": "Unlimited sub-accounts",
+      "whiteLabel": true,
+      "rebillAtCost": true,
+      "rebillWithMarkup": true,
+      "apiAccess": true,
+      "apiNote": "Advanced API access",
+      "saasMode": true,
+      "trialDays": 14,
+      "aliasNote": "Marketed to SaaSPRENEURs. \"SaaS Pro\" is an alternate label for this same $497 plan, not a separate fourth tier.",
+      "bestFor": "Agencies reselling the platform as their own software with a margin on usage.",
+      "sourceUrl": "https://www.gohighlevel.com/pricing"
+    }
+  ],
+  "usage": {
+    "sourceUrl": "https://help.gohighlevel.com/support/solutions/articles/48001223556-phone-system-pricing-billing-guide",
+    "smsPerSegment": 0.00747,
+    "smsNote": "Per segment, US/Canada, inbound AND outbound at the same rate. This is a 10% discount on the $0.0083 list price. Carrier surcharges are charged ON TOP — see carrierFees.",
+    "carrierFees": {
+      "note": "Passed through by the recipient's carrier on top of the base segment rate. At the published per-carrier rates this adds roughly 45-65% to the cost of an outbound SMS, and it is the line almost every pricing article omits.",
+      "averageSmsOutbound": 0.0042,
+      "byCarrier": [
+        {
+          "carrier": "AT&T",
+          "smsOut": 0.0035,
+          "smsIn": 0.0035,
+          "mmsOut": 0.009,
+          "mmsIn": 0.009
+        },
+        {
+          "carrier": "T-Mobile",
+          "smsOut": 0.0045,
+          "smsIn": 0.0025,
+          "mmsOut": 0.01,
+          "mmsIn": 0.01
+        },
+        {
+          "carrier": "Verizon",
+          "smsOut": 0.0045,
+          "smsIn": 0.007,
+          "mmsOut": 0.007,
+          "mmsIn": null
+        },
+        {
+          "carrier": "US Cellular",
+          "smsOut": 0.005,
+          "smsIn": 0.01,
+          "mmsOut": 0.01,
+          "mmsIn": 0.01
+        },
+        {
+          "carrier": "All other carriers",
+          "smsOut": 0.004,
+          "smsIn": 0.01,
+          "mmsOut": 0.01,
+          "mmsIn": null
+        }
+      ]
+    },
+    "mmsOutboundPerSegment": 0.022,
+    "mmsInboundLocal": 0.0165,
+    "mmsInboundTollFree": 0.02,
+    "voiceOutboundPerMinute": 0.0166,
+    "voiceOutboundBreakdown": "Outbound USA $0.0126/min (10% off $0.014 list) + Client Minutes $0.004/min.",
+    "voiceInboundPerMinute": 0.01165,
+    "voiceInboundBreakdown": "Incoming call $0.00765/min + Client Minutes $0.004/min.",
+    "voiceInboundForwardingPerMinute": 0.02,
+    "voiceTwoLegNote": "Inbound calls bill TWO legs: the call arriving at your platform number, and the forwarded leg to wherever you answer. Both are billed.",
+    "callRecordingPerMinute": 0.0025,
+    "callRecordingStoragePerMinuteMonth": 0.0005,
+    "callTranscriptionPerMinute": 0.024,
+    "answeringMachineDetectionPerCall": 0.0075,
+    "voicemailDropPerMinute": 0.018,
+    "transcriptionNote": "Call transcription at $0.024/min costs MORE than the outbound call it transcribes ($0.0166/min). Turning it on across a call centre roughly triples the per-minute cost.",
+    "localNumberPerMonth": 1.15,
+    "tollFreeNumberPerMonth": 2.15,
+    "emailPer1000": 0.675,
+    "emailVerificationPer1000": 2.5,
+    "emailNote": "LC Email. No free tier — all incoming and outgoing email (To, CC and BCC) is billed. Forwarding is billed at the same rate as sending.",
+    "emailSourceUrl": "https://help.gohighlevel.com/support/solutions/articles/48001220605-what-is-lc-email-",
+    "premiumWorkflowActionPerExecution": 0.01,
+    "premiumWorkflowNote": "Premium workflow actions bill per execution."
+  },
+  "a2p": {
+    "note": "One-time brand and campaign registration, plus a recurring monthly campaign fee. Pass-through from The Campaign Registry and subject to change.",
+    "soleProprietor": {
+      "dailySegmentLimit": 3000,
+      "monthlyCampaignFeeMax": 2.1,
+      "oneTimeRegistrationMax": 23.475
+    },
+    "markupNote": "A2P registration fees and SMS/MMS carrier fees carry a 5% markup when agency re-billing is enabled.",
+    "sourceUrl": "https://help.gohighlevel.com/support/solutions/articles/48001223556-phone-system-pricing-billing-guide"
+  },
+  "ai": {
+    "sourceUrl": "https://help.gohighlevel.com/support/solutions/articles/155000006652",
+    "tokenInputPer1M": 1.25,
+    "tokenOutputPer1M": 10.0,
+    "vendorExample": "HighLevel's own worked example: a conversation using 100,000 input and 25,000 output tokens costs $0.375.",
+    "twoMeterWarning": "HighLevel prices Voice AI as \"Voice + token cost\". The phone minutes are billed by LC Phone SEPARATELY from the AI tokens, on every plan including AI Employee Unlimited. Two meters run at once.",
+    "fairUseWarning": "AI Employee Unlimited is \"unlimited, subject to fair use\". Unlimited is throttleable under the terms.",
+    "models": [
+      {
+        "id": "pay-per-use",
+        "name": "Pay-per-use",
+        "monthlyPerLocation": 0,
+        "conversationPerMessageEstimate": 0.0075,
+        "estimateBasis": "DERIVED, not published. HighLevel bills tokens, not messages. This assumes ~2,000 input + 500 output tokens per agent response at the published $1.25/1M input and $10.00/1M output rates. Your real figure depends on prompt and context length.",
+        "voiceEnginePerMinute": 0.045,
+        "ttsPerMinuteLow": 0.015,
+        "ttsPerMinuteHigh": 0.17,
+        "reviewsAiPerReview": 0.01,
+        "contentAiPerImage": 0.063,
+        "contentAiPer1000Words": 0.0945,
+        "commissionable": false
+      },
+      {
+        "id": "growth",
+        "name": "AI Employee Growth",
+        "monthlyPerLocation": 50,
+        "includedConversationResponses": 1000,
+        "includedVoiceMinutes": 100,
+        "note": "1,000 agent responses and 100 AI agent minutes per month per sub-account. Unlimited Reviews AI and Content AI. Overage falls back to token cost.",
+        "commissionable": false,
+        "commissionNote": "Earns NodeRow no affiliate commission."
+      },
+      {
+        "id": "unlimited",
+        "name": "AI Employee Unlimited",
+        "monthlyPerLocation": 97,
+        "includedConversationResponses": null,
+        "includedVoiceMinutes": null,
+        "note": "Unlimited Conversation AI and Voice AI, subject to fair use. 3x Ask AI and AI Studio allowance.",
+        "commissionable": true,
+        "commissionNote": "The only AI tier that earns NodeRow a commission."
+      }
+    ]
+  },
+  "rebilling": {
+    "markupRequiresPlan": "agency-pro",
+    "atCostRequiresPlan": "unlimited",
+    "models": [
+      "multiplier",
+      "fixed-rate"
+    ],
+    "marginTrapWarning": "HighLevel bills your agency on ACTUAL consumption regardless of what you charge the sub-account. Set a flat rate below real usage cost and you absorb the loss on every unit.",
+    "marginTrapQuote": "Your agency continues to be charged by HighLevel based on actual token consumption for AI products, regardless of the pricing model configured for sub-accounts.",
+    "sourceUrl": "https://help.gohighlevel.com/support/solutions/articles/155000008422-fixed-rate-rebilling-for-ai-products"
+  },
+  "addOns": [
+    {
+      "name": "AI Employee Growth",
+      "price": 50,
+      "unit": "month per sub-account"
+    },
+    {
+      "name": "AI Employee Unlimited",
+      "price": 97,
+      "unit": "month per sub-account"
+    },
+    {
+      "name": "Branded Client Portal App",
+      "price": 49,
+      "unit": "month per sub-account"
+    },
+    {
+      "name": "Dedicated email IP",
+      "price": 59,
+      "unit": "month per IP"
+    },
+    {
+      "name": "HighLevel Certification Program",
+      "price": 97,
+      "unit": "month"
+    },
+    {
+      "name": "HIPAA compliance",
+      "price": 297,
+      "unit": "month"
+    },
+    {
+      "name": "Online listings management",
+      "price": 30,
+      "unit": "month per sub-account"
+    },
+    {
+      "name": "Premium prospecting tool",
+      "price": 29,
+      "unit": "month per sub-account"
+    },
+    {
+      "name": "Premium support",
+      "price": 500,
+      "unit": "month"
+    },
+    {
+      "name": "SEO (powered by Search Atlas)",
+      "price": 79,
+      "unit": "month per sub-account"
+    },
+    {
+      "name": "WhatsApp integration",
+      "price": 10,
+      "unit": "month per sub-account"
+    },
+    {
+      "name": "White label mobile app",
+      "price": 497,
+      "unit": "month"
+    },
+    {
+      "name": "WordPress hosting",
+      "price": 10,
+      "unit": "month per site, starting price"
+    }
+  ],
+  "addOnsNote": "HighLevel states most add-ons can be resold with your own markup on the Agency Pro plan. Eleven of the thirteen are billed PER SUB-ACCOUNT, so they scale with client count rather than being flat.",
+  "unverified": [
+    "Extended 30/60-day trial length via affiliate links. The pricing page states 14 days on all three plans. Do not claim a longer trial without testing the link and screenshotting the result.",
+    "A one-time App Store submission fee for the white-label app, beyond the $497/month.",
+    "Default daily email/SMS sending caps by plan tier.",
+    "Official storage limits.",
+    "Typical agency monthly wallet spend. No official benchmark exists; any figure quoted as typical is a model."
+  ]
+}

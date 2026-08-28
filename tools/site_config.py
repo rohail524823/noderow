@@ -39,6 +39,8 @@ NAV = [
 
 FOOTER_COLUMNS = [
     ("Compare", [
+        ("GoHighLevel cost calculator", "/gohighlevel-true-cost-calculator/"),
+        ("GoHighLevel pricing explained", "/gohighlevel-pricing-explained/"),
         ("All-in-one vs stitched stack", "/compare/gohighlevel-vs-stitched-stack/"),
         ("GoHighLevel alternatives", "/compare/gohighlevel-alternatives/"),
         ("n8n vs Make vs Zapier", "/compare/n8n-vs-make-vs-zapier/"),
@@ -70,10 +72,11 @@ DISCLOSURE_SHORT = (
 )
 
 DISCLOSURE_INLINE = (
-    "NodeRow earns a commission if you sign up for GoHighLevel through the links "
-    "on this page. That does not change what it costs you, and it does not change "
-    "what gets recommended — tools that pay us nothing are named here too, and "
-    "labelled as such."
+    "NodeRow earns a 40% recurring commission if you sign up for GoHighLevel "
+    "through the links on this page, tracked for 90 days on a last-click basis. "
+    "That does not change what it costs you, and it does not change what gets "
+    "recommended — tools that pay us nothing are named here too, and labelled "
+    "as such."
 )
 
 GA4_MEASUREMENT_ID = ""  # set once the property exists; empty ships no analytics tag

@@ -39,7 +39,30 @@ def product(slug):
     return BY_SLUG[slug]
 
 
-def outbound(slug, anchor, *, placement="body"):
+def resolve_link(slug, dest="default"):
+    """Return (href, affiliate_id) for a product, routed by destination.
+
+    The affiliate id is NOT constant across a program's campaigns. GoHighLevel
+    issues a different id per campaign, so sending SaaS Pro traffic through the
+    main campaign's link silently drops that campaign's commission — the click
+    works, the signup completes, and nothing is ever paid. Routing by intent is
+    therefore a correctness requirement, not an optimisation.
+    """
+    p = product(slug)
+    links = p.get("affiliateLinks")
+    if not links:
+        # Single-link programs (and unmonetized products) keep the simple shape.
+        return p.get("affiliateUrl") or p["url"], None
+    if dest not in links:
+        raise KeyError(
+            f"{slug} has no affiliate link destination {dest!r}. "
+            f"Known: {sorted(links)}"
+        )
+    entry = links[dest]
+    return entry["url"], entry.get("affiliateId")
+
+
+def outbound(slug, anchor, *, placement="body", dest="default"):
     """Render an outbound product link.
 
     Monetizable products get the full affiliate treatment: sponsored/nofollow,
@@ -47,7 +70,7 @@ def outbound(slug, anchor, *, placement="body"):
     get a plain link, because pretending otherwise would be a lie.
     """
     p = product(slug)
-    href = p.get("affiliateUrl") or p["url"]
+    href, aff_id = resolve_link(slug, dest)
     anchor = html.escape(anchor)
 
     if not p["monetizable"]:
@@ -56,48 +79,68 @@ def outbound(slug, anchor, *, placement="body"):
             f"{anchor}</a>"
         )
 
+    id_attr = f' data-aff-id="{aff_id}"' if aff_id else ""
     return (
-        f"<!-- affiliate-link: {p['slug']} placement={placement} -->\n"
+        f"<!-- affiliate-link: {p['slug']} dest={dest} placement={placement} -->\n"
         f'<a class="out out-aff" href="{href}" target="_blank" '
         f'rel="sponsored nofollow noopener" '
-        f'data-aff="{p["slug"]}" data-placement="{placement}">{anchor}</a>'
+        f'data-aff="{p["slug"]}" data-dest="{dest}"{id_attr} '
+        f'data-placement="{placement}">{anchor}</a>'
     )
 
 
-def cta(slug, anchor, *, placement, note=None):
+def cta(slug, anchor, *, placement, note=None, dest="default"):
     """A primary call-to-action button wrapping an outbound link."""
     p = product(slug)
-    href = p.get("affiliateUrl") or p["url"]
+    href, aff_id = resolve_link(slug, dest)
     rel = (
         'rel="sponsored nofollow noopener"'
         if p["monetizable"]
         else 'rel="noopener"'
     )
     marker = (
-        f"<!-- affiliate-link: {p['slug']} placement={placement} -->\n"
+        f"<!-- affiliate-link: {p['slug']} dest={dest} placement={placement} -->\n"
         if p["monetizable"]
         else ""
     )
+    id_attr = f' data-aff-id="{aff_id}"' if aff_id else ""
     note_html = f'<span class="cta-note">{html.escape(note)}</span>' if note else ""
     return f"""{marker}<p class="cta-row">
 <a class="btn btn-primary" href="{href}" target="_blank" {rel}
-   data-aff="{p['slug']}" data-placement="{placement}">{html.escape(anchor)}</a>
+   data-aff="{p['slug']}" data-dest="{dest}"{id_attr}
+   data-placement="{placement}">{html.escape(anchor)}</a>
 {note_html}
 </p>"""
 
 
 def inline_disclosure():
-    """Sits above the first affiliate link on every page that carries one.
+    """Sits at the TOP of the page, before the main content.
 
-    Footer-only disclosure across a site full of affiliate links is a real FTC
-    gap. This is the inline half; the footer line and /affiliate-disclosure/
-    are the other two.
+    HighLevel's program rules are specific and stricter than "somewhere on the
+    page": place it "at the top of the post before the main content", in plain
+    language, not hidden in a footer. They also name the wording that fails —
+    "affiliate link" and "commissionable link" are called out as NOT clear
+    enough, so this says "earns a commission" explicitly.
     """
     return (
         '<aside class="disclosure" role="note">'
         '<span class="disclosure-tag">Disclosure</span>'
         f"<span>{DISCLOSURE_INLINE}</span>"
         "</aside>"
+    )
+
+
+def not_speaking_for(vendor="HighLevel"):
+    """Required whenever the page comments on a vendor's competitors.
+
+    Program rules: "If you comment on HighLevel competitors, make clear you're
+    not speaking for HighLevel, and keep it truthful and fair."
+    """
+    return (
+        '<p class="speaking-note"><strong>Independence note.</strong> '
+        f'NodeRow does not speak for {html.escape(vendor)} and is not affiliated '
+        'with it beyond earning an affiliate commission. Comparisons here are our '
+        'own assessment.</p>'
     )
 
 
@@ -226,6 +269,8 @@ ANALYTICS_JS = """<script>
       send('affiliate_click', {
         product: a.dataset.aff,
         placement: a.dataset.placement || 'body',
+        destination: a.dataset.dest || 'default',
+        affiliate_id: a.dataset.affId || '',
         link_url: a.href
       });
       return;

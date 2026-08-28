@@ -18,9 +18,9 @@
 <meta name="twitter:description" content="Exactly which links on NodeRow earn a commission, which earn nothing, and how that does and doesn't affect what gets recommended.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111827'/%3E%3Cpath d='M9 22V10l14 12V10' stroke='%236366f1' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="alternate" type="application/rss+xml" title="NodeRow" href="https://noderow.com/rss.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/fonts.css?v=1">
 <link rel="stylesheet" href="/css/site.css?v=1">
 <script type="application/ld+json">
 {
@@ -143,10 +143,33 @@
 disclosure buried in a footer isn't a disclosure.</p>
 
 <h2>What NodeRow earns from</h2>
-<p><strong>GoHighLevel</strong> is the main one. If you sign up through a link on
-this site, NodeRow receives a recurring commission for as long as you stay
-subscribed. It costs you nothing extra. This is the primary way the site is
-funded, and it's why GoHighLevel is covered in depth here.</p>
+<p><strong>GoHighLevel</strong> is the main one. Rather than describe it vaguely,
+here are the actual terms from the affiliate dashboard, checked
+<time datetime="2026-08-28">28 August 2026</time>:</p>
+<div class="table-scroll">
+<table class="cmp">
+<thead><tr><th scope="col">Term</th><th scope="col">What it is</th></tr></thead>
+<tbody>
+<tr><td data-label="Term">Commission</td>
+    <td data-label="What it is">40% recurring, plus 5% on second-tier referrals</td></tr>
+<tr><td data-label="Term">Duration</td>
+    <td data-label="What it is">The dashboard states no fixed term. Unlike Make (12 months) and n8n (12 months), it is not capped — but "lifetime" is not language the dashboard actually uses, so we don't either.</td></tr>
+<tr><td data-label="Term">Cookie window</td>
+    <td data-label="What it is">90 days, last-click attribution</td></tr>
+<tr><td data-label="Term">Payout</td>
+    <td data-label="What it is">Monthly, Net-15, above a $50 threshold</td></tr>
+<tr><td data-label="Term">Earns nothing</td>
+    <td data-label="What it is">Prospecting Tool; AI Employee Pay-Per-Use; AI Employee Growth ($50/mo). Only AI Employee Unlimited qualifies.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Last-click matters to you: if you visit here, then click someone else's link
+before subscribing, they get the commission, not us. That is how the program
+works and we are not going to pretend otherwise.</p>
+<p>One consequence worth naming: <strong>metered usage earns us nothing.</strong>
+The cost calculator on this site models SMS, email and AI usage in detail, and
+none of that spend pays NodeRow a penny. We built it anyway, because it is the
+part of the bill everyone else leaves out.</p>
 <p><strong>Make</strong> and <strong>n8n Cloud</strong> pay a commission for a
 limited period after signup. Where those links appear, they're marked the same way.</p>
 
@@ -194,12 +217,14 @@ the footer.</li>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-<div class="footer-col"><h2>Compare</h2><ul><li><span class="pending-link" data-link-to="/compare/gohighlevel-vs-stitched-stack/">All-in-one vs stitched stack</span></li>
+<div class="footer-col"><h2>Compare</h2><ul><li><a href="/gohighlevel-true-cost-calculator/">GoHighLevel cost calculator</a></li>
+<li><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</a></li>
+<li><span class="pending-link" data-link-to="/compare/gohighlevel-vs-stitched-stack/">All-in-one vs stitched stack</span></li>
 <li><span class="pending-link" data-link-to="/compare/gohighlevel-alternatives/">GoHighLevel alternatives</span></li>
 <li><span class="pending-link" data-link-to="/compare/n8n-vs-make-vs-zapier/">n8n vs Make vs Zapier</span></li>
 <li><span class="pending-link" data-link-to="/compare/zapier-alternatives/">Zapier alternatives</span></li>
 <li><a href="/compare/">Compare hub</a></li></ul></div><div class="footer-col"><h2>Guides</h2><ul><li><span class="pending-link" data-link-to="/automate-client-onboarding/">Automate client onboarding</span></li>
-<li><span class="pending-link" data-link-to="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</span></li>
+<li><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</a></li>
 <li><span class="pending-link" data-link-to="/automate-lead-capture/">Lead capture to CRM sync</span></li>
 <li><a href="/guides/">Guides hub</a></li></ul></div><div class="footer-col"><h2>Products</h2><ul><li><a href="/packs/">Workflow Packs</a></li>
 <li><a href="/build/">Get It Built</a></li></ul></div><div class="footer-col"><h2>Site</h2><ul><li><a href="/about/">About</a></li>
@@ -230,6 +255,8 @@ the footer.</li>
       send('affiliate_click', {
         product: a.dataset.aff,
         placement: a.dataset.placement || 'body',
+        destination: a.dataset.dest || 'default',
+        affiliate_id: a.dataset.affId || '',
         link_url: a.href
       });
       return;
@@ -255,5 +282,6 @@ the footer.</li>
   }
 })();
 </script>
+
 </body>
 </html>

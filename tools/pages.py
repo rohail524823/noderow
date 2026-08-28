@@ -120,8 +120,18 @@ failure modes are what nobody writes about.</p>
 
 <p class="cta-row" style="margin-top:2rem">
   <a class="btn btn-ghost" href="/compare/">See how the routes compare</a>
-  <span class="cta-note">The full cost breakdown is being written now.</span>
 </p>
+
+<div class="feature-strip">
+  <div>
+    <p class="eyebrow">Free tool</p>
+    <h3>What does GoHighLevel actually cost you?</h3>
+    <p>The plan price is one of three layers. Put your client count and message
+    volume in and get the real monthly number — plus whether the $497 plan pays
+    for itself at your rebilling markup. Every rate dated and sourced.</p>
+  </div>
+  <a class="btn btn-primary" href="/gohighlevel-true-cost-calculator/">Open the calculator</a>
+</div>
 </div>
 </section>
 
@@ -150,12 +160,14 @@ project. These are being written now.</p>
   <article class="node">
     <div class="node-head">
       <span class="node-kicker">Pricing</span>
-      {status_pill("waiting", "Writing")}
+      {status_pill("ok", "Live")}
     </div>
-    <h3>GoHighLevel pricing, explained without the pitch</h3>
-    <p>What each tier gets you, when the jump is worth it, and the costs that sit
-    outside the subscription — sending fees, phone numbers, migration time.</p>
-    <p class="node-chain">$97 → $297 → $497</p>
+    <h3><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing, explained
+    without the pitch</a></h3>
+    <p>What each tier gets you, when the jump is worth it, and the metered costs
+    that sit outside the subscription — including carrier fees that add ~56% to
+    your SMS bill.</p>
+    <p class="node-chain">$97 → $297 → $497 + what sits on top</p>
   </article>
 
   <article class="node">
@@ -212,6 +224,27 @@ price.</p>
 
 {inline_disclosure()}
 
+<h2>Live now</h2>
+<div class="node-grid">
+  <article class="node">
+    <div class="node-head"><span class="node-kicker">Calculator</span>
+    {status_pill("ok", "Live")}</div>
+    <h3><a href="/gohighlevel-true-cost-calculator/">GoHighLevel true cost calculator</a></h3>
+    <p>Models the subscription, metered usage and AI layers together, and works out
+    whether Agency Pro at $497 pays for itself at your markup.</p>
+    <p class="node-chain">Plan + usage + AI → real monthly cost</p>
+  </article>
+  <article class="node">
+    <div class="node-head"><span class="node-kicker">Pricing</span>
+    {status_pill("ok", "Live")}</div>
+    <h3><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</a></h3>
+    <p>Every plan, every metered rate and every add-on, read from HighLevel's own
+    pages and dated. Including the carrier surcharges nobody else models.</p>
+    <p class="node-chain">$97 → $297 → $497 + what sits on top</p>
+  </article>
+</div>
+
+<h2>Comparisons in progress</h2>
 <div class="node-grid">
   <article class="node">
     <div class="node-head"><span class="node-kicker">All-in-one vs stack</span>
@@ -268,6 +301,7 @@ GUIDES_BODY = f"""
 each step, and where it breaks once real data hits it.</p>
 </div>
 
+<h2>Guides in progress</h2>
 <div class="node-grid">
   <article class="node">
     <div class="node-head"><span class="node-kicker">Onboarding</span>
@@ -342,6 +376,7 @@ the setup notes.</p>
      and reviews, not a permanent price. Target: 10 sales and 5 testimonials,
      then raise to $79. Do not surface this to readers. -->
 
+<h2>The packs</h2>
 <div class="node-grid">
   <article class="node">
     <div class="node-head"><span class="node-kicker">$39</span>
@@ -586,10 +621,33 @@ DISCLOSURE_BODY = f"""
 disclosure buried in a footer isn't a disclosure.</p>
 
 <h2>What NodeRow earns from</h2>
-<p><strong>GoHighLevel</strong> is the main one. If you sign up through a link on
-this site, NodeRow receives a recurring commission for as long as you stay
-subscribed. It costs you nothing extra. This is the primary way the site is
-funded, and it's why GoHighLevel is covered in depth here.</p>
+<p><strong>GoHighLevel</strong> is the main one. Rather than describe it vaguely,
+here are the actual terms from the affiliate dashboard, checked
+<time datetime="2026-08-28">28 August 2026</time>:</p>
+<div class="table-scroll">
+<table class="cmp">
+<thead><tr><th scope="col">Term</th><th scope="col">What it is</th></tr></thead>
+<tbody>
+<tr><td data-label="Term">Commission</td>
+    <td data-label="What it is">40% recurring, plus 5% on second-tier referrals</td></tr>
+<tr><td data-label="Term">Duration</td>
+    <td data-label="What it is">The dashboard states no fixed term. Unlike Make (12 months) and n8n (12 months), it is not capped — but "lifetime" is not language the dashboard actually uses, so we don't either.</td></tr>
+<tr><td data-label="Term">Cookie window</td>
+    <td data-label="What it is">90 days, last-click attribution</td></tr>
+<tr><td data-label="Term">Payout</td>
+    <td data-label="What it is">Monthly, Net-15, above a $50 threshold</td></tr>
+<tr><td data-label="Term">Earns nothing</td>
+    <td data-label="What it is">Prospecting Tool; AI Employee Pay-Per-Use; AI Employee Growth ($50/mo). Only AI Employee Unlimited qualifies.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Last-click matters to you: if you visit here, then click someone else's link
+before subscribing, they get the commission, not us. That is how the program
+works and we are not going to pretend otherwise.</p>
+<p>One consequence worth naming: <strong>metered usage earns us nothing.</strong>
+The cost calculator on this site models SMS, email and AI usage in detail, and
+none of that spend pays NodeRow a penny. We built it anyway, because it is the
+part of the bill everyone else leaves out.</p>
 <p><strong>Make</strong> and <strong>n8n Cloud</strong> pay a commission for a
 limited period after signup. Where those links appear, they're marked the same way.</p>
 

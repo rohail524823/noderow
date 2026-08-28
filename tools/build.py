@@ -17,6 +17,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import components  # noqa: E402
 import entity  # noqa: E402
 import head as head_mod  # noqa: E402
+import calculator_page  # noqa: E402
+import pricing_page  # noqa: E402
 import pages as pages_mod  # noqa: E402
 from site_config import SITE_NAME, SITE_URL  # noqa: E402
 from validate import validate_page  # noqa: E402
@@ -86,6 +88,9 @@ def render_page(page):
     )
 
     active = path if any(path == p for _, p in __import__("site_config").NAV) else None
+    scripts = "\n".join(
+        f'<script src="{src}" defer></script>' for src in page.get("scripts", [])
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -99,6 +104,7 @@ def render_page(page):
 </main>
 {components.footer()}
 {components.ANALYTICS_JS}
+{scripts}
 </body>
 </html>
 """
@@ -200,6 +206,8 @@ Host: noderow.com
 
 def main():
     pages = pages_mod.all_pages()
+    pages.append(calculator_page.build())
+    pages.append(pricing_page.build())
     known = {p["path"] for p in pages}
     known.add("/")
     # Footer/nav entries for pages that do not exist yet render as parked links.

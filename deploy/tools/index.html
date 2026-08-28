@@ -18,9 +18,9 @@
 <meta name="twitter:description" content="Every automation platform covered on NodeRow, with what each is good at, where it falls down, and whether NodeRow earns a commission.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111827'/%3E%3Cpath d='M9 22V10l14 12V10' stroke='%236366f1' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="alternate" type="application/rss+xml" title="NodeRow" href="https://noderow.com/rss.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/fonts.css?v=1">
 <link rel="stylesheet" href="/css/site.css?v=1">
 <script type="application/ld+json">
 {
@@ -143,7 +143,7 @@ on each card is generated from the same data that builds the links, so it can't
 drift.</p>
 </div>
 
-<aside class="disclosure" role="note"><span class="disclosure-tag">Disclosure</span><span>NodeRow earns a commission if you sign up for GoHighLevel through the links on this page. That does not change what it costs you, and it does not change what gets recommended — tools that pay us nothing are named here too, and labelled as such.</span></aside>
+<aside class="disclosure" role="note"><span class="disclosure-tag">Disclosure</span><span>NodeRow earns a 40% recurring commission if you sign up for GoHighLevel through the links on this page, tracked for 90 days on a last-click basis. That does not change what it costs you, and it does not change what gets recommended — tools that pay us nothing are named here too, and labelled as such.</span></aside>
 
 <h2 class="tool-cat">AI agent builder</h2>
 <div class="node-grid">
@@ -201,9 +201,9 @@ drift.</p>
 <h3>GoHighLevel</h3>
 <p><strong>Best for:</strong> Agencies and service businesses that want CRM, pipelines, email/SMS, booking, funnels and reporting billed as one product instead of six.</p>
 <p><strong>Weakness:</strong> It is a platform, not a connector. If your work is moving data between arbitrary APIs, GoHighLevel is the wrong shape and you will end up bolting Make or n8n onto it anyway.</p>
-<p class="node-chain">40% recurring for the life of the subscription. Does not expire at 12 months.</p>
-<p><!-- affiliate-link: gohighlevel placement=tool-directory -->
-<a class="out out-aff" href="https://www.gohighlevel.com" target="_blank" rel="sponsored nofollow noopener" data-aff="gohighlevel" data-placement="tool-directory">Visit GoHighLevel</a></p>
+<p class="node-chain">40% recurring, plus 5% second tier. The dashboard states no fixed term — it is not capped at 12 months the way Make and n8n are.</p>
+<p><!-- affiliate-link: gohighlevel dest=default placement=tool-directory -->
+<a class="out out-aff" href="https://www.gohighlevel.com/?fp_ref=bestaicertifications30" target="_blank" rel="sponsored nofollow noopener" data-aff="gohighlevel" data-dest="default" data-aff-id="bestaicertifications30" data-placement="tool-directory">Visit GoHighLevel</a></p>
 </article>
 <article class="node">
 <div class="node-head"><span class="node-kicker">Keap</span>
@@ -272,8 +272,8 @@ drift.</p>
 <p><strong>Best for:</strong> Visual multi-step workflows with branching, where per-operation pricing beats Zapier&#x27;s per-task pricing at volume.</p>
 <p><strong>Weakness:</strong> Operations are counted per module run, so a loop over 500 rows is 500 operations. Easy to underestimate.</p>
 <p class="node-chain">35% for 12 months. Clock starts at registration, not first payment.</p>
-<p><!-- affiliate-link: make placement=tool-directory -->
-<a class="out out-aff" href="https://www.make.com" target="_blank" rel="sponsored nofollow noopener" data-aff="make" data-placement="tool-directory">Visit Make</a></p>
+<p><!-- affiliate-link: make dest=default placement=tool-directory -->
+<a class="out out-aff" href="https://www.make.com" target="_blank" rel="sponsored nofollow noopener" data-aff="make" data-dest="default" data-placement="tool-directory">Visit Make</a></p>
 </article>
 <article class="node">
 <div class="node-head"><span class="node-kicker">n8n GmbH</span>
@@ -282,8 +282,8 @@ drift.</p>
 <p><strong>Best for:</strong> Teams who want per-execution rather than per-step pricing, and the option to drop into code when the visual nodes run out.</p>
 <p><strong>Weakness:</strong> Steeper learning curve than Make or Zapier. Expression syntax and item-vs-batch handling are where new users lose a day.</p>
 <p class="node-chain">30% for 12 months, 90-day cookie. Cloud only — self-hosted pays nothing.</p>
-<p><!-- affiliate-link: n8n-cloud placement=tool-directory -->
-<a class="out out-aff" href="https://n8n.io" target="_blank" rel="sponsored nofollow noopener" data-aff="n8n-cloud" data-placement="tool-directory">Visit n8n Cloud</a></p>
+<p><!-- affiliate-link: n8n-cloud dest=default placement=tool-directory -->
+<a class="out out-aff" href="https://n8n.io" target="_blank" rel="sponsored nofollow noopener" data-aff="n8n-cloud" data-dest="default" data-placement="tool-directory">Visit n8n Cloud</a></p>
 </article>
 <article class="node">
 <div class="node-head"><span class="node-kicker">n8n GmbH</span>
@@ -416,12 +416,14 @@ drift.</p>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-<div class="footer-col"><h2>Compare</h2><ul><li><span class="pending-link" data-link-to="/compare/gohighlevel-vs-stitched-stack/">All-in-one vs stitched stack</span></li>
+<div class="footer-col"><h2>Compare</h2><ul><li><a href="/gohighlevel-true-cost-calculator/">GoHighLevel cost calculator</a></li>
+<li><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</a></li>
+<li><span class="pending-link" data-link-to="/compare/gohighlevel-vs-stitched-stack/">All-in-one vs stitched stack</span></li>
 <li><span class="pending-link" data-link-to="/compare/gohighlevel-alternatives/">GoHighLevel alternatives</span></li>
 <li><span class="pending-link" data-link-to="/compare/n8n-vs-make-vs-zapier/">n8n vs Make vs Zapier</span></li>
 <li><span class="pending-link" data-link-to="/compare/zapier-alternatives/">Zapier alternatives</span></li>
 <li><a href="/compare/">Compare hub</a></li></ul></div><div class="footer-col"><h2>Guides</h2><ul><li><span class="pending-link" data-link-to="/automate-client-onboarding/">Automate client onboarding</span></li>
-<li><span class="pending-link" data-link-to="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</span></li>
+<li><a href="/gohighlevel-pricing-explained/">GoHighLevel pricing explained</a></li>
 <li><span class="pending-link" data-link-to="/automate-lead-capture/">Lead capture to CRM sync</span></li>
 <li><a href="/guides/">Guides hub</a></li></ul></div><div class="footer-col"><h2>Products</h2><ul><li><a href="/packs/">Workflow Packs</a></li>
 <li><a href="/build/">Get It Built</a></li></ul></div><div class="footer-col"><h2>Site</h2><ul><li><a href="/about/">About</a></li>
@@ -452,6 +454,8 @@ drift.</p>
       send('affiliate_click', {
         product: a.dataset.aff,
         placement: a.dataset.placement || 'body',
+        destination: a.dataset.dest || 'default',
+        affiliate_id: a.dataset.affId || '',
         link_url: a.href
       });
       return;
@@ -477,5 +481,6 @@ drift.</p>
   }
 })();
 </script>
+
 </body>
 </html>
