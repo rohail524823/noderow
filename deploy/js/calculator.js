@@ -161,6 +161,33 @@
 
     out.body.innerHTML = html;
     out.verdict.innerHTML = verdict(rows, best, ctx);
+    routeCta(best, ctx);
+  }
+
+  /* Point the CTA at the plan the reader's own numbers just recommended.
+   * Each destination carries a different campaign affiliate id, so the href and
+   * the id attribute have to move together — sending SaaS Pro traffic through
+   * the generic link would track under the wrong campaign and pay nothing. */
+  function routeCta(best, ctx) {
+    var links = RATES.links;
+    var cta = document.querySelector('#calc-cta a[data-aff]');
+    if (!cta || !links) return;
+
+    var key = 'pricing', label = 'See GoHighLevel plans and pricing';
+    if (best.plan.id === 'agency-pro' && links['saas-pro']) {
+      key = 'saas-pro';
+      label = 'Start a SaaS Pro trial';
+    } else if (ctx.annual && links.annual) {
+      key = 'annual';
+      label = 'See annual pricing';
+    }
+
+    var target = links[key];
+    if (!target || !target.url) return;
+    cta.href = target.url;
+    cta.textContent = label;
+    cta.setAttribute('data-dest', key);
+    if (target.id) cta.setAttribute('data-aff-id', target.id);
   }
 
   function verdict(rows, best, ctx) {

@@ -63,6 +63,17 @@ def validate_page(path, html, *, known_paths=None):
     if "aggregateRating" in html:
         fail("aggregateRating present — spam-policy violation, never emit it")
 
+    # --- tracking parameters must actually carry a value ---
+    # GoHighLevel's own dashboard ships at least one link with a bare "fp_ref="
+    # and no code. A link like that tracks nothing: the click works, the signup
+    # completes, and no commission is ever paid. Fail the build rather than
+    # publish a link that silently earns zero.
+    for href in re.findall(r'href="([^"]*[?&](?:fp_ref|am_id|ref)=[^"]*)"', html):
+        for param in ("fp_ref", "am_id", "ref"):
+            m = re.search(rf"[?&]{param}=([^&\"]*)", href)
+            if m is not None and not m.group(1).strip():
+                fail(f"tracking param {param} is empty in {href}")
+
     # --- affiliate link hygiene ---
     for tag in re.findall(r"<a\b[^>]*data-aff=[^>]*>", html):
         if "sponsored" not in tag or "nofollow" not in tag:

@@ -152,8 +152,18 @@ def _faq():
 
 def build():
     faq_html, faq_schema = _faq()
+    # The calculator swaps its CTA to match whichever plan the reader's own
+    # numbers just recommended. Each destination carries its own campaign id, so
+    # this is about being paid correctly as much as about relevance.
+    import components as _c
+    link_map = {
+        key: {"url": _c.resolve_link("gohighlevel", key)[0],
+              "id": _c.resolve_link("gohighlevel", key)[1]}
+        for key in ("pricing", "annual", "saas-pro", "bootcamp")
+    }
     rates_json = json.dumps(
-        {"plans": DATA["plans"], "usage": DATA["usage"]}, separators=(",", ":")
+        {"plans": DATA["plans"], "usage": DATA["usage"], "links": link_map},
+        separators=(",", ":"),
     )
 
     # Answer block: front-loaded, names its subjects, carries concrete numbers,
@@ -240,8 +250,11 @@ cheapest at your volume.</p>
   </noscript>
 </div>
 
-{cta("gohighlevel", "Start a GoHighLevel trial", placement="calculator-primary",
-     note="14-day trial. NodeRow earns a commission if you subscribe.")}
+<div class="calc-cta" id="calc-cta">
+{cta("gohighlevel", "See GoHighLevel plans and pricing", placement="calculator-primary",
+     dest="pricing",
+     note="NodeRow earns a commission if you subscribe. 90-day cookie, last click.")}
+</div>
 
 <div class="prose">
 {_worked_example()}

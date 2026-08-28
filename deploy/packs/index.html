@@ -262,6 +262,8 @@ your inbox when it's ready.</p>
       send('affiliate_click', {
         product: a.dataset.aff,
         placement: a.dataset.placement || 'body',
+        destination: a.dataset.dest || 'default',
+        affiliate_id: a.dataset.affId || '',
         link_url: a.href
       });
       return;

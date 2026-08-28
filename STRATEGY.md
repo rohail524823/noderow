@@ -188,20 +188,74 @@ unresolvable internal links, missing trailing slashes, affiliate links without
 `rel="sponsored nofollow"`, and any page carrying an affiliate link without an
 inline disclosure.
 
-## 8. Open items — things only Rohail can do
+## 8. Affiliate program — verified from the dashboard, 2026-08-28
 
-1. **Paste the real GoHighLevel referral link.** It is not in any email; it lives
-   in the dashboard at `affiliate.gohighlevel.com`. Then run
-   `python3 tools/affiliate.py gohighlevel "<url>"`. Until this happens the site
-   earns nothing.
-2. **Verify the cookie window on the affiliate account.** Sources disagree
-   between 30 and 90 days, and it changes attribution strategy materially.
-3. **Confirm the author display name** before it is baked into schema everywhere.
-4. **Spot-check the pricing figures against a real invoice.** `gohighlevel.com` is
+### Links are routed per destination, because the id changes per campaign
+
+This is the single easiest way to lose money silently, and it is now handled in
+code. GoHighLevel issues a **different affiliate id per campaign**:
+
+| Destination | Campaign | Affiliate id |
+|---|---|---|
+| `default`, `pricing`, `annual`, `ai`, `bootcamp` | HighLevel Affiliate Program | `…30` |
+| `saas-pro` | Supercharged SaaS Program | **`…65`** |
+| `certification` | HighLevel Certification Program | **`…33`** |
+
+Sending SaaS Pro traffic through the main campaign's link would track under the
+wrong campaign and pay nothing, with no visible symptom. `components.resolve_link()`
+routes by intent; the calculator swaps its CTA to `saas-pro` (id `…65`) the moment
+a reader's own numbers recommend Agency Pro.
+
+Note there are two distinct pro-trial paths: `/protrial` (id `…30`) on the main
+campaign and `/pro-trial` (id `…65`) on the SaaS campaign. They are not
+interchangeable.
+
+### Terms
+
+| Term | Value |
+|---|---|
+| Commission | 40% recurring + 5% second tier |
+| Duration | No fixed term stated in the dashboard. Not capped at 12 months like Make and n8n — but "lifetime" is not the dashboard's word, so the site does not use it |
+| Cookie | **90 days, last-click** |
+| Payout | Monthly, Net-15, $50 threshold |
+| Cancellation | Attribution survives 30 days past cancellation |
+
+### Non-commissionable — matters for content planning
+
+- Prospecting Tool — no reward at all
+- **AI Employee Pay-Per-Use** and **AI Employee Growth ($50/mo)** — earn nothing.
+  Only AI Employee Unlimited ($97/mo per location) qualifies
+- **Metered usage earns nothing.** The calculator models SMS/email/AI spend in
+  detail and none of it pays us. Worth saying out loud on the site — it is the
+  cheapest credibility available and it happens to be true
+
+### Operational risk to Rohail personally
+
+**Self-referrals are prohibited** and risk termination plus forfeiture of accrued
+commissions. Two live hazards given the build service:
+
+1. Do not sign up your own agency through your own link.
+2. When setting up a client, the **client** must click the link and complete
+   signup with their own information, device and payment method. Signing up on
+   their behalf in a way that misrepresents the purchaser is a policy breach.
+
+The full Affiliate Policy is referenced in the dashboard FAQ but not exposed as a
+clickable URL, so paid-search, brand-bidding and coupon-site restrictions remain
+unverified. Ask the Affiliate Manager for the document before running paid traffic.
+
+## 9. Open items — things only Rohail can do
+
+1. **Confirm the author display name** before it is baked into schema everywhere.
+   Currently `Rohail Nisar Ahmad`; the GHL account says `Rohail Nisar`.
+2. **Spot-check the pricing figures against a real invoice.** `gohighlevel.com` is
    unreachable from the build environment, so all rates were verified against
-   independent secondary sources. They are well-corroborated, not authoritative.
-5. Complete the Affiliate Welcome Survey and contact the assigned Affiliate
-   Manager — both are free distribution leverage sitting unused.
+   independent secondary sources. Well-corroborated, not authoritative.
+3. **Get the full Affiliate Policy** from the Affiliate Manager — the promotional
+   restrictions are not surfaced in the dashboard.
+4. **Confirm whether WLMA and HIPAA promotions are currently live** in the
+   Affiliate Community before writing anything that promotes them.
+5. Complete the Affiliate Welcome Survey and book the Affiliate Manager call
+   (`speakwith.us/expandteam`) — free distribution leverage sitting unused.
 
 ## Sources
 

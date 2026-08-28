@@ -611,10 +611,33 @@ DISCLOSURE_BODY = f"""
 disclosure buried in a footer isn't a disclosure.</p>
 
 <h2>What NodeRow earns from</h2>
-<p><strong>GoHighLevel</strong> is the main one. If you sign up through a link on
-this site, NodeRow receives a recurring commission for as long as you stay
-subscribed. It costs you nothing extra. This is the primary way the site is
-funded, and it's why GoHighLevel is covered in depth here.</p>
+<p><strong>GoHighLevel</strong> is the main one. Rather than describe it vaguely,
+here are the actual terms from the affiliate dashboard, checked
+<time datetime="2026-08-28">28 August 2026</time>:</p>
+<div class="table-scroll">
+<table class="cmp">
+<thead><tr><th scope="col">Term</th><th scope="col">What it is</th></tr></thead>
+<tbody>
+<tr><td data-label="Term">Commission</td>
+    <td data-label="What it is">40% recurring, plus 5% on second-tier referrals</td></tr>
+<tr><td data-label="Term">Duration</td>
+    <td data-label="What it is">The dashboard states no fixed term. Unlike Make (12 months) and n8n (12 months), it is not capped — but "lifetime" is not language the dashboard actually uses, so we don't either.</td></tr>
+<tr><td data-label="Term">Cookie window</td>
+    <td data-label="What it is">90 days, last-click attribution</td></tr>
+<tr><td data-label="Term">Payout</td>
+    <td data-label="What it is">Monthly, Net-15, above a $50 threshold</td></tr>
+<tr><td data-label="Term">Earns nothing</td>
+    <td data-label="What it is">Prospecting Tool; AI Employee Pay-Per-Use; AI Employee Growth ($50/mo). Only AI Employee Unlimited qualifies.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Last-click matters to you: if you visit here, then click someone else's link
+before subscribing, they get the commission, not us. That is how the program
+works and we are not going to pretend otherwise.</p>
+<p>One consequence worth naming: <strong>metered usage earns us nothing.</strong>
+The cost calculator on this site models SMS, email and AI usage in detail, and
+none of that spend pays NodeRow a penny. We built it anyway, because it is the
+part of the bill everyone else leaves out.</p>
 <p><strong>Make</strong> and <strong>n8n Cloud</strong> pay a commission for a
 limited period after signup. Where those links appear, they're marked the same way.</p>
 

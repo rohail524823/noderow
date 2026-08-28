@@ -216,10 +216,10 @@ cheapest at your volume.</p>
 </div>
 </div>
 
-<aside class="disclosure" role="note"><span class="disclosure-tag">Disclosure</span><span>NodeRow earns a commission if you sign up for GoHighLevel through the links on this page. That does not change what it costs you, and it does not change what gets recommended — tools that pay us nothing are named here too, and labelled as such.</span></aside>
+<aside class="disclosure" role="note"><span class="disclosure-tag">Disclosure</span><span>NodeRow earns a 40% recurring commission if you sign up for GoHighLevel through the links on this page, tracked for 90 days on a last-click basis. That does not change what it costs you, and it does not change what gets recommended — tools that pay us nothing are named here too, and labelled as such.</span></aside>
 
 <div id="calc" class="calc">
-  <script type="application/json" id="calc-rates">{"plans":[{"id":"starter","name":"Starter","monthly":97,"annualMonthlyEquivalent":80,"subAccounts":3,"subAccountsLabel":"3 sub-accounts","whiteLabel":false,"rebillAtCost":false,"rebillWithMarkup":false,"apiAccess":false,"saasMode":false,"bestFor":"One business, or an agency with up to three clients testing the platform."},{"id":"unlimited","name":"Unlimited","monthly":297,"annualMonthlyEquivalent":247,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":false,"apiAccess":true,"saasMode":false,"bestFor":"Agencies running more than three clients who want white-label and API access."},{"id":"agency-pro","name":"Agency Pro (SaaS Pro)","monthly":497,"annualMonthlyEquivalent":414,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":true,"apiAccess":true,"saasMode":true,"bestFor":"Agencies reselling the platform as their own software with a margin on usage."}],"usage":{"smsPerSegment":0.0079,"smsNote":"Per SMS segment. A message over 160 characters is billed as multiple segments \u2014 long messages cost more than the per-message figure suggests.","emailPer1000":0.675,"emailNote":"LC Email, built on Mailgun. Reported around $0.675-$1.00 per 1,000 sent depending on volume.","voicePerMinute":0.014,"voiceNote":"Outbound voice per minute, varies by destination country.","aiConversationPerMessage":0.02,"aiNote":"Conversation AI is billed per message and Voice AI per minute. Heavy AI use commonly adds $30-$150/month."}}</script>
+  <script type="application/json" id="calc-rates">{"plans":[{"id":"starter","name":"Starter","monthly":97,"annualMonthlyEquivalent":80,"subAccounts":3,"subAccountsLabel":"3 sub-accounts","whiteLabel":false,"rebillAtCost":false,"rebillWithMarkup":false,"apiAccess":false,"saasMode":false,"bestFor":"One business, or an agency with up to three clients testing the platform."},{"id":"unlimited","name":"Unlimited","monthly":297,"annualMonthlyEquivalent":247,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":false,"apiAccess":true,"saasMode":false,"bestFor":"Agencies running more than three clients who want white-label and API access."},{"id":"agency-pro","name":"Agency Pro (SaaS Pro)","monthly":497,"annualMonthlyEquivalent":414,"subAccounts":null,"subAccountsLabel":"Unlimited sub-accounts","whiteLabel":true,"rebillAtCost":true,"rebillWithMarkup":true,"apiAccess":true,"saasMode":true,"bestFor":"Agencies reselling the platform as their own software with a margin on usage."}],"usage":{"smsPerSegment":0.0079,"smsNote":"Per SMS segment. A message over 160 characters is billed as multiple segments \u2014 long messages cost more than the per-message figure suggests.","emailPer1000":0.675,"emailNote":"LC Email, built on Mailgun. Reported around $0.675-$1.00 per 1,000 sent depending on volume.","voicePerMinute":0.014,"voiceNote":"Outbound voice per minute, varies by destination country.","aiConversationPerMessage":0.02,"aiNote":"Conversation AI is billed per message and Voice AI per minute. Heavy AI use commonly adds $30-$150/month."},"links":{"pricing":{"url":"https://www.gohighlevel.com/pricing?fp_ref=bestaicertifications30","id":"bestaicertifications30"},"annual":{"url":"https://gohighlevel.com/annual?fp_ref=bestaicertifications30","id":"bestaicertifications30"},"saas-pro":{"url":"https://www.gohighlevel.com/pro-trial?fp_ref=bestaicertifications65","id":"bestaicertifications65"},"bootcamp":{"url":"https://www.gohighlevel.com/highlevel-bootcamp?fp_ref=bestaicertifications30","id":"bestaicertifications30"}}}</script>
 
   <form class="calc-inputs" aria-labelledby="calc-inputs-h">
     <h2 id="calc-inputs-h" class="calc-sub">Your numbers</h2>
@@ -272,12 +272,15 @@ cheapest at your volume.</p>
   </noscript>
 </div>
 
-<!-- affiliate-link: gohighlevel placement=calculator-primary -->
+<div class="calc-cta" id="calc-cta">
+<!-- affiliate-link: gohighlevel dest=pricing placement=calculator-primary -->
 <p class="cta-row">
-<a class="btn btn-primary" href="https://www.gohighlevel.com" target="_blank" rel="sponsored nofollow noopener"
-   data-aff="gohighlevel" data-placement="calculator-primary">Start a GoHighLevel trial</a>
-<span class="cta-note">14-day trial. NodeRow earns a commission if you subscribe.</span>
+<a class="btn btn-primary" href="https://www.gohighlevel.com/pricing?fp_ref=bestaicertifications30" target="_blank" rel="sponsored nofollow noopener"
+   data-aff="gohighlevel" data-dest="pricing" data-aff-id="bestaicertifications30"
+   data-placement="calculator-primary">See GoHighLevel plans and pricing</a>
+<span class="cta-note">NodeRow earns a commission if you subscribe. 90-day cookie, last click.</span>
 </p>
+</div>
 
 <div class="prose">
 <h2 id="worked-example">A worked example: 10 clients</h2>
@@ -462,6 +465,8 @@ No public cash affiliate program. NodeRow earns nothing from Zapier, ever.</span
       send('affiliate_click', {
         product: a.dataset.aff,
         placement: a.dataset.placement || 'body',
+        destination: a.dataset.dest || 'default',
+        affiliate_id: a.dataset.affId || '',
         link_url: a.href
       });
       return;

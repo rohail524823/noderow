@@ -143,7 +143,7 @@ on each card is generated from the same data that builds the links, so it can't
 drift.</p>
 </div>
 
-<aside class="disclosure" role="note"><span class="disclosure-tag">Disclosure</span><span>NodeRow earns a commission if you sign up for GoHighLevel through the links on this page. That does not change what it costs you, and it does not change what gets recommended — tools that pay us nothing are named here too, and labelled as such.</span></aside>
+<aside class="disclosure" role="note"><span class="disclosure-tag">Disclosure</span><span>NodeRow earns a 40% recurring commission if you sign up for GoHighLevel through the links on this page, tracked for 90 days on a last-click basis. That does not change what it costs you, and it does not change what gets recommended — tools that pay us nothing are named here too, and labelled as such.</span></aside>
 
 <h2 class="tool-cat">AI agent builder</h2>
 <div class="node-grid">
@@ -201,9 +201,9 @@ drift.</p>
 <h3>GoHighLevel</h3>
 <p><strong>Best for:</strong> Agencies and service businesses that want CRM, pipelines, email/SMS, booking, funnels and reporting billed as one product instead of six.</p>
 <p><strong>Weakness:</strong> It is a platform, not a connector. If your work is moving data between arbitrary APIs, GoHighLevel is the wrong shape and you will end up bolting Make or n8n onto it anyway.</p>
-<p class="node-chain">40% recurring for the life of the subscription. Does not expire at 12 months.</p>
-<p><!-- affiliate-link: gohighlevel placement=tool-directory -->
-<a class="out out-aff" href="https://www.gohighlevel.com" target="_blank" rel="sponsored nofollow noopener" data-aff="gohighlevel" data-placement="tool-directory">Visit GoHighLevel</a></p>
+<p class="node-chain">40% recurring, plus 5% second tier. The dashboard states no fixed term — it is not capped at 12 months the way Make and n8n are.</p>
+<p><!-- affiliate-link: gohighlevel dest=default placement=tool-directory -->
+<a class="out out-aff" href="https://www.gohighlevel.com/?fp_ref=bestaicertifications30" target="_blank" rel="sponsored nofollow noopener" data-aff="gohighlevel" data-dest="default" data-aff-id="bestaicertifications30" data-placement="tool-directory">Visit GoHighLevel</a></p>
 </article>
 <article class="node">
 <div class="node-head"><span class="node-kicker">Keap</span>
@@ -272,8 +272,8 @@ drift.</p>
 <p><strong>Best for:</strong> Visual multi-step workflows with branching, where per-operation pricing beats Zapier&#x27;s per-task pricing at volume.</p>
 <p><strong>Weakness:</strong> Operations are counted per module run, so a loop over 500 rows is 500 operations. Easy to underestimate.</p>
 <p class="node-chain">35% for 12 months. Clock starts at registration, not first payment.</p>
-<p><!-- affiliate-link: make placement=tool-directory -->
-<a class="out out-aff" href="https://www.make.com" target="_blank" rel="sponsored nofollow noopener" data-aff="make" data-placement="tool-directory">Visit Make</a></p>
+<p><!-- affiliate-link: make dest=default placement=tool-directory -->
+<a class="out out-aff" href="https://www.make.com" target="_blank" rel="sponsored nofollow noopener" data-aff="make" data-dest="default" data-placement="tool-directory">Visit Make</a></p>
 </article>
 <article class="node">
 <div class="node-head"><span class="node-kicker">n8n GmbH</span>
@@ -282,8 +282,8 @@ drift.</p>
 <p><strong>Best for:</strong> Teams who want per-execution rather than per-step pricing, and the option to drop into code when the visual nodes run out.</p>
 <p><strong>Weakness:</strong> Steeper learning curve than Make or Zapier. Expression syntax and item-vs-batch handling are where new users lose a day.</p>
 <p class="node-chain">30% for 12 months, 90-day cookie. Cloud only — self-hosted pays nothing.</p>
-<p><!-- affiliate-link: n8n-cloud placement=tool-directory -->
-<a class="out out-aff" href="https://n8n.io" target="_blank" rel="sponsored nofollow noopener" data-aff="n8n-cloud" data-placement="tool-directory">Visit n8n Cloud</a></p>
+<p><!-- affiliate-link: n8n-cloud dest=default placement=tool-directory -->
+<a class="out out-aff" href="https://n8n.io" target="_blank" rel="sponsored nofollow noopener" data-aff="n8n-cloud" data-dest="default" data-placement="tool-directory">Visit n8n Cloud</a></p>
 </article>
 <article class="node">
 <div class="node-head"><span class="node-kicker">n8n GmbH</span>
@@ -453,6 +453,8 @@ drift.</p>
       send('affiliate_click', {
         product: a.dataset.aff,
         placement: a.dataset.placement || 'body',
+        destination: a.dataset.dest || 'default',
+        affiliate_id: a.dataset.affId || '',
         link_url: a.href
       });
       return;

@@ -13,10 +13,9 @@
       "vendor": "HighLevel Inc.",
       "category": "Agency / CRM platform",
       "url": "https://www.gohighlevel.com",
-      "affiliateUrl": null,
       "monetizable": true,
-      "commissionNote": "40% recurring for the life of the subscription. Does not expire at 12 months.",
-      "commissionRate": "40% recurring",
+      "commissionNote": "40% recurring, plus 5% second tier. The dashboard states no fixed term — it is not capped at 12 months the way Make and n8n are.",
+      "commissionRate": "40% recurring + 5% second tier",
       "commissionExpires": false,
       "pricingModel": "Flat monthly per account, unlimited sub-accounts on higher tiers",
       "tiers": [
@@ -40,7 +39,7 @@
         }
       ],
       "freeTier": false,
-      "trial": "14-day trial",
+      "trial": "30-day trial via the Bootcamp offer; 14-day standard",
       "bestFor": "Agencies and service businesses that want CRM, pipelines, email/SMS, booking, funnels and reporting billed as one product instead of six.",
       "weakness": "It is a platform, not a connector. If your work is moving data between arbitrary APIs, GoHighLevel is the wrong shape and you will end up bolting Make or n8n onto it anyway.",
       "priceSource": "https://www.gohighlevel.com/pricing",
@@ -49,7 +48,70 @@
       "supersededUrls": [],
       "retiredNames": [
         "HighLevel"
-      ]
+      ],
+      "affiliateProgram": {
+        "network": "FirstPromoter",
+        "param": "fp_ref",
+        "cookieDays": 90,
+        "attribution": "last-click",
+        "cookieNote": "90-day last-click window. Cancelled customers stay attributed to the original affiliate for 30 days after cancellation.",
+        "secondTierRate": "5%",
+        "payoutThresholdUsd": 50,
+        "payoutSchedule": "Monthly, Net-15 — earned in month N, paid on the 15th of N+1",
+        "nonCommissionable": [
+          "Prospecting Tool — no reward",
+          "AI Employee Pay-Per-Use — metered usage earns nothing",
+          "AI Employee Growth ($50/mo) — earns nothing; only AI Employee Unlimited ($97/mo per location) qualifies",
+          "Self-referrals — prohibited, risks termination and forfeiture"
+        ],
+        "verifiedFromDashboard": "2026-08-28"
+      },
+      "affiliateLinks": {
+        "default": {
+          "url": "https://www.gohighlevel.com/?fp_ref=bestaicertifications30",
+          "campaign": "HighLevel Affiliate Program",
+          "affiliateId": "bestaicertifications30",
+          "use": "Generic mentions where no specific plan or offer is in view."
+        },
+        "pricing": {
+          "url": "https://www.gohighlevel.com/pricing?fp_ref=bestaicertifications30",
+          "campaign": "HighLevel Affiliate Program",
+          "affiliateId": "bestaicertifications30",
+          "use": "Reader is comparing plans — lands on all three plans and annual pricing."
+        },
+        "annual": {
+          "url": "https://gohighlevel.com/annual?fp_ref=bestaicertifications30",
+          "campaign": "HighLevel Affiliate Program",
+          "affiliateId": "bestaicertifications30",
+          "use": "Reader has chosen annual billing (Starter or Unlimited).",
+          "note": "Stored without the www subdomain in the dashboard. Kept verbatim."
+        },
+        "saas-pro": {
+          "url": "https://www.gohighlevel.com/pro-trial?fp_ref=bestaicertifications65",
+          "campaign": "Supercharged SaaS Program",
+          "affiliateId": "bestaicertifications65",
+          "use": "Reader is heading for the $497 SaaS Pro plan. DIFFERENT affiliate id.",
+          "note": "Distinct from the main campaign's /protrial path, which uses id ...30. This campaign explicitly covers Pro SaaS plans."
+        },
+        "ai": {
+          "url": "https://www.gohighlevel.com/ai?fp_ref=bestaicertifications30",
+          "campaign": "HighLevel Affiliate Program / AI Employee",
+          "affiliateId": "bestaicertifications30",
+          "use": "AI-feature context. Note AI Pay-Per-Use and AI Growth earn nothing."
+        },
+        "bootcamp": {
+          "url": "https://www.gohighlevel.com/highlevel-bootcamp?fp_ref=bestaicertifications30",
+          "campaign": "HighLevel Affiliate Program",
+          "affiliateId": "bestaicertifications30",
+          "use": "30-day trial offer. Strongest first-touch link for cold readers."
+        },
+        "certification": {
+          "url": "https://www.gohighlevel.com/certifications?fp_ref=bestaicertifications33",
+          "campaign": "HighLevel Certification Program",
+          "affiliateId": "bestaicertifications33",
+          "use": "Certification program ($97/mo or $970/yr). DIFFERENT affiliate id."
+        }
+      }
     },
     {
       "name": "Zapier",
