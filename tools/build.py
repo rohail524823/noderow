@@ -132,6 +132,7 @@ def build_sitemap(pages):
     <priority>{p.get('priority', '0.5')}</priority>
   </url>"""
         for p in pages
+        if p.get("sitemap", True)
     )
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

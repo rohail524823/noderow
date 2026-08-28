@@ -875,6 +875,8 @@ def all_pages():
         },
         {
             "path": "/packs/",
+            "robots": "noindex,follow",  # advertises packs that are not on sale yet
+            "sitemap": False,
             "title": "Pre-Built Automation Workflow Packs | NodeRow",
             "description": (
                 "Importable workflow packs for client onboarding, ecommerce ops, "
@@ -950,6 +952,8 @@ def all_pages():
         },
         {
             "path": "/privacy-policy/",
+            "robots": "noindex,follow",  # utility page, no search intent
+            "sitemap": False,
             "title": "Privacy Policy | NodeRow",
             "description": (
                 "What NodeRow collects when you subscribe or send an enquiry, how "
@@ -962,6 +966,8 @@ def all_pages():
         },
         {
             "path": "/contact/",
+            "robots": "noindex,follow",  # utility page, no search intent
+            "sitemap": False,
             "title": "Contact NodeRow",
             "description": (
                 "Get in touch with NodeRow about corrections, fixed-price automation "
