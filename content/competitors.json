@@ -1,0 +1,169 @@
+{
+  "_comment": [
+    "Part 7.2 competitor capture. Comparison and alternatives pages render from this",
+    "file so a price change is one edit, not twenty.",
+    "captureMethod records how each entry was obtained. 'primary-source' means the",
+    "vendor's own pricing page was read on capturedOn. 'pending' means the page is",
+    "fully client-rendered and returned no prices to the build environment — those",
+    "entries carry NO invented figures and must not be published until captured."
+  ],
+  "capturedOn": "2026-08-28",
+  "currency": "USD",
+
+  "competitors": [
+    {
+      "slug": "systeme-io",
+      "name": "systeme.io",
+      "category": "All-in-one funnel/course platform",
+      "url": "https://systeme.io",
+      "captureMethod": "primary-source",
+      "sourceUrl": "https://systeme.io/pricing",
+      "affiliateProgram": {
+        "rate": "60% lifetime recurring",
+        "note": "Highest headline rate of any adjacent program. Verify terms before promoting.",
+        "verified": false
+      },
+      "pricingModel": "Per contact, tiered. Unlimited email sends on every plan, 0% transaction fees.",
+      "tiers": [
+        {"name": "Free", "monthly": 0, "contacts": 2000,
+         "includes": "3 sales funnels, 1 course, all features"},
+        {"name": "Startup", "monthly": 17, "contacts": 5000,
+         "includes": "Unlimited funnels, 5 courses"},
+        {"name": "Webinar", "monthly": 47, "contacts": 10000,
+         "includes": "Unlimited everything plus automated webinars"},
+        {"name": "Unlimited", "monthly": 97, "contacts": null,
+         "includes": "Unlimited contacts, sub-accounts, free migration service"}
+      ],
+      "vsGoHighLevel": "Dramatically cheaper and genuinely has a free tier. Has sub-accounts at $97. Not an agency platform though — no white-label client sub-account model at GHL's depth, no native phone system, no SMS.",
+      "bestFor": "Solo operators and small course businesses who want funnels, email and courses in one place at a tenth of the price.",
+      "weakness": "No native telephony or SMS. Not built for managing many client accounts."
+    },
+    {
+      "slug": "keap",
+      "name": "Keap",
+      "category": "SMB CRM + marketing automation",
+      "url": "https://keap.com",
+      "captureMethod": "primary-source",
+      "sourceUrl": "https://keap.com/pricing",
+      "pricingModel": "Per contact, tiered, with metered messaging on top",
+      "startingMonthly": 299,
+      "startingAnnualTotal": 2988,
+      "usage": {
+        "smsPerMessage": 0.015,
+        "voicePerMinute": 0.01,
+        "note": "Usage over the plan allotment. Keap's SMS is roughly 2x GoHighLevel's $0.00747 per segment before carrier fees."
+      },
+      "messagingTiers": [
+        {"tier": 1, "monthlyAddOn": 0, "messages": 500, "label": "Included"},
+        {"tier": 2, "monthlyAddOn": 24, "messages": 1000},
+        {"tier": 3, "monthlyAddOn": 39, "messages": 2500},
+        {"tier": 4, "monthlyAddOn": 79, "messages": 5000},
+        {"tier": 5, "monthlyAddOn": 139, "messages": 10000},
+        {"tier": 6, "monthlyAddOn": 279, "messages": 25000}
+      ],
+      "vsGoHighLevel": "Starts at $299 against GoHighLevel's $97, and that is for ONE business. No agency sub-account model, no white-label, no rebilling. Per-contact pricing scales against you.",
+      "bestFor": "A single established service business that wants CRM and automation with a gentler learning curve.",
+      "weakness": "Expensive per contact, no agency architecture, messaging costs roughly double GoHighLevel's."
+    },
+    {
+      "slug": "kajabi",
+      "name": "Kajabi",
+      "category": "Course and membership platform",
+      "url": "https://kajabi.com",
+      "captureMethod": "primary-source",
+      "sourceUrl": "https://kajabi.com/pricing",
+      "pricingModel": "Flat tiers by contacts, websites and admin seats. No revenue sharing.",
+      "tiers": [
+        {"name": "Basic", "monthlyAnnualBilled": 143, "monthly": 179,
+         "annualSaving": 432, "websites": 1, "communities": 1, "adminUsers": 2},
+        {"name": "Growth", "monthlyAnnualBilled": 199, "monthly": 249,
+         "annualSaving": 600, "websites": 1, "communities": 1, "adminUsers": 11},
+        {"name": "Pro", "monthlyAnnualBilled": 399, "monthly": 499,
+         "annualSaving": 1200, "contacts": 100000, "websites": 3,
+         "communities": 3, "adminUsers": 26}
+      ],
+      "vsGoHighLevel": "Different job. Kajabi is a course/membership business platform; GoHighLevel is agency infrastructure. Kajabi's courses and communities are more mature; it has no phone system, no sub-account reselling, no white-label agency model.",
+      "bestFor": "Creators selling courses and memberships who want polish over breadth.",
+      "weakness": "No telephony, no agency model, and materially more expensive than GoHighLevel at the top tier."
+    },
+    {
+      "slug": "vendasta",
+      "name": "Vendasta",
+      "category": "Agency platform / white-label marketplace",
+      "url": "https://www.vendasta.com",
+      "captureMethod": "primary-source",
+      "sourceUrl": "https://www.vendasta.com/pricing/",
+      "pricingModel": "Unusual: $0 subscription with a monthly WHOLESALE SPEND MINIMUM. Each $1 spent on select products offsets $1 of the platform fee.",
+      "tiers": [
+        {"name": "Starter", "subscription": 0, "monthlyWholesaleMinimum": 99,
+         "contract": "Billed monthly, no contract",
+         "note": "At signing, the $99 platform fee covers month one."},
+        {"name": "Professional", "subscription": 0, "monthlyWholesaleMinimum": 499,
+         "contract": "1 year contract", "teamMembers": 5},
+        {"name": "Premium", "subscription": 0, "monthlyWholesaleMinimum": 999,
+         "contract": "1 year contract", "note": "Adds white-label client portal."}
+      ],
+      "vsGoHighLevel": "The closest structural competitor for agencies reselling software. But the commercial model is opposite: GoHighLevel charges a flat fee and lets you resell its own tooling; Vendasta charges nothing up front and requires a wholesale spend commitment, with a 1-year contract above Starter.",
+      "bestFor": "Agencies reselling a marketplace of third-party products rather than one platform.",
+      "weakness": "Annual contracts above the entry tier, and a spend minimum that is a floor rather than a ceiling."
+    },
+    {
+      "slug": "clickfunnels",
+      "name": "ClickFunnels",
+      "category": "Funnel builder",
+      "url": "https://www.clickfunnels.com",
+      "captureMethod": "pending",
+      "captureNote": "Returned HTTP 403 to the build environment. No pricing captured. Do NOT publish figures for this product until captured from the vendor page.",
+      "affiliateProgram": {
+        "rate": "30% recurring",
+        "note": "From the operator brief, not yet verified against the vendor page.",
+        "verified": false
+      },
+      "vsGoHighLevel": null
+    },
+    {
+      "slug": "activecampaign",
+      "name": "ActiveCampaign",
+      "category": "Marketing automation / email",
+      "url": "https://www.activecampaign.com",
+      "captureMethod": "pending",
+      "captureNote": "Pricing is rendered client-side; no figures present in the served HTML. Not captured.",
+      "vsGoHighLevel": null
+    },
+    {
+      "slug": "hubspot",
+      "name": "HubSpot Marketing Hub",
+      "category": "CRM / marketing suite",
+      "url": "https://www.hubspot.com",
+      "captureMethod": "pending",
+      "captureNote": "Pricing is rendered client-side; no figures present in the served HTML. Not captured.",
+      "vsGoHighLevel": null
+    },
+    {
+      "slug": "ontraport",
+      "name": "Ontraport",
+      "category": "CRM / marketing automation",
+      "url": "https://ontraport.com",
+      "captureMethod": "pending",
+      "captureNote": "Pricing is rendered client-side; no figures present in the served HTML. Not captured.",
+      "vsGoHighLevel": null
+    },
+    {
+      "slug": "pipedrive",
+      "name": "Pipedrive",
+      "category": "Sales CRM",
+      "url": "https://www.pipedrive.com",
+      "captureMethod": "pending",
+      "captureNote": "Returned HTTP 403 to the build environment. Not captured.",
+      "vsGoHighLevel": null
+    }
+  ],
+
+  "priceComparisonNotes": [
+    "GoHighLevel Starter at $97 undercuts Keap's $299 entry by a wide margin, and Keap's entry is for one business with no agency model.",
+    "systeme.io at $97 for its top tier is the genuine budget alternative, but it has no telephony and no agency sub-account architecture.",
+    "Keap charges $0.015 per SMS against GoHighLevel's $0.00747 base — roughly double, though GoHighLevel's carrier surcharges narrow that gap to around 40%.",
+    "Kajabi Pro at $499/mo costs more than GoHighLevel Agency Pro at $497 and does a much narrower job.",
+    "Vendasta is the only captured competitor with an agency reselling model comparable to GoHighLevel's, and it charges through a wholesale spend minimum rather than a subscription."
+  ]
+}

@@ -553,3 +553,10 @@ tr.calc-best td strong{ color:var(--ok); }
 .calc-note{ font-size:.88rem !important; color:var(--ink-3) !important; }
 .calc-trap span{ color:var(--warn); font-weight:600; }
 .calc-trap strong{ color:var(--warn); }
+
+.speaking-note{
+  font-size:.88rem; color:var(--ink-3);
+  border-left:2px solid var(--edge-strong); padding-left:.9rem;
+  margin-block:1.5rem; max-width:var(--measure);
+}
+.speaking-note strong{ color:var(--ink-2); }

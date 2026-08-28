@@ -66,9 +66,39 @@
         ],
         "verifiedFromDashboard": "2026-08-28",
         "qualifyingPeriodDays": 45,
-        "qualifyingNote": "A sale only counts if the account stays in good standing 45 days. Paused at any point in that window and it does not qualify at all — not partially.",
+        "qualifyingNote": "Verbatim: a purchase is a Qualified Purchase only if the customer clicks your link, completes a NEW purchase, and maintains the account in good standing for at least 45 days. It does not qualify if the account is paused at ANY point in that window.",
         "forfeitAfterDays": 120,
-        "clawback": "Unlimited in the contract text — deductible from future commissions on cancellation, refund or chargeback."
+        "clawback": "Unlimited in the contract text — deductible from future commissions on cancellation, refund or chargeback.",
+        "verificationMethod": "primary-source",
+        "policyUrls": [
+          "https://www.gohighlevel.com/affiliate-policy",
+          "https://www.gohighlevel.com/affiliate-policy/program-rules"
+        ],
+        "engagementRequirement": "HARD PAYOUT GATE. After your SECOND referred customer you must have a live conversation with a HighLevel team member about affiliate practices before you can receive additional commission payouts. Failure to complete it may result in delayed or forfeited payouts.",
+        "disclosureRules": {
+          "placement": "At the top of the post, BEFORE the main content. Not in a footer.",
+          "goodWording": [
+            "I earn a commission if you buy through my link.",
+            "(Paid Link)"
+          ],
+          "badWording": [
+            "affiliate link",
+            "commissionable link"
+          ],
+          "perPost": "Every post or video needs its own disclosure.",
+          "video": "Must be spoken aloud AND shown as superimposed text near the start. Description-only is insufficient."
+        },
+        "competitorRule": "If you comment on HighLevel competitors, make clear you are not speaking for HighLevel and keep it truthful and fair. No misleading or disparaging statements made to promote HighLevel.",
+        "keepCurrentRule": "Contractual: if something you have said about HighLevel becomes inaccurate, correct or remove it promptly. This is why every price on the site carries a checked date.",
+        "prohibited": [
+          "Brand in domain names or social media handles — this is why noderow.com is brand-independent",
+          "Self-referrals — using your own link for yourself or your business is 'fraudulent activity'",
+          "Offering discounts, coupons, promo codes, free trials, prizes or other incentives without express written authorisation",
+          "Contests, sweepstakes or giveaways referencing HighLevel without prior written approval",
+          "Cookie stuffing, forced redirects, cookie-setting pop-ups, masked referral URLs",
+          "Representing HighLevel as a franchise or business opportunity; income guarantees",
+          "Encouraging existing customers to re-affiliate"
+        ]
       },
       "affiliateLinks": {
         "default": {

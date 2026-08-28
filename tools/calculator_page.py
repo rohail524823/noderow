@@ -251,11 +251,11 @@ calculator below models every layer at your own volume.</p>
 <h1>What GoHighLevel actually costs</h1>
 </div>
 
+{inline_disclosure()}
+
 <div class="prose">
 {answer}
 </div>
-
-{inline_disclosure()}
 
 <div id="calc" class="calc">
   <script type="application/json" id="calc-rates">{rates_json}</script>

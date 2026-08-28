@@ -114,17 +114,33 @@ def cta(slug, anchor, *, placement, note=None, dest="default"):
 
 
 def inline_disclosure():
-    """Sits above the first affiliate link on every page that carries one.
+    """Sits at the TOP of the page, before the main content.
 
-    Footer-only disclosure across a site full of affiliate links is a real FTC
-    gap. This is the inline half; the footer line and /affiliate-disclosure/
-    are the other two.
+    HighLevel's program rules are specific and stricter than "somewhere on the
+    page": place it "at the top of the post before the main content", in plain
+    language, not hidden in a footer. They also name the wording that fails —
+    "affiliate link" and "commissionable link" are called out as NOT clear
+    enough, so this says "earns a commission" explicitly.
     """
     return (
         '<aside class="disclosure" role="note">'
         '<span class="disclosure-tag">Disclosure</span>'
         f"<span>{DISCLOSURE_INLINE}</span>"
         "</aside>"
+    )
+
+
+def not_speaking_for(vendor="HighLevel"):
+    """Required whenever the page comments on a vendor's competitors.
+
+    Program rules: "If you comment on HighLevel competitors, make clear you're
+    not speaking for HighLevel, and keep it truthful and fair."
+    """
+    return (
+        '<p class="speaking-note"><strong>Independence note.</strong> '
+        f'NodeRow does not speak for {html.escape(vendor)} and is not affiliated '
+        'with it beyond earning an affiliate commission. Comparisons here are our '
+        'own assessment.</p>'
     )
 
 
