@@ -36,11 +36,12 @@ def _worked_example():
     u = DATA["usage"]
     clients, sms, emails, voice, ai_voice = 10, 800, 4000, 200, 120
     sms_cost = clients * sms * u["smsPerSegment"]
+    carrier_cost = clients * sms * u["carrierFees"]["averageSmsOutbound"]
     email_cost = clients * emails / 1000 * u["emailPer1000"]
     voice_cost = clients * voice * u["voiceOutboundPerMinute"]
     ai_phone = clients * ai_voice * u["voiceOutboundPerMinute"]
     ai_plan = clients * 97
-    usage = sms_cost + email_cost + voice_cost + ai_phone
+    usage = sms_cost + carrier_cost + email_cost + voice_cost + ai_phone
     total = 297 + ai_plan + usage
     return f"""<h2 id="worked-example">A worked example: 10 clients</h2>
 <p>Ten sub-accounts on the Unlimited plan with AI Employee Unlimited enabled. Each
@@ -57,6 +58,9 @@ and runs 120 minutes of Voice AI a month. Modest &mdash; not a heavy sender.</p>
     <td data-label="Cost">${ai_plan:,.2f}</td></tr>
 <tr><td data-label="Line">SMS segments</td><td data-label="Volume">{clients * sms:,}</td>
     <td data-label="Cost">${sms_cost:,.2f}</td></tr>
+<tr><td data-label="Line"><strong>Carrier surcharges on those segments</strong></td>
+    <td data-label="Volume">{clients * sms:,}</td>
+    <td data-label="Cost"><strong>${carrier_cost:,.2f}</strong></td></tr>
 <tr><td data-label="Line">Emails</td><td data-label="Volume">{clients * emails:,}</td>
     <td data-label="Cost">${email_cost:,.2f}</td></tr>
 <tr><td data-label="Line">Voice minutes</td><td data-label="Volume">{clients * voice:,}</td>
@@ -71,10 +75,15 @@ and runs 120 minutes of Voice AI a month. Modest &mdash; not a heavy sender.</p>
 </table>
 </div>
 <p>The advertised price is $297. The bill is <strong>${total:,.2f}</strong>.</p>
-<p>Note the second-to-last line. Those {clients * ai_voice:,} phone minutes sit
+<p>Two lines there are worth pausing on. The carrier surcharge adds
+${carrier_cost:,.2f} on top of ${sms_cost:,.2f} of base SMS &mdash; a
+{(carrier_cost / sms_cost * 100):.0f}% increase that HighLevel publishes and almost
+nobody quotes.</p>
+<p>And the phone-minutes line. Those {clients * ai_voice:,} phone minutes sit
 <em>underneath</em> Voice AI and are billed by the phone system, not by the AI plan
-&mdash; on every tier, including the one called unlimited. Two meters run at once,
-and that line does not appear on any competing pricing page I could find.</p>"""
+&mdash; on every tier, including the one called unlimited. HighLevel prices Voice AI
+as &ldquo;Voice + token cost&rdquo; in its own documentation. Two meters run at
+once.</p>"""
 
 
 def _rate_table():
@@ -89,8 +98,15 @@ def _rate_table():
          "it is the same plan, not a separate fourth tier."),
         ("SMS", f"${u['smsPerSegment']}/segment", html_mod.escape(u["smsNote"])),
         ("Email", f"${u['emailPer1000']}/1,000", html_mod.escape(u["emailNote"])),
+        ("SMS carrier surcharge",
+         f"~${u['carrierFees']['averageSmsOutbound']}/segment",
+         html_mod.escape(u["carrierFees"]["note"])),
         ("Voice, outbound US", f"${u['voiceOutboundPerMinute']}/min",
-         html_mod.escape(u["voiceNote"])),
+         html_mod.escape(u["voiceOutboundBreakdown"])),
+        ("Voice, inbound", f"${u['voiceInboundPerMinute']}/min",
+         html_mod.escape(u["voiceTwoLegNote"])),
+        ("Call transcription", f"${u['callTranscriptionPerMinute']}/min",
+         html_mod.escape(u["transcriptionNote"])),
         ("Phone number", f"${u['localNumberPerMonth']}/mo",
          f"Local number rental. Toll-free is ${u['tollFreeNumberPerMonth']}/mo."),
         ("Premium workflow actions",
@@ -120,12 +136,12 @@ stale, <a href="/contact/">tell me</a> and it gets corrected with a new date.</p
 
 <aside class="callout" role="note">
 <span class="callout-mark" aria-hidden="true">&#9670;</span>
-<div><strong>How these were verified, and how far to trust them.</strong>
-<span>These come from HighLevel's own help-centre pricing articles, compiled into a
-research brief on 28 August 2026. They were not read off the vendor's live pages by
-the software that builds this site, because those pages are unreachable from the
-build environment. Treat them as well-sourced rather than as a live feed, and check
-your own invoice before making a five-figure decision.</span></div>
+<div><strong>How these were verified.</strong>
+<span>Every figure above was read directly from HighLevel&rsquo;s own pricing page
+and help-centre billing articles on 28 August 2026 &mdash; not from a secondary
+source or another review. The source URL for each block is recorded in this
+site&rsquo;s pricing data file. Vendor pricing still moves, so check your own
+invoice before making a five-figure decision.</span></div>
 </aside>
 
 <h3 id="unverified">What this deliberately does not claim</h3>
@@ -262,6 +278,12 @@ calculator below models every layer at your own volume.</p>
     <div class="field">
       <label for="f-voice">Voice minutes per client / month</label>
       <input id="f-voice" type="number" min="0" max="100000" step="50" value="200" inputmode="numeric">
+    </div>
+    <div class="field field-check">
+      <label for="f-carrier">
+        <input id="f-carrier" type="checkbox" checked>
+        Include carrier surcharges
+      </label>
     </div>
     <div class="field">
       <label for="f-numbers">Phone numbers per client</label>

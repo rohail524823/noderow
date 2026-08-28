@@ -36,7 +36,8 @@
     voice: $('f-voice'), numbers: $('f-numbers'), premium: $('f-premium'),
     aiModel: $('f-ai-model'), aiMsgs: $('f-ai-msgs'), aiVoice: $('f-ai-voice'),
     billing: $('f-billing'), rebill: $('f-rebill'),
-    rebillMode: $('f-rebill-mode'), markup: $('f-markup'), flatRate: $('f-flat')
+    rebillMode: $('f-rebill-mode'), markup: $('f-markup'), flatRate: $('f-flat'),
+    carrier: $('f-carrier')
   };
 
   var out = { body: $('calc-out'), verdict: $('calc-verdict') };
@@ -87,7 +88,13 @@
     var model = aiModel(f.aiModel.value);
 
     // --- metered layer ---
-    var smsCost = smsSeg * U.smsPerSegment;
+    // Carrier surcharges are passed through by the recipient's carrier ON TOP of
+    // the base segment rate. They roughly double the real cost of an SMS and are
+    // the line almost every competing pricing page omits entirely.
+    var carrierRate = f.carrier.checked ? U.carrierFees.averageSmsOutbound : 0;
+    var smsBaseCost = smsSeg * U.smsPerSegment;
+    var smsCarrierCost = smsSeg * carrierRate;
+    var smsCost = smsBaseCost + smsCarrierCost;
     var emailCost = (emails / 1000) * U.emailPer1000;
     var numberCost = numbers * U.localNumberPerMonth;
     var premiumCost = premium * U.premiumWorkflowActionPerExecution;
@@ -158,6 +165,8 @@
       billableUnits: billableUnits, aiOverageNote: aiOverageNote,
       smsCost: smsCost, emailCost: emailCost, voiceCost: voiceCost,
       numberCost: numberCost, premiumCost: premiumCost, aiMetered: aiMetered,
+      smsBaseCost: smsBaseCost, smsCarrierCost: smsCarrierCost,
+      carrierOn: f.carrier.checked,
       smsSeg: smsSeg, emails: emails, voiceMin: voiceMin, numbers: numbers,
       premium: premium, aiMsgs: aiMsgs, aiVoiceMin: aiVoiceMin,
       aiVoicePhoneCost: aiVoicePhoneCost
@@ -202,7 +211,11 @@
       h += '<li' + (cls ? ' class="' + cls + '"' : '') + '><span>' + label +
         '</span><strong>' + money(cost) + '</strong></li>';
     }
-    row(int(c.smsSeg) + ' SMS segments', c.smsCost);
+    row(int(c.smsSeg) + ' SMS segments, base rate', c.smsBaseCost);
+    if (c.smsCarrierCost > 0) {
+      row('&nbsp;&nbsp;&#8627; carrier surcharges on those segments',
+          c.smsCarrierCost, 'calc-trap');
+    }
     row(int(c.emails) + ' emails', c.emailCost);
     if (c.voiceMin) row(int(c.voiceMin) + ' voice minutes', c.voiceMin * RATES.usage.voiceOutboundPerMinute);
     if (c.aiVoiceMin) {
@@ -215,6 +228,13 @@
     h += '<li class="calc-total"><span>Total metered usage</span><strong>' +
       money(c.usageCost) + '</strong></li></ul>';
 
+    if (c.smsCarrierCost > 0) {
+      var pctUp = c.smsCarrierCost / (c.smsBaseCost || 1) * 100;
+      h += '<p class="calc-flag"><strong>Carrier surcharges add ' +
+        Math.round(pctUp) + '% to your SMS bill.</strong> ' + U.carrierFees.note +
+        ' The rate used here is a blended average across the major US carriers; ' +
+        'your real figure depends on your recipients\' carrier mix.</p>';
+    }
     if (c.aiVoiceMin > 0) {
       h += '<p class="calc-flag"><strong>Two meters are running.</strong> ' +
         AI.twoMeterWarning + ' That is ' + money(c.aiVoicePhoneCost) +
