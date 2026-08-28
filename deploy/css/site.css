@@ -582,3 +582,5 @@ tr.calc-best td strong{ color:var(--ok); }
 }
 .citations li:last-child{ border-bottom:0; }
 table.cmp caption{ text-align:left; }
+
+.net-loss{ color:var(--err); }

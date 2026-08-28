@@ -48,6 +48,7 @@ FOOTER_COLUMNS = [
         ("Compare hub", "/compare/"),
     ]),
     ("Guides", [
+        ("Missed call revenue calculator", "/missed-call-revenue-calculator/"),
         ("Automate client onboarding", "/automate-client-onboarding/"),
         ("GoHighLevel pricing explained", "/gohighlevel-pricing-explained/"),
         ("Lead capture to CRM sync", "/automate-lead-capture/"),

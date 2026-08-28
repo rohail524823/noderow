@@ -52,14 +52,13 @@ your inbox when it's ready.</p>
 HOME_BODY = f"""
 <section class="hero">
 <div class="wrap">
-<p class="eyebrow">Agency automation, reviewed from the build side</p>
-<h1>Most agencies are paying for eight tools that don't talk to each other.</h1>
-<p class="lede">NodeRow compares all-in-one platforms against stitched-together
-stacks — GoHighLevel, n8n, Make, Zapier — and shows you what each one actually
-costs once it's wired up and running. Written by someone who builds these systems
-for paying clients and gets the call when they break.</p>
+<p class="eyebrow">Automation for businesses that run on the phone</p>
+<h1>The leads you lose are mostly the calls you never answered.</h1>
+<p class="lede">NodeRow works out what that actually costs you, what it costs to fix,
+and whether the fix is worth buying. Written by someone who builds these systems for
+paying clients — and who will tell you when the answer is to just answer the phone.</p>
 <div class="hero-actions">
-  <a class="btn btn-primary" href="/compare/">Compare the stacks</a>
+  <a class="btn btn-primary" href="/missed-call-revenue-calculator/">What are missed calls costing you?</a>
   <a class="btn btn-ghost" href="/build/">Have it built for you</a>
 </div>
 <div class="credential">
@@ -126,9 +125,10 @@ failure modes are what nobody writes about.</p>
   <div>
     <p class="eyebrow">Free tool</p>
     <h3>What does GoHighLevel actually cost you?</h3>
-    <p>The plan price is one of three layers. Put your client count and message
-    volume in and get the real monthly number — plus whether the $497 plan pays
-    for itself at your rebilling markup. Every rate dated and sourced.</p>
+    <p>If you decide software is the answer, the plan price is only part of the
+    bill. Put your client count and message volume in and get the real monthly
+    number, including the carrier fees that add around 56% to SMS. Every rate
+    dated and sourced.</p>
   </div>
   <a class="btn btn-primary" href="/gohighlevel-true-cost-calculator/">Open the calculator</a>
 </div>
