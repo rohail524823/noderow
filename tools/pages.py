@@ -62,9 +62,10 @@ paying clients — and who will tell you when the answer is to just answer the p
   <a class="btn btn-ghost" href="/build/">Have it built for you</a>
 </div>
 <div class="credential">
-  <span><strong>100+</strong> completed contracts</span>
-  <span><strong>100%</strong> job success on Upwork</span>
-  <span>Builds in <strong>n8n, Make, Zapier and GoHighLevel</strong> weekly</span>
+  <span>Built for paying clients in
+  <strong>n8n, Make, Zapier and GoHighLevel</strong></span>
+  <span><a href="https://www.upwork.com/freelancers/rohailnisaracademy"
+  target="_blank" rel="noopener me">Verified track record on Upwork</a></span>
 </div>
 </div>
 </section>
@@ -509,11 +510,11 @@ and test it, you get handover notes so it isn't a black box.</p>
 
 <div class="prose" style="margin-top:2.5rem">
 <h2>Proof</h2>
-<p>100+ completed contracts with a 100% job success score on Upwork, building in
-n8n, Make, Zapier and GoHighLevel. The
+<p>Built in n8n, Make, Zapier and GoHighLevel for paying clients. The
 <a href="https://www.upwork.com/freelancers/rohailnisaracademy" target="_blank"
-   rel="noopener me">Upwork profile</a> carries the contract history and client
-feedback.</p>
+   rel="noopener me">Upwork profile</a> carries the contract history, job success
+score and client feedback — live, rather than a number copied here that would go
+stale.</p>
 
 <h2>Start an enquiry</h2>
 <form name="build-enquiry" method="POST" action="/build/#enquiry-sent"
@@ -566,10 +567,16 @@ ABOUT_BODY = f"""
 <h1>Who writes this, and how it's funded</h1>
 </div>
 <div class="prose">
-<p>NodeRow is written by Rohail Nisar Ahmad, a freelance data integration and
+<p>NodeRow is written by Rohail Nisar, a freelance data integration and
 automation engineer. I build workflows in n8n, Make, Zapier and GoHighLevel for
-paying clients — 100+ completed contracts with a 100% job success score on
-Upwork — and I'm the one who gets the call when a build breaks at 2am.</p>
+paying clients, and I'm the one who gets the call when a build breaks at 2am. My
+<a href="https://www.upwork.com/freelancers/rohailnisaracademy" target="_blank"
+rel="noopener me">Upwork profile</a>,
+<a href="https://www.linkedin.com/in/rohailnisarahmad/" target="_blank"
+rel="noopener me">LinkedIn</a> and
+<a href="https://github.com/rohail524823" target="_blank" rel="noopener me">GitHub</a>
+carry the verifiable history — I don't restate the numbers here, because copied
+figures go stale where nobody is watching.</p>
 <p>That's the entire reason this site exists. Most automation content is written by
 marketers working from documentation. It reads fine and it's useless the moment
 real data hits the workflow, because the person writing it has never watched a
@@ -920,9 +927,9 @@ def all_pages():
             "path": "/about/",
             "title": "About NodeRow and Its Publishing Principles",
             "description": (
-                "NodeRow is written by Rohail Nisar Ahmad, a freelance automation "
-                "engineer with 100+ completed contracts. How the site works and how "
-                "it is funded."
+                "NodeRow is written by Rohail Nisar, a freelance automation "
+                "engineer who builds these systems for paying clients. How the site "
+                "works, and how it is funded."
             ),
             "body": ABOUT_BODY,
             "trail": [("Home", "/"), ("About", "/about/")],

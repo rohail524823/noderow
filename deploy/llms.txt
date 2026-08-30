@@ -12,7 +12,7 @@
 - [Automation Tool Directory | NodeRow](https://noderow.com/tools/): Every automation platform covered on NodeRow, with what each is good at, where it falls down, and whether NodeRow earns a commission.
 - [Pre-Built Automation Workflow Packs | NodeRow](https://noderow.com/packs/): Importable workflow packs for client onboarding, ecommerce ops, document automation and lead capture — the same systems built for paying clients.
 - [Automation Built For You — Fixed Price From $50 | NodeRow](https://noderow.com/build/): Fixed-price automation builds in n8n, Make, Zapier and GoHighLevel. Four tiers from a $50 quick fix to a $500 full multi-workflow system.
-- [About NodeRow and Its Publishing Principles](https://noderow.com/about/): NodeRow is written by Rohail Nisar Ahmad, a freelance automation engineer with 100+ completed contracts. How the site works and how it is funded.
+- [About NodeRow and Its Publishing Principles](https://noderow.com/about/): NodeRow is written by Rohail Nisar, a freelance automation engineer who builds these systems for paying clients. How the site works, and how it is funded.
 - [How NodeRow Tests Automation Platforms](https://noderow.com/how-we-test/): The method behind NodeRow's comparisons: hands-on builds, pricing modelled at real volume, dated prices, and named weaknesses.
 - [Affiliate Disclosure | NodeRow](https://noderow.com/affiliate-disclosure/): Exactly which links on NodeRow earn a commission, which earn nothing, and how that does and doesn't affect what gets recommended.
 - [Privacy Policy | NodeRow](https://noderow.com/privacy-policy/): What NodeRow collects when you subscribe or send an enquiry, how analytics and affiliate links work, and how to have your data corrected or removed.

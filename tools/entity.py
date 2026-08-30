@@ -9,17 +9,11 @@ first-party review process is a Google spam-policy violation.
 
 import json
 
-from site_config import (
-    AUTHOR_JOB_TITLE,
-    AUTHOR_KNOWS_ABOUT,
-    AUTHOR_NAME,
-    AUTHOR_SAME_AS,
-    SITE_NAME,
-    SITE_URL,
-)
+import author_identity
+from site_config import SITE_NAME, SITE_URL
 
 ORG_ID = f"{SITE_URL}/#org"
-PERSON_ID = f"{SITE_URL}/#rohail"
+PERSON_ID = f"{SITE_URL}/#rohail-nisar"
 WEBSITE_ID = f"{SITE_URL}/#website"
 
 
@@ -40,16 +34,9 @@ def organization():
 
 
 def person():
-    return {
-        "@type": "Person",
-        "@id": PERSON_ID,
-        "name": AUTHOR_NAME,
-        "jobTitle": AUTHOR_JOB_TITLE,
-        "url": f"{SITE_URL}/about/",
-        "worksFor": {"@id": ORG_ID},
-        "sameAs": AUTHOR_SAME_AS,
-        "knowsAbout": AUTHOR_KNOWS_ABOUT,
-    }
+    """The canonical founder node, emitted in full on every page."""
+    return author_identity.person_node(
+        person_id=PERSON_ID, org_id=ORG_ID, url=f"{SITE_URL}/about/")
 
 
 def website():

@@ -10,6 +10,11 @@ import json
 import pathlib
 
 from site_config import (
+    AUTHOR_DESCRIPTION,
+    AUTHOR_JOB_TITLE,
+    GITHUB_URL,
+    LINKEDIN_URL,
+    UPWORK_URL,
     DISCLOSURE_INLINE,
     DISCLOSURE_SHORT,
     FOOTER_COLUMNS,
@@ -221,7 +226,6 @@ def footer():
             f'<div class="footer-col"><h2>{html.escape(title)}</h2>'
             f"<ul>{items}</ul></div>"
         )
-    upwork, linkedin = AUTHOR_SAME_AS[0], AUTHOR_SAME_AS[1]
     return f"""<footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -230,8 +234,9 @@ def footer():
     <div class="footer-base">
       <p class="footer-brand">{SITE_NAME}</p>
       <p class="footer-social">
-        <a href="{linkedin}" target="_blank" rel="noopener me">LinkedIn</a>
-        <a href="{upwork}" target="_blank" rel="noopener me">Upwork</a>
+        <a href="{LINKEDIN_URL}" target="_blank" rel="noopener me">LinkedIn</a>
+        <a href="{UPWORK_URL}" target="_blank" rel="noopener me">Upwork</a>
+        <a href="{GITHUB_URL}" target="_blank" rel="noopener me">GitHub</a>
       </p>
       <p class="footer-disclosure">{html.escape(DISCLOSURE_SHORT)}</p>
       <p class="footer-copy">&copy; 2026 {SITE_NAME}. Written by {html.escape(AUTHOR_NAME)}.</p>
@@ -241,18 +246,26 @@ def footer():
 
 
 def author_box():
-    upwork, linkedin = AUTHOR_SAME_AS[0], AUTHOR_SAME_AS[1]
+    """Visible counterpart to the Person node in the JSON-LD.
+
+    The same profile URLs appear here as clickable links. Structured data a
+    human cannot see is half the job, and a LinkedIn URL that exists only inside
+    an ld+json block is not verifiable by a reader.
+
+    No platform metrics — job-success score, contract counts. They are real but
+    they drift, and a number copied here goes stale where nobody is watching.
+    The profile link carries the live figure.
+    """
     return f"""<aside class="author-box">
   <div class="author-meta">
     <p class="author-name">{html.escape(AUTHOR_NAME)}</p>
-    <p class="author-role">Automation &amp; Data Integration Engineer</p>
+    <p class="author-role">{html.escape(AUTHOR_JOB_TITLE)}, {SITE_NAME}</p>
   </div>
-  <p class="author-bio">Builds automation in n8n, Make, Zapier and GoHighLevel for
-  paying clients — 100+ completed contracts with a 100% job success score on Upwork.
-  Everything here comes out of client work, not a content calendar.</p>
+  <p class="author-bio">{html.escape(AUTHOR_DESCRIPTION)}</p>
   <p class="author-links">
-    <a href="{upwork}" target="_blank" rel="noopener me">Upwork profile</a>
-    <a href="{linkedin}" target="_blank" rel="noopener me">LinkedIn</a>
+    <a href="{LINKEDIN_URL}" target="_blank" rel="noopener me">LinkedIn</a>
+    <a href="{UPWORK_URL}" target="_blank" rel="noopener me">Upwork</a>
+    <a href="{GITHUB_URL}" target="_blank" rel="noopener me">GitHub</a>
     <a href="/about/">About NodeRow</a>
   </p>
 </aside>"""

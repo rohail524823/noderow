@@ -63,6 +63,59 @@ def validate_page(path, html, *, known_paths=None):
     if "aggregateRating" in html:
         fail("aggregateRating present — spam-policy violation, never emit it")
 
+    # Breaking a JSON-LD block is invisible: the page renders perfectly and the
+    # graph silently stops existing. Parse every block, every build.
+    import json as _json
+    import author_identity as _ident
+
+    blocks = re.findall(
+        r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    for i, raw in enumerate(blocks):
+        # The body of an ld+json script is not HTML-decoded by anything that
+        # reads it, so "Foo &amp; Bar" publishes those five literal characters
+        # as part of a name.
+        for ent in ("&amp;", "&lt;", "&gt;", "&quot;", "&#39;", "&nbsp;"):
+            if ent in raw:
+                fail(f"JSON-LD block {i} contains the HTML entity {ent!r} — "
+                     f"it will publish literally")
+        try:
+            doc = _json.loads(raw)
+        except _json.JSONDecodeError as e:
+            fail(f"JSON-LD block {i} does not parse: {e}")
+            continue
+
+        nodes = doc.get("@graph", [doc])
+        defined = {n.get("@id") for n in nodes if isinstance(n, dict)}
+
+        # An @id referenced but never defined on this page is a dangling
+        # reference — the page must carry the whole entity in isolation.
+        def refs(obj):
+            if isinstance(obj, dict):
+                if set(obj) == {"@id"}:
+                    yield obj["@id"]
+                for v in obj.values():
+                    yield from refs(v)
+            elif isinstance(obj, list):
+                for v in obj:
+                    yield from refs(v)
+
+        for ref in set(refs(nodes)):
+            if ref not in defined:
+                fail(f"JSON-LD block {i} references {ref} but never defines it")
+
+        # The shared founder identity must be byte-identical across all five
+        # sites. Anything else is a different person to a parser.
+        for n in nodes:
+            if not isinstance(n, dict) or n.get("@type") != "Person":
+                continue
+            if n.get("name") != _ident.NAME:
+                fail(f"Person name is {n.get('name')!r}, must be {_ident.NAME!r}")
+            if n.get("email") != _ident.EMAIL:
+                fail(f"Person email is {n.get('email')!r}, must be {_ident.EMAIL!r}")
+            if n.get("sameAs") != list(_ident.SAME_AS):
+                fail(f"Person sameAs differs from the canonical list: "
+                     f"{n.get('sameAs')}")
+
     # --- tracking parameters must actually carry a value ---
     # GoHighLevel's own dashboard ships at least one link with a bare "fp_ref="
     # and no code. A link like that tracks nothing: the click works, the signup

@@ -8,25 +8,19 @@ SITE_URL = "https://noderow.com"
 SITE_NAME = "NodeRow"
 SITE_TAGLINE = "Automation stacks for agencies, reviewed by someone who builds them"
 
-# Confirm before this gets baked into schema across every page (blueprint Phase 1).
-AUTHOR_NAME = "Rohail Nisar Ahmad"
-AUTHOR_JOB_TITLE = "Automation & Data Integration Engineer"
-AUTHOR_SAME_AS = [
-    "https://www.upwork.com/freelancers/rohailnisaracademy",
-    "https://www.linkedin.com/in/rohailnisarahmad",
-]
-AUTHOR_KNOWS_ABOUT = [
-    "workflow automation",
-    "n8n",
-    "Make.com",
-    "Zapier",
-    "GoHighLevel",
-    "API integration",
-    "webhooks",
-    "data pipelines",
-    "AI agents",
-    "no-code automation",
-]
+# Founder identity lives in tools/author_identity.py — the single canonical
+# definition shared byte-identically across all five sites. Do not redefine it.
+from author_identity import (  # noqa: E402
+    DESCRIPTION as AUTHOR_DESCRIPTION,
+    EMAIL as AUTHOR_EMAIL,
+    GITHUB_URL,
+    JOB_TITLE as AUTHOR_JOB_TITLE,
+    KNOWS_ABOUT as AUTHOR_KNOWS_ABOUT,
+    LINKEDIN_URL,
+    NAME as AUTHOR_NAME,
+    SAME_AS as AUTHOR_SAME_AS,
+    UPWORK_URL,
+)
 
 # Exactly five. No dropdowns on mobile.
 NAV = [
